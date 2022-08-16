@@ -1,0 +1,6 @@
+[{
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "app.vercel.pipoca_6a8k64ngm_trotou.twa",
+                     "sha256_cert_fingerprints": ["A2:14:ED:C1:FF:57:87:5E:11:C4:3F:6E:ED:1E:7F:57:E6:29:03:2C:F8:E1:83:F6:C2:9E:93:C0:45:CA:2A:5F"] }
+      }
+]
