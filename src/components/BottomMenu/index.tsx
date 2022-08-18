@@ -12,7 +12,7 @@ const BottomMenu = () => {
   const { ativo, setAtivo } = useHomeProvider();
   const location = useLocation();
 
-  return location.pathname === "/home" ? (
+  return location.pathname === "/" ? (
     <MainContainer>
       {ativo === "relatorio" ? (
         <img
