@@ -6,8 +6,15 @@ import PipocaPuppet from "../../assets/img/pipoca-puppet.png";
 import MutedtIcon from "../../assets/img/speaker.png";
 import Ellipse from "../../assets/img/ellipse-19.png";
 import { CSSProperties } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/home");
+  };
+
   const indicatorStyles: CSSProperties = {
     background: "#1391ED",
     width: 17,
@@ -66,7 +73,7 @@ const Login = () => {
               <img alt="next" src={NextIcon} />
             </button>
           ) : (
-            <button className="arrow-next" title={label}>
+            <button className="arrow-next" title={label} onClick={handleClick}>
               <p>Entrar!</p>
               <img alt="next" src={NextIcon} />
             </button>
