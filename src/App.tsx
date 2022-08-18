@@ -1,14 +1,19 @@
 import React from "react";
 import "./App.css";
-import Calendar from "./components/Calendar";
+import { BrowserRouter } from "react-router-dom";
+import Routing from "./routes";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Calendar />
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <Routing />
+
+          {/* <Calendar /> */}
+        </header>
+      </div>
+    </BrowserRouter>
   );
 }
 
