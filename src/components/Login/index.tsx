@@ -12,7 +12,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/home");
+    navigate("/");
   };
 
   const indicatorStyles: CSSProperties = {

@@ -1,8 +1,12 @@
-import React from "react";
+import HojePage from "../HojePage";
 import { MainContainer } from "./styles";
 
 const Home = () => {
-  return <MainContainer></MainContainer>;
+  return (
+    <MainContainer>
+      <HojePage />
+    </MainContainer>
+  );
 };
 
 export default Home;
