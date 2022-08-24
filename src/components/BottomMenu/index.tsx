@@ -16,7 +16,7 @@ const BottomMenu = () => {
     <MainContainer>
       {ativo === "relatorio" ? (
         <img
-          style={{ position: "relative", bottom: "18px" }}
+          className="img ativo"
           alt=""
           src={RelatorioAtivo}
           onClick={() => setAtivo("")}
@@ -27,7 +27,7 @@ const BottomMenu = () => {
 
       {ativo === "hoje" ? (
         <img
-          style={{ position: "relative", bottom: "18px" }}
+          className="img ativo"
           alt=""
           src={HojeAtivo}
           onClick={() => setAtivo("")}
@@ -38,7 +38,7 @@ const BottomMenu = () => {
 
       {ativo === "registro" ? (
         <img
-          style={{ position: "relative", bottom: "18px" }}
+          className="img ativo"
           alt=""
           src={RegistroAtivo}
           onClick={() => setAtivo("")}

@@ -20,6 +20,13 @@
     url(./assets/fonts/Roboto/roboto-condensed.bold.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "Roboto-Condensed";
+  font-weight: 300;
+  src: local("Roboto"),
+    url(./assets/fonts/Roboto/roboto-condensed.light.ttf) format("truetype");
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -29,6 +36,7 @@
 .App-header {
   background-color: #ffffff;
   min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;

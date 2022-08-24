@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   width: 100%;
   font-family: Roboto-Condensed;
 `;

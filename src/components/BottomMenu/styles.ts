@@ -12,4 +12,9 @@ export const MainContainer = styled.div`
   height: 77px;
   background-color: #ffffff;
   box-shadow: 0px -2px 7px 0px #00000040;
+
+  img.ativo {
+    position: relative;
+    bottom: 18px;
+  }
 `;
