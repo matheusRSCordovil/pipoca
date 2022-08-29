@@ -1,10 +1,15 @@
+import { useHomeProvider } from "../../providers/HomeProvider";
 import HojePage from "../HojePage";
+import RelatorioPage from "../RelatorioPage";
 import { MainContainer } from "./styles";
 
 const Home = () => {
+  const { ativo } = useHomeProvider();
+
   return (
     <MainContainer>
-      <HojePage />
+      {ativo === "hoje" && <HojePage />}
+      {ativo === "relatorio" && <RelatorioPage />}
     </MainContainer>
   );
 };

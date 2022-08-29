@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 
 const TopMenu = () => {
   const location = useLocation();
+
   return location.pathname === "/" ? (
     <MainContainer>
       {/* <img
@@ -24,7 +25,7 @@ const TopMenu = () => {
           height: "36px",
           position: "absolute",
           left: "24px",
-          top: "43px",
+          top: "35px",
           cursor: "pointer",
         }}
       />

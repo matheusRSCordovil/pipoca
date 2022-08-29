@@ -12,10 +12,10 @@ export const MainContainer = styled.div<IProps>`
   min-height: 90vh;
   width: 100%;
   font-family: Roboto-Condensed;
+  margin-top: 161px;
   background-repeat: no-repeat;
   background-size: contain;
   background-position-y: -35%;
-  margin-top: 161px;
 
   .top-info-container {
     display: flex;
