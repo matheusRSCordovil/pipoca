@@ -1,5 +1,6 @@
 import { useHomeProvider } from "../../providers/HomeProvider";
 import HojePage from "../HojePage";
+import RegistroPage from "../RegistroPage";
 import RelatorioPage from "../RelatorioPage";
 import { MainContainer } from "./styles";
 
@@ -10,6 +11,7 @@ const Home = () => {
     <MainContainer>
       {ativo === "hoje" && <HojePage />}
       {ativo === "relatorio" && <RelatorioPage />}
+      {ativo === "registro" && <RegistroPage />}
     </MainContainer>
   );
 };
