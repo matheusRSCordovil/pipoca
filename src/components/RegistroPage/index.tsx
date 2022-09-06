@@ -19,6 +19,7 @@ import Dia1 from "../../assets/icon/meuRegistroIcons/dia1.svg";
 import Dia2 from "../../assets/icon/meuRegistroIcons/dia2.svg";
 import Dia3 from "../../assets/icon/meuRegistroIcons/dia3.svg";
 import Dia4 from "../../assets/icon/meuRegistroIcons/dia4.svg";
+import PencilIcon from "../../assets/icon/pencilIcon.svg";
 
 const RegistroPage = () => {
   return (
@@ -37,8 +38,8 @@ const RegistroPage = () => {
           </div>
         </div>
       </div>
-      <TitleDiv>Como está sua pele?</TitleDiv>
 
+      <TitleDiv>Como está sua pele?</TitleDiv>
       <IconesDiv>
         <span style={{ color: "#F84A24" }}>
           <img src={Pele1} alt="icone" />
@@ -82,6 +83,7 @@ const RegistroPage = () => {
           <p>Com estresse</p>
         </span>
       </IconesDiv>
+
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre o seu humor de hoje?
       </label>
@@ -159,6 +161,110 @@ const RegistroPage = () => {
 
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre seu dia?
+      </label>
+      <input className="input-meu-registro" type="text" />
+
+      <TitleDiv>Produtos de Cuidados</TitleDiv>
+
+      <div className="remedio-container">
+        <div>
+          <p>
+            Remédios
+            <img
+              src={PencilIcon}
+              alt="pencil-icon"
+              style={{ marginLeft: "10px" }}
+            />
+          </p>
+          <p>Tomei</p>
+          <p>Atrasei</p>
+          <p>Esqueci</p>
+          <p>Não precisei</p>
+        </div>
+
+        <div className="remedio-container-tr">
+          <p>Remédios Nome</p>
+          <p>
+            <input type="radio" name="remedio-radio" />
+          </p>
+          <p>
+            <input type="radio" name="remedio-radio" />
+          </p>
+          <p>
+            <input type="radio" name="remedio-radio" />
+          </p>
+          <p>
+            <input type="radio" name="remedio-radio" />
+          </p>
+        </div>
+      </div>
+
+      <div className="remedio-container">
+        <div>
+          <p>
+            Pomadas
+            <img
+              src={PencilIcon}
+              alt="pencil-icon"
+              style={{ marginLeft: "10px" }}
+            />
+          </p>
+          <p>Passei</p>
+          <p>Atrasei</p>
+          <p>Esqueci</p>
+          <p>Não precisei</p>
+        </div>
+        <div className="remedio-container-tr">
+          <p>Remédios Nome</p>
+          <p>
+            <input type="radio" name="pomada-radio" />
+          </p>
+          <p>
+            <input type="radio" name="pomada-radio" />
+          </p>
+          <p>
+            <input type="radio" name="pomada-radio" />
+          </p>
+          <p>
+            <input type="radio" name="pomada-radio" />
+          </p>
+        </div>
+      </div>
+
+      <div className="remedio-container">
+        <div>
+          <p>
+            Hidratante
+            <img
+              src={PencilIcon}
+              alt="pencil-icon"
+              style={{ marginLeft: "10px" }}
+            />
+          </p>
+          <p>Passei</p>
+          <p>Atrasei</p>
+          <p>Esqueci</p>
+          <p>Não precisei</p>
+        </div>
+        <div className="remedio-container-tr">
+          <p>Remédios Nome</p>
+          <p>
+            <input type="radio" name="radio" />
+          </p>
+          <p>
+            <input type="radio" name="radio" />
+          </p>
+          <p>
+            <input type="radio" name="radio" />
+          </p>
+          <p>
+            <input type="radio" name="radio" />
+          </p>
+        </div>
+      </div>
+
+      <label htmlFor="file-upload" className="label-input">
+        Quer adicionar mais algum comentário sobre seus cuidados de hoje?
       </label>
       <input className="input-meu-registro" type="text" />
     </MainContainer>
