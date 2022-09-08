@@ -14,8 +14,11 @@ import RotinaIconOn from "../../assets/icon/hojeIcons/rotinasOn.png";
 import BanhoIcon from "../../assets/icon/hojeIcons/banho.png";
 import BanhoIconOn from "../../assets/icon/hojeIcons/banhoOn.png";
 import PlusIcon from "../../assets/icon/hojeIcons/plus.png";
+import { useHomeProvider } from "../../providers/HomeProvider";
 
 const HojePage = () => {
+  const { setAtivo } = useHomeProvider();
+
   const dias = [
     1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0,
@@ -67,7 +70,9 @@ const HojePage = () => {
                 Você concluiu os 30 dias da sua jornada. Saiba o quanto você
                 avançou neste mês!
               </p>
-              <button>Quero ver meu relatório mensal!</button>
+              <button onClick={() => setAtivo("relatorio")}>
+                Quero ver meu relatório mensal!
+              </button>
             </div>
           </div>
         )}
@@ -129,7 +134,12 @@ const HojePage = () => {
       {mesCompleto ? (
         <p className="ajuste-registro-text">Ajustar meu registro</p>
       ) : (
-        <button className="registrar-button">Registrar</button>
+        <button
+          className="registrar-button"
+          onClick={() => setAtivo("registro")}
+        >
+          Registrar
+        </button>
       )}
 
       <p className="aprendizagem-do-dia-text">Aprendizagem do dia</p>
