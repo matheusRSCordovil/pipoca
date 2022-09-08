@@ -20,18 +20,24 @@ import Dia2 from "../../assets/icon/meuRegistroIcons/dia2.svg";
 import Dia3 from "../../assets/icon/meuRegistroIcons/dia3.svg";
 import Dia4 from "../../assets/icon/meuRegistroIcons/dia4.svg";
 import PencilIcon from "../../assets/icon/pencilIcon.svg";
+import PipocaV2 from "../../assets/img/pipoca-puppet-v2.png";
+import { PRIMARY } from "../../theme/palette";
+import { useState } from "react";
+import Calendar from "../Calendar";
 
 const RegistroPage = () => {
-  return (
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  return !showCalendar ? (
     <MainContainer>
       <div className="calendar-registro">
         <p className="ciclo">1º ciclo</p>
 
-        <div className="calendar-list">
+        <div className="calendar-list" onClick={() => setShowCalendar(true)}>
           <div className="calendar-white-end"></div>
           <div className="calendar-scroll-div">
-            {Array.from(Array(10), (_, i) => i + 1).map((day) => (
-              <DayDiv>
+            {Array.from(Array(10), (_, i) => i + 1).map((day, i) => (
+              <DayDiv key={i}>
                 <p>{day}</p>
               </DayDiv>
             ))}
@@ -41,19 +47,19 @@ const RegistroPage = () => {
 
       <TitleDiv>Como está sua pele?</TitleDiv>
       <IconesDiv>
-        <span style={{ color: "#F84A24" }}>
+        <span style={{ color: PRIMARY.red }}>
           <img src={Pele1} alt="icone" />
           <p>Boa</p>
         </span>
-        <span style={{ color: "#F84A24" }}>
+        <span style={{ color: PRIMARY.red }}>
           <img src={Pele2} alt="icone" />
           <p>Ressecada</p>
         </span>
-        <span style={{ color: "#F84A24" }}>
+        <span style={{ color: PRIMARY.red }}>
           <img src={Pele3} alt="icone" />
           <p>Com coceira</p>
         </span>
-        <span style={{ color: "#F84A24" }}>
+        <span style={{ color: PRIMARY.red }}>
           <img src={Pele4} alt="icone" />
           <p>Com dor</p>
         </span>
@@ -267,6 +273,41 @@ const RegistroPage = () => {
         Quer adicionar mais algum comentário sobre seus cuidados de hoje?
       </label>
       <input className="input-meu-registro" type="text" />
+    </MainContainer>
+  ) : (
+    <MainContainer>
+      <Calendar />
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          height: "270px",
+          position: "relative",
+          justifyContent: "flex-end",
+          maxWidth: "390px",
+          marginTop: "30px",
+        }}
+      >
+        <img
+          src={PipocaV2}
+          alt="logo"
+          style={{
+            width: "192px",
+            height: "163px",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+          }}
+        />
+        <div className="info-dias-container">
+          <h4>Continue assim!</h4>
+          <p>
+            Você já completou 7 dias da sua jornanda. Não se esqueça:
+            <br />
+            quantos mais dias você registra, mais pontos ganha!
+          </p>
+        </div>
+      </div>
     </MainContainer>
   );
 };

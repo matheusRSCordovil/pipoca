@@ -29,7 +29,7 @@ const Calendar = () => {
         <option value="12">December</option>
       </select>
 
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", padding: "0 16px" }}>
         {Array.from(Array(monthsDays[currentMonth]), (_, i) => i + 1).map(
           (day) => (
             <DayDiv>

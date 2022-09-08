@@ -152,6 +152,37 @@ export const MainContainer = styled.div`
     color: #fb991c;
   }
 
+  .info-dias-container {
+    display: flex;
+    flex-direction: column;
+    height: 171px;
+    width: 270px;
+    border-radius: 34px;
+    background: #99cef4;
+    margin-right: 20px;
+    justify-content: center;
+
+    h4 {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 32px;
+      letter-spacing: 0em;
+      text-align: center;
+      margin: 0;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: center;
+      color: #104f92;
+      margin: 0 auto;
+      width: 90%;
+    }
+  }
+
   input[type="radio"] {
     appearance: none;
     background-color: #fff;
@@ -182,6 +213,21 @@ export const MainContainer = styled.div`
     transform: scale(1);
     background-color: currentColor;
   }
+
+  select {
+    width: 129px;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: none;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    color: #7d7d7d;
+  }
 `;
 
 export const DayDiv = styled.div`
@@ -209,7 +255,8 @@ export const TitleDiv = styled.div`
   display: flex;
   height: 40px;
   width: 100%;
-  border: 3px solid #bebebe;
+  border-bottom: 3px solid #bebebe;
+  border-top: 3px solid #bebebe;
   color: #7d7d7d;
   font-size: 26px;
   font-weight: 700;
