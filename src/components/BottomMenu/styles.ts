@@ -6,6 +6,7 @@ export const MainContainer = styled.div`
   justify-content: space-evenly;
   height: 77px;
   width: 100%;
+  min-width: 390px;
   font-family: Roboto-Condensed;
   position: sticky;
   bottom: 0;
