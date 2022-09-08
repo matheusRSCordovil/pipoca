@@ -11,7 +11,6 @@ export const MainContainer = styled.div<IProps>`
   flex-direction: column;
   min-height: 90vh;
   width: 100%;
-  min-width: 390px;
   font-family: Roboto-Condensed;
   margin-top: 161px;
   background-repeat: no-repeat;

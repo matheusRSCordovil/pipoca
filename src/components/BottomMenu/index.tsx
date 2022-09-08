@@ -9,8 +9,13 @@ import { useHomeProvider } from "../../providers/HomeProvider";
 import { useLocation } from "react-router-dom";
 
 const BottomMenu = () => {
-  const { ativo, setAtivo } = useHomeProvider();
+  const { ativo, setAtivo, setOpenMenu } = useHomeProvider();
   const location = useLocation();
+
+  const handleClick = (e: string) => {
+    setAtivo(e);
+    setOpenMenu(false);
+  };
 
   return location.pathname === "/" ? (
     <MainContainer>
@@ -19,10 +24,14 @@ const BottomMenu = () => {
           className="img ativo"
           alt=""
           src={RelatorioAtivo}
-          onClick={() => setAtivo("")}
+          onClick={() => handleClick("")}
         />
       ) : (
-        <img alt="" src={RelatorioIcon} onClick={() => setAtivo("relatorio")} />
+        <img
+          alt=""
+          src={RelatorioIcon}
+          onClick={() => handleClick("relatorio")}
+        />
       )}
 
       {ativo === "hoje" ? (
@@ -30,10 +39,10 @@ const BottomMenu = () => {
           className="img ativo"
           alt=""
           src={HojeAtivo}
-          onClick={() => setAtivo("")}
+          onClick={() => handleClick("")}
         />
       ) : (
-        <img alt="" src={HojeIcon} onClick={() => setAtivo("hoje")} />
+        <img alt="" src={HojeIcon} onClick={() => handleClick("hoje")} />
       )}
 
       {ativo === "registro" ? (
@@ -41,10 +50,14 @@ const BottomMenu = () => {
           className="img ativo"
           alt=""
           src={RegistroAtivo}
-          onClick={() => setAtivo("")}
+          onClick={() => handleClick("")}
         />
       ) : (
-        <img alt="" src={RegistroIcon} onClick={() => setAtivo("registro")} />
+        <img
+          alt=""
+          src={RegistroIcon}
+          onClick={() => handleClick("registro")}
+        />
       )}
     </MainContainer>
   ) : null;

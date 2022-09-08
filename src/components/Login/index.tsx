@@ -89,7 +89,12 @@ const Login = () => {
       >
         <div
           className="login-container"
-          style={{ minHeight: "100vh", width: "100%", height: "100%" }}
+          style={{
+            minHeight: "100vh",
+            width: "100%",
+            height: "100%",
+            minWidth: "390px",
+          }}
         >
           <img
             style={{ width: "106px" }}

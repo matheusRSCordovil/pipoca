@@ -4,20 +4,19 @@ import NotificationOnIcon from "../../assets/img/notificationOnIcon.png";
 import LogoAada from "../../assets/img/logo-aada.png";
 import { useLocation } from "react-router-dom";
 import { useHomeProvider } from "../../providers/HomeProvider";
+import CloseIcon from "../../assets/img/closeIcon.png";
 
 const TopMenu = () => {
   const location = useLocation();
-  const { ativo } = useHomeProvider();
+  const { ativo, setOpenMenu, openMenu } = useHomeProvider();
 
   return location.pathname === "/" ? (
     <MainContainer>
-      {/* <img
-        src={ClosetIcon}
-        alt="close"
-        style={{ width: "22px", height: "22px" }}
-      /> */}
-
-      {ativo === "relatorio" ? <p>Relatório</p> : <p>Bom dia, Ana!</p>}
+      {ativo === "relatorio" && !openMenu ? (
+        <p>Relatório</p>
+      ) : !openMenu ? (
+        <p>Bom dia, Ana!</p>
+      ) : null}
 
       <img
         src={NotificationOnIcon}
@@ -25,9 +24,24 @@ const TopMenu = () => {
         className="notificationOnIcon"
       />
 
-      <img src={MenuIcon} alt="menu" className="menu" />
+      {openMenu ? (
+        <img
+          src={CloseIcon}
+          alt="close"
+          style={{ width: "22px", height: "22px" }}
+          onClick={() => setOpenMenu(false)}
+          className="menu"
+        />
+      ) : (
+        <img
+          src={MenuIcon}
+          alt="menu"
+          className="menu"
+          onClick={() => setOpenMenu(true)}
+        />
+      )}
 
-      <img src={LogoAada} alt="logoAada" className="logoAada" />
+      {!openMenu && <img src={LogoAada} alt="logoAada" className="logoAada" />}
     </MainContainer>
   ) : null;
 };

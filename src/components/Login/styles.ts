@@ -8,13 +8,16 @@ import Bg6 from "../../assets/img/group415.png";
 
 export const MainContainer = styled.div`
   display: flex;
-  min-height: 100vh;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: #104f92;
   font-family: Roboto-Condensed;
+
+  @media (max-width: 389px) {
+    min-height: 125vh;
+  }
 
   .carousel .control-dots {
     margin-bottom: 30px;
