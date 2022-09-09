@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
     color: #7d7d7d;
     font-size: 13px;
     font-weight: 700;
-    line-height: 35px;
+    line-height: 25px;
     letter-spacing: -0.015em;
     text-align: center;
   }
@@ -129,6 +129,7 @@ export const MainContainer = styled.div`
     text-align: center;
     width: 17.5%;
     margin: 0;
+    white-space: nowrap;
   }
 
   .remedio-container > div:first-child > p:first-child {
