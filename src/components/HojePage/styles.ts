@@ -23,6 +23,7 @@ export const MainContainer = styled.div<IProps>`
     align-items: center;
     justify-content: center;
     width: 100%;
+    min-width: 390px;
     height: 122px;
     background-repeat: no-repeat;
     background-size: cover;

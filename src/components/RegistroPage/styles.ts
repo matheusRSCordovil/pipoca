@@ -277,7 +277,7 @@ export const IconesDiv = styled.div`
   p {
     font-size: 12px;
     font-weight: 700;
-    line-height: 27px;
+    line-height: 14px;
     letter-spacing: 0em;
     text-align: center;
     margin: 0;

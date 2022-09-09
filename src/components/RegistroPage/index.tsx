@@ -285,6 +285,7 @@ const RegistroPage = () => {
           position: "relative",
           justifyContent: "flex-end",
           maxWidth: "390px",
+          minWidth: "390px",
           marginTop: "30px",
         }}
       >
