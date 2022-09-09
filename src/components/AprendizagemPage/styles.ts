@@ -9,6 +9,10 @@ export const MainContainer = styled.div`
   font-family: Roboto-Condensed;
   margin-top: 161px;
 
+  .styles-module_carousel-arrow__26sRw {
+    display: none;
+  }
+
   .pesquisa-input {
     width: 354px;
     height: 50px;
@@ -34,7 +38,8 @@ export const MainContainer = styled.div`
   }
 
   .aprendizagem-card {
-    height: 156px;
+    min-height: 156px;
+    height: fit-content;
     width: 350px;
     border-radius: 22px;
     background-color: #104f92;

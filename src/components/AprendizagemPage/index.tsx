@@ -1,5 +1,6 @@
 import { MainContainer } from "./styles";
 import PlusIcon from "../../assets/icon/hojeIcons/plus.png";
+import Carrossel from "../Carrosel";
 
 const AprendizagemPage = () => {
   return (
@@ -16,6 +17,24 @@ const AprendizagemPage = () => {
       </div>
 
       <input type="text" className="pesquisa-input" />
+
+      <p
+        className="aprendizagem-do-dia-text"
+        style={{ marginBottom: 0, marginTop: 0 }}
+      >
+        Para quem começou esta jornada
+      </p>
+      <Carrossel />
+
+      <p className="aprendizagem-do-dia-text" style={{ marginBottom: 0 }}>
+        Para quem já entende de DA
+      </p>
+      <Carrossel />
+
+      <p className="aprendizagem-do-dia-text" style={{ marginBottom: 0 }}>
+        Conhecimento avançado
+      </p>
+      <Carrossel />
     </MainContainer>
   );
 };
