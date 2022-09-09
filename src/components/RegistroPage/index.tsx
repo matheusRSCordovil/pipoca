@@ -296,7 +296,7 @@ const RegistroPage = () => {
             width: "192px",
             height: "163px",
             position: "absolute",
-            bottom: 0,
+            bottom: -25,
             left: 0,
           }}
         />

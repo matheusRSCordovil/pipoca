@@ -88,7 +88,6 @@ export const MainContainer = styled.div<IProps>`
   .mensagem-do-dia-text {
     font-size: 22px;
     font-weight: 700;
-    line-height: 26px;
     letter-spacing: -0.015em;
     text-align: center;
     color: #ffffff;
@@ -265,6 +264,7 @@ export const MainContainer = styled.div<IProps>`
     color: #ffffff;
     box-shadow: 0px 4px 4px 0px #00000040;
     margin: 0 auto;
+    margin-bottom: 30px;
     padding-left: 20px;
     position: relative;
   }
