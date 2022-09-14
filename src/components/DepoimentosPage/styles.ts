@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import BgDepoimentos from "../../assets/img/bgDepoimentos.png";
+import SearchIcon from "../../assets/icon/searchIcon.svg";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -77,5 +79,87 @@ export const MainContainer = styled.div`
       letter-spacing: 0em;
       margin: 0;
     }
+  }
+
+  .img-box-header {
+    display: flex;
+    height: 174px;
+    width: 100%;
+    background-image: url(${BgDepoimentos});
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #7d7d7d;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  .texto-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    width: 90%;
+    max-width: 100vw;
+    margin: 0 auto;
+    text-align: justify;
+  }
+
+  .texto-box p {
+    text-indent: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    color: #7d7d7d;
+  }
+
+  .texto-box span {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: justified;
+  }
+
+  .pesquisa-input {
+    width: 354px;
+    height: 50px;
+    margin: 35px auto;
+    border: none;
+    border-radius: 20.5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 2px;
+    z-index: 100;
+    background: url(${SearchIcon}) no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+  }
+
+  .recommend-text {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #7d7d7d;
+    padding-left: 20px;
+    margin: 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 2px dotted #7d7d7d;
+    color: #fff;
+    background-color: #fff;
+    height: 1.2px;
+    width: 20%;
+    margin: auto;
+    margin-top: 20px;
   }
 `;
