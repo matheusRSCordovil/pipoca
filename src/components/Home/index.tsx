@@ -1,5 +1,6 @@
 import { useHomeProvider } from "../../providers/HomeProvider";
 import AprendizagemPage from "../AprendizagemPage";
+import DepoimentosPage from "../DepoimentosPage";
 import HojePage from "../HojePage";
 import FullScreenDialog from "../MenuSide";
 import RegistroPage from "../RegistroPage";
@@ -19,6 +20,7 @@ const Home = () => {
       {ativo === "relatorio" && <RelatorioPage />}
       {ativo === "registro" && <RegistroPage />}
       {ativo === "aprendizagem" && <AprendizagemPage />}
+      {ativo === "depoimentos" && <DepoimentosPage />}
       <FullScreenDialog open={openMenu} handleClose={handleClose} />
     </MainContainer>
   );

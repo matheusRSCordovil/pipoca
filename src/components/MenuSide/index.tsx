@@ -30,6 +30,7 @@ export default function FullScreenDialog({
     setOpenMenu(false);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [select, setSelect] = React.useState("");
 
   return (

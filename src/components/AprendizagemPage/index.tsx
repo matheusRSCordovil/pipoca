@@ -1,6 +1,6 @@
 import { MainContainer } from "./styles";
 import PlusIcon from "../../assets/icon/hojeIcons/plus.png";
-import Carrossel from "../Carrosel";
+import Carrossel from "../Carrossel";
 
 const AprendizagemPage = () => {
   return (

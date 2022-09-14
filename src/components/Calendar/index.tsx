@@ -34,12 +34,11 @@ const Calendar = () => {
           display: "flex",
           flexWrap: "wrap",
           padding: "0 16px",
-          margin: "0 auto",
         }}
       >
         {Array.from(Array(monthsDays[currentMonth]), (_, i) => i + 1).map(
-          (day) => (
-            <DayDiv>
+          (day, i) => (
+            <DayDiv key={i}>
               <p>{day}</p>
             </DayDiv>
           )

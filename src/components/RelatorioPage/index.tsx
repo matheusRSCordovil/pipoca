@@ -5,6 +5,11 @@ import BarRed from "../../assets/img/barRed.png";
 import BarPurple from "../../assets/img/barPurple.png";
 import BarOrange from "../../assets/img/barOrange.png";
 import BarBlue from "../../assets/img/barBlue.png";
+import BarIcons from "../../assets/img/barHumor.png";
+import BarGreen from "../../assets/img/barGreen.png";
+import LineGraphicIcons from "../LinegraphicIcons";
+import LineDotGreen from "../LineDotGreen";
+import LineGraphicMultiColor from "../LineGraphicMultiColor";
 
 const RelatorioPage = () => {
   return (
@@ -60,6 +65,30 @@ const RelatorioPage = () => {
           Nestes dias, seu banho foi:
         </div>
         <LineGraphicRelatorio bar={BarBlue} color={"#1391ED"} />
+
+        <div
+          className="grafico-titulo-container-label"
+          style={{ backgroundColor: "#58CC63" }}
+        >
+          Nestes dias, você realizou:
+        </div>
+        <LineDotGreen bar={BarGreen} color={"#58CC63"} />
+
+        <div
+          className="grafico-titulo-container-label"
+          style={{ backgroundColor: "#C4C4C4" }}
+        >
+          Então, seu histórico é:
+        </div>
+        <LineGraphicIcons bar={BarIcons} color={"#C4C4C4"} />
+
+        <div
+          className="grafico-titulo-container-label"
+          style={{ backgroundColor: "#7D7D7D" }}
+        >
+          Sua rotina de medicações foi:
+        </div>
+        <LineGraphicMultiColor color={"#7D7D7D"} />
       </div>
     </MainContainer>
   );

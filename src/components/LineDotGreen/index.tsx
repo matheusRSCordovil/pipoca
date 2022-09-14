@@ -1,9 +1,31 @@
 import { ResponsiveLine } from "@nivo/line";
-import { dataR } from "../../constants";
-import TickIcon from "../../assets/icon/tickIcon.png";
+import { dataX } from "../../constants";
 import { MainContainer } from "./styles";
+import TickIcon from "../../assets/icon/tickIcon.png";
 
-const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
+// @ts-ignore
+const CustomSymbol = ({
+  ...props
+}: {
+  size: any;
+  color: any;
+  borderWidth: any;
+  borderColor: any;
+  datum: any;
+}) => {
+  const { size, color, borderWidth, borderColor } = props;
+
+  return (
+    <circle
+      r={size / 2}
+      fill={color}
+      stroke={borderColor}
+      strokeWidth={borderWidth}
+    />
+  );
+};
+
+const LineDotGreen = ({ bar, color }: { bar: any; color: string }) => {
   const dataTheme = {
     background: "#ffffff",
     textColor: "#333333",
@@ -37,7 +59,7 @@ const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
             className="tick-legend"
             style={{ backgroundColor: "transparent" }}
           >
-            <p>Dia {tick.value.slice(1, 2)}</p>
+            <p>Dia {tick.value.slice(0, 2)}</p>
           </div>
         </MainContainer>
       </foreignObject>
@@ -99,7 +121,7 @@ const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
       <div className="grafico-container">
         <ResponsiveLine
           theme={dataTheme}
-          data={dataR}
+          data={dataX}
           colors={[color]}
           margin={{ top: 50, right: 60, bottom: 50, left: -15 }}
           xScale={{ type: "point" }}
@@ -107,11 +129,11 @@ const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
             type: "linear",
             min: 0,
             max: 5,
-            stacked: true,
+            stacked: false,
             reverse: false,
           }}
           yFormat=" >-.2f"
-          gridYValues={[1, 2, 3, 4, 5]}
+          gridYValues={[1, 2, 3, 4, 5, 6]}
           axisTop={{
             tickSize: 0,
             tickPadding: 5,
@@ -135,17 +157,19 @@ const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
             format: () => "",
             renderTick: CustomBottomAxisTick,
           }}
-          pointSize={15}
+          pointSymbol={CustomSymbol}
+          pointSize={16.4}
           pointColor={{ from: "color", modifiers: [] }}
-          pointBorderWidth={1}
+          pointBorderWidth={2}
           pointBorderColor={{ from: "serieColor", modifiers: [] }}
           pointLabelYOffset={-12}
           useMesh={true}
           isInteractive={false}
+          lineWidth={0}
         />
       </div>
     </MainContainer>
   );
 };
 
-export default LineGraphicRelatorio;
+export default LineDotGreen;

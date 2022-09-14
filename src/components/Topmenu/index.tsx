@@ -10,7 +10,7 @@ const TopMenu = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { ativo, setOpenMenu, openMenu } = useHomeProvider();
+  const { ativo, setOpenMenu, openMenu, setAtivo } = useHomeProvider();
 
   return location.pathname === "/" ? (
     <MainContainer>
@@ -44,7 +44,14 @@ const TopMenu = () => {
         />
       )}
 
-      {!openMenu && <img src={LogoAada} alt="logoAada" className="logoAada" />}
+      {!openMenu && (
+        <img
+          src={LogoAada}
+          alt="logoAada"
+          className="logoAada"
+          onClick={() => setAtivo("depoimentos")}
+        />
+      )}
     </MainContainer>
   ) : null;
 };

@@ -143,59 +143,81 @@ export const dataX = [
       {
         x: "",
         y: null,
-        textX: "adsadwsad",
+        textX: "h1",
       },
       {
         x: "01",
-        y: 1,
-        textX: "adsadwsad",
-      },
-      {
-        x: "dia 02",
         y: 2,
-        textX: "adsadwsad",
+        textX: "h1",
       },
       {
-        x: "dia 03",
+        x: "02",
         y: 2,
-        textX: "adsadwsad",
+        textX: "h2",
       },
       {
-        x: "dia 04",
+        x: "03",
         y: 2,
-        textX: "adsadwsad",
+        textX: "h3",
       },
       {
-        x: "dia 05",
+        x: "04",
         y: 2,
-        textX: "adsadwsad",
+        textX: "h4",
       },
       {
-        x: "dia 06",
+        x: "05",
         y: 2,
+        textX: "h3",
       },
       {
-        x: "dia 07",
-        y: 1,
-      },
-      {
-        x: "dia 08",
-        y: 3,
-      },
-      {
-        x: "dia 09",
-        y: 4,
-      },
-      {
-        x: "dia 10",
+        x: "06",
         y: 2,
       },
+    ],
+  },
+  {
+    id: "portugal",
+    color: "#F84A24",
+    data: [
       {
-        x: "dia 11",
-        y: 2,
+        x: "01",
+        y: 5,
+        textX: "1",
       },
       {
-        x: "dia 12",
+        x: "02",
+        y: 5,
+        textX: "2",
+      },
+      {
+        x: "03",
+        y: 5,
+        textX: "3",
+      },
+      {
+        x: "04",
+        y: 5,
+        textX: "4",
+      },
+      {
+        x: "05",
+        y: 5,
+        textX: "1",
+      },
+      {
+        x: "06",
+        y: 5,
+        textX: "2",
+      },
+    ],
+  },
+  {
+    id: "france",
+    color: "#F84A24",
+    data: [
+      {
+        x: "011t",
         y: 3,
       },
       {
@@ -270,9 +292,78 @@ export const dataX = [
         x: "dia 30",
         y: 3,
       },
+    ],
+  },
+];
+
+export const dataColor = [
+  {
+    id: "Cetotifeno",
+    color: "#F84A24",
+    data: [
       {
         x: "",
         y: null,
+        textX: "r",
+      },
+      {
+        x: "01",
+        y: 1,
+        textX: "b",
+      },
+      {
+        x: "02",
+        y: 1,
+        textX: "g",
+      },
+      {
+        x: "03",
+        y: 1,
+        textX: "y",
+      },
+      {
+        x: "04",
+        y: 1,
+      },
+      {
+        x: "05",
+        y: 1,
+      },
+      {
+        x: "06",
+        y: 1,
+      },
+    ],
+  },
+  {
+    id: "Rivotril",
+    color: "#F84A24",
+    data: [
+      {
+        x: "01",
+        y: 2,
+        textX: "r",
+      },
+      {
+        x: "02",
+        y: 2,
+        textX: "b",
+      },
+      {
+        x: "03",
+        y: 2,
+      },
+      {
+        x: "04",
+        y: 2,
+      },
+      {
+        x: "05",
+        y: 2,
+      },
+      {
+        x: "06",
+        y: 2,
       },
     ],
   },
