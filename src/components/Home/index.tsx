@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import AprendizagemPage from "../AprendizagemPage";
 import DepoimentosPage from "../DepoimentosPage";
@@ -13,6 +14,10 @@ const Home = () => {
   const handleClose = () => {
     setOpenMenu(false);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [ativo]);
 
   return (
     <MainContainer>
