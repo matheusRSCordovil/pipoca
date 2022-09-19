@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -6,6 +7,26 @@ export const MainContainer = styled.div`
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
+
+  span {
+    position: sticky;
+    margin: auto 0px;
+    left: 0px;
+    z-index: 100;
+    height: 300px;
+    width: 120px;
+    display: flex;
+    padding-left: 20px;
+    background: linear-gradient(90deg, rgb(255, 255, 255) 70%, transparent 30%);
+  }
+
+  span > img:first-child {
+    height: 243px;
+    width: 69px;
+    margin: auto 0px;
+    left: 20px;
+    z-index: 100;
+  }
 
   .grafico-container {
     min-width: 1280px;
@@ -42,6 +63,6 @@ export const MainContainer = styled.div`
     line-height: 9px;
     letter-spacing: -0.02em;
     text-align: center;
-    color: #104f92;
+    color: ${PRIMARY.darkBlue};
   }
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import BgImage from "../../assets/img/Ellipse48.png";
 import BgImageMesCompleto from "../../assets/img/Group393.png";
+import { PRIMARY } from "../../theme/palette";
 
 interface IProps {
   mesCompleto: boolean;
@@ -11,7 +12,6 @@ export const MainContainer = styled.div<IProps>`
   flex-direction: column;
   min-height: 90vh;
   width: 100%;
-  font-family: Roboto-Condensed;
   margin-top: 161px;
   background-repeat: no-repeat;
   background-size: contain;
@@ -260,7 +260,7 @@ export const MainContainer = styled.div<IProps>`
     height: fit-content;
     width: 350px;
     border-radius: 22px;
-    background-color: #104f92;
+    background-color: ${PRIMARY.darkBlue};
     color: #ffffff;
     box-shadow: 0px 4px 4px 0px #00000040;
     margin: 0 auto;

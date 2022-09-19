@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -88,6 +89,6 @@ export const MainContainer = styled.div`
     height: 29px;
     width: 29px;
     border-radius: 3px;
-    background-color: #104f92;
+    background-color: ${PRIMARY.darkBlue};
   }
 `;

@@ -5,6 +5,7 @@ import Bg3 from "../../assets/img/group392.png";
 import Bg4 from "../../assets/img/group92.png";
 import Bg5 from "../../assets/img/group412.png";
 import Bg6 from "../../assets/img/group415.png";
+import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const MainContainer = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background-color: #104f92;
+  background-color: ${PRIMARY.darkBlue};
   font-family: Roboto-Condensed;
 
   @media (max-width: 389px) {
@@ -105,7 +106,7 @@ export const MainContainer = styled.div`
       text-align: left;
       position: absolute;
       padding-left: 20px;
-      color: #104f92;
+      color: ${PRIMARY.darkBlue};
       top: 100px;
 
       h4 {
@@ -252,7 +253,7 @@ export const MainContainer = styled.div`
       line-height: 32px;
       letter-spacing: -0.015em;
       text-align: right;
-      color: #104f92;
+      color: ${PRIMARY.darkBlue};
       margin-left: 20px;
     }
   }
@@ -277,7 +278,7 @@ export const MainContainer = styled.div`
       line-height: 32px;
       letter-spacing: -0.015em;
       text-align: right;
-      color: #104f92;
+      color: ${PRIMARY.darkBlue};
       margin-left: 20px;
     }
   }
@@ -301,7 +302,7 @@ export const MainContainer = styled.div`
       font-size: 23px;
       line-height: 32px;
       letter-spacing: -0.015em;
-      color: #104f92;
+      color: ${PRIMARY.darkBlue};
       padding-left: 20px;
       margin-top: 90px;
     }

@@ -24,6 +24,7 @@ import PipocaV2 from "../../assets/img/pipoca-puppet-v2.png";
 import { PRIMARY } from "../../theme/palette";
 import { useState } from "react";
 import Calendar from "../Calendar";
+import ProgressoDonePage from "../ProgressDonePage";
 
 const RegistroPage = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -275,41 +276,42 @@ const RegistroPage = () => {
       <input className="input-meu-registro" type="text" />
     </MainContainer>
   ) : (
-    <MainContainer>
-      <Calendar />
-      <div
-        style={{
-          display: "flex",
-          width: "100%",
-          height: "270px",
-          position: "relative",
-          justifyContent: "flex-end",
-          maxWidth: "390px",
-          minWidth: "390px",
-          marginTop: "30px",
-        }}
-      >
-        <img
-          src={PipocaV2}
-          alt="logo"
-          style={{
-            width: "192px",
-            height: "163px",
-            position: "absolute",
-            bottom: -25,
-            left: 0,
-          }}
-        />
-        <div className="info-dias-container">
-          <h4>Continue assim!</h4>
-          <p>
-            Você já completou 7 dias da sua jornanda. Não se esqueça:
-            <br />
-            quantos mais dias você registra, mais pontos ganha!
-          </p>
-        </div>
-      </div>
-    </MainContainer>
+    <ProgressoDonePage />
+    // <MainContainer>
+    //   <Calendar />
+    //   <div
+    //     style={{
+    //       display: "flex",
+    //       width: "100%",
+    //       height: "270px",
+    //       position: "relative",
+    //       justifyContent: "flex-end",
+    //       maxWidth: "390px",
+    //       minWidth: "390px",
+    //       marginTop: "30px",
+    //     }}
+    //   >
+    //     <img
+    //       src={PipocaV2}
+    //       alt="logo"
+    //       style={{
+    //         width: "192px",
+    //         height: "163px",
+    //         position: "absolute",
+    //         bottom: -25,
+    //         left: 0,
+    //       }}
+    //     />
+    //     <div className="info-dias-container">
+    //       <h4>Continue assim!</h4>
+    //       <p>
+    //         Você já completou 7 dias da sua jornanda. Não se esqueça:
+    //         <br />
+    //         quantos mais dias você registra, mais pontos ganha!
+    //       </p>
+    //     </div>
+    //   </div>
+    // </MainContainer>
   );
 };
 

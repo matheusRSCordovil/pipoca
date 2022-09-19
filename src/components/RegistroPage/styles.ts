@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import PencilIcon from "../../assets/icon/pencilIcon.svg";
+import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -178,7 +179,7 @@ export const MainContainer = styled.div`
       line-height: 22px;
       letter-spacing: 0em;
       text-align: center;
-      color: #104f92;
+      color: ${PRIMARY.darkBlue};
       margin: 0 auto;
       width: 90%;
     }

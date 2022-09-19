@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -75,7 +76,7 @@ export const MainContainer = styled.div`
     line-height: 9px;
     letter-spacing: -0.02em;
     text-align: center;
-    color: #104f92;
+    color: ${PRIMARY.darkBlue};
   }
 
   .legend-box {

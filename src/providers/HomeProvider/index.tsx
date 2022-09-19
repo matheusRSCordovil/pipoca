@@ -9,6 +9,8 @@ type HomeProviderProps = {
   setAtivo: (test: string) => void;
   openMenu: boolean;
   setOpenMenu: (test: boolean) => void;
+  openFilterMenu: boolean;
+  setOpenFilterMenu: (test: boolean) => void;
 };
 
 const DEFAULT_VALUE = {
@@ -16,6 +18,8 @@ const DEFAULT_VALUE = {
   setAtivo: () => {},
   openMenu: false,
   setOpenMenu: () => {},
+  openFilterMenu: false,
+  setOpenFilterMenu: () => {},
 };
 
 const HomeContext = createContext<HomeProviderProps>(DEFAULT_VALUE);
@@ -23,6 +27,9 @@ const HomeContext = createContext<HomeProviderProps>(DEFAULT_VALUE);
 export const HomeProvider: React.FC<Props> = ({ children }) => {
   const [ativo, setAtivo] = useState<string>(DEFAULT_VALUE.ativo);
   const [openMenu, setOpenMenu] = useState<boolean>(DEFAULT_VALUE.openMenu);
+  const [openFilterMenu, setOpenFilterMenu] = useState<boolean>(
+    DEFAULT_VALUE.openFilterMenu
+  );
 
   return (
     <HomeContext.Provider
@@ -31,6 +38,8 @@ export const HomeProvider: React.FC<Props> = ({ children }) => {
         setAtivo,
         openMenu,
         setOpenMenu,
+        openFilterMenu,
+        setOpenFilterMenu,
       }}
     >
       {children}

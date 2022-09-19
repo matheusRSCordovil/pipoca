@@ -92,30 +92,8 @@ const LineDotGreen = ({ bar, color }: { bar: any; color: string }) => {
 
   return (
     <MainContainer>
-      <span
-        style={{
-          position: "sticky",
-          margin: "auto 0",
-          left: 0,
-          zIndex: 100,
-          height: "300px",
-          width: "120px",
-          display: "flex",
-          paddingLeft: "20px",
-          background: "linear-gradient(90deg, #FFFFFF 70%, transparent 30%)",
-        }}
-      >
-        <img
-          alt=""
-          src={bar}
-          style={{
-            height: "243px",
-            width: "69px",
-            margin: "auto 0",
-            left: 20,
-            zIndex: 100,
-          }}
-        />
+      <span>
+        <img alt="" src={bar} />
       </span>
 
       <div className="grafico-container">

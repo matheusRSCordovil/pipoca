@@ -2,8 +2,11 @@ import { MainContainer } from "./styles";
 import FiltroIcon from "../../assets/icon/filtroIcon.svg";
 import { useState } from "react";
 import Carrossel from "../Carrossel";
+import { useHomeProvider } from "../../providers/HomeProvider";
 
 const DepoimentosPage = () => {
+  const { openFilterMenu, setOpenFilterMenu } = useHomeProvider();
+
   const [singleDepoimento, setSingleDepoimento] = useState(false);
 
   return !singleDepoimento ? (
@@ -11,6 +14,7 @@ const DepoimentosPage = () => {
       <span className="depoimento-head">
         <h4>Depoimentos</h4>
         <img
+          onClick={() => setOpenFilterMenu(!openFilterMenu)}
           src={FiltroIcon}
           alt="Depoimentos"
           style={{ width: 26, height: 26 }}

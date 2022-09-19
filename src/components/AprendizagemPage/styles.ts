@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SearchIcon from "../../assets/icon/searchIcon.svg";
+import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ export const MainContainer = styled.div`
     line-height: 35px;
     letter-spacing: 0em;
     text-align: left;
-    color: #7d7d7d;
+    color: ${PRIMARY.grey};
     margin-top: 30px;
     padding-left: 20px;
   }
@@ -42,7 +43,7 @@ export const MainContainer = styled.div`
     height: fit-content;
     width: 350px;
     border-radius: 22px;
-    background-color: #104f92;
+    background-color: ${PRIMARY.darkBlue};
     color: #ffffff;
     box-shadow: 0px 4px 4px 0px #00000040;
     margin: 0 auto;

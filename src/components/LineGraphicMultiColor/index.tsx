@@ -121,6 +121,7 @@ const LineGraphicMultiColor = ({ color }: { color: string }) => {
           ))}
           <p></p>
         </div>
+
         <div className="legend-box">
           <div>
             <div
@@ -129,14 +130,17 @@ const LineGraphicMultiColor = ({ color }: { color: string }) => {
             ></div>
             <p>Usei</p>
           </div>
+
           <div>
             <div style={{ backgroundColor: "#FFD550" }}></div>
             <p>Atrasei</p>
           </div>
+
           <div>
             <div style={{ backgroundColor: "#FF8412" }}></div>
             <p>Esqueci</p>
           </div>
+
           <div>
             <div style={{ backgroundColor: "#7D7D7D" }}></div>
             <p>Não Precisei</p>

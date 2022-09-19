@@ -1,14 +1,11 @@
 import * as React from "react";
 import Dialog from "@mui/material/Dialog";
-import ListItemText from "@mui/material/ListItemText";
-import ListItem from "@mui/material/ListItem";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
 import Slide from "@mui/material/Slide";
 import TopMenu from "../Topmenu";
 import BgMenu from "../../assets/img/group457.png";
 import BottomMenu from "../BottomMenu";
-import { useHomeProvider } from "../../providers/HomeProvider";
+import MenuPage from "./menuPage";
+import MenuPageConfig from "./menuPageConfig";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   // @ts-ignore
@@ -23,22 +20,23 @@ export default function FullScreenDialog({
 }) {
   const { open, handleClose } = props;
 
-  const { setAtivo, setOpenMenu } = useHomeProvider();
+  const [select, setSelect] = React.useState("");
 
-  const handleClick = (e: string) => {
-    setAtivo(e);
-    setOpenMenu(false);
+  const handleSelect = (e: string) => {
+    setSelect(e);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [select, setSelect] = React.useState("");
+  const handleModalClose = () => {
+    handleClose();
+    setSelect("");
+  };
 
   return (
     <div>
       <Dialog
         fullScreen
         open={open}
-        onClose={handleClose}
+        onClose={handleModalClose}
         // @ts-ignore
         TransitionComponent={Transition}
         PaperProps={{
@@ -53,55 +51,9 @@ export default function FullScreenDialog({
       >
         <TopMenu />
 
-        <List style={{ marginTop: 161, height: "90%" }}>
-          <ListItem
-            button
-            style={{
-              boxShadow: "0px 4px 4px 0px #00000026",
-              height: 44,
-              textAlign: "center",
-            }}
-            onClick={() => handleClick("relatorio")}
-          >
-            <ListItemText primary="Relatório" />
-          </ListItem>
-          <Divider />
-          <ListItem
-            button
-            style={{
-              boxShadow: "0px 4px 4px 0px #00000026",
-              height: 44,
-              textAlign: "center",
-            }}
-            onClick={() => handleClick("aprendizagem")}
-          >
-            <ListItemText primary="Conteúdos de aprendizagem" />
-          </ListItem>
-          <Divider />
-          <ListItem
-            button
-            style={{
-              boxShadow: "0px 4px 4px 0px #00000026",
-              height: 44,
-              textAlign: "center",
-            }}
-            onClick={() => handleClick("registro")}
-          >
-            <ListItemText primary="Meus registros" />
-          </ListItem>
-          <Divider />
-          <ListItem
-            button
-            style={{
-              boxShadow: "0px 4px 4px 0px #00000026",
-              height: 44,
-              textAlign: "center",
-            }}
-            onClick={() => setSelect("config")}
-          >
-            <ListItemText primary="Configurações" />
-          </ListItem>
-        </List>
+        {select === "" && <MenuPage handleSelect={handleSelect} />}
+        {select === "config" && <MenuPageConfig handleSelect={handleSelect} />}
+
         <BottomMenu />
       </Dialog>
     </div>
