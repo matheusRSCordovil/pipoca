@@ -143,36 +143,31 @@ export const dataX = [
       {
         x: "",
         y: null,
-        textX: "h1",
       },
       {
         x: "01",
-        y: 2,
-        textX: "h1",
+        y: 5,
+        textX: "a",
       },
       {
         x: "02",
-        y: 2,
-        textX: "h2",
+        y: 5,
+        textX: "b",
       },
       {
         x: "03",
-        y: 2,
-        textX: "h3",
+        y: 5,
+        textX: "c",
       },
       {
         x: "04",
-        y: 2,
-        textX: "h4",
+        y: 5,
+        textX: "d",
       },
       {
         x: "05",
-        y: 2,
-        textX: "h3",
-      },
-      {
-        x: "06",
-        y: 2,
+        y: 5,
+        textX: "a",
       },
     ],
   },
@@ -182,33 +177,8 @@ export const dataX = [
     data: [
       {
         x: "01",
-        y: 5,
-        textX: "1",
-      },
-      {
-        x: "02",
-        y: 5,
-        textX: "2",
-      },
-      {
-        x: "03",
-        y: 5,
-        textX: "3",
-      },
-      {
-        x: "04",
-        y: 5,
-        textX: "4",
-      },
-      {
-        x: "05",
-        y: 5,
-        textX: "1",
-      },
-      {
-        x: "06",
-        y: 5,
-        textX: "2",
+        y: 4,
+        textX: "e",
       },
     ],
   },
@@ -217,80 +187,9 @@ export const dataX = [
     color: "#F84A24",
     data: [
       {
-        x: "011t",
-        y: 3,
-      },
-      {
-        x: "dia 13",
-        y: 3,
-      },
-      {
-        x: "dia 14",
-        y: 3,
-      },
-      {
-        x: "dia 15",
-        y: 3,
-      },
-      {
-        x: "dia 16",
-        y: 3,
-      },
-      {
-        x: "dia 17",
-        y: 3,
-      },
-      {
-        x: "dia 18",
-        y: 3,
-      },
-      {
-        x: "dia 19",
-        y: 3,
-      },
-      {
-        x: "dia 20",
-        y: 3,
-      },
-      {
-        x: "dia 21",
-        y: 3,
-      },
-      {
-        x: "dia 22",
-        y: 3,
-      },
-      {
-        x: "dia 23",
-        y: 3,
-      },
-      {
-        x: "dia 24",
-        y: 3,
-      },
-      {
-        x: "dia 25",
-        y: 3,
-      },
-      {
-        x: "dia 26",
-        y: 3,
-      },
-      {
-        x: "dia 27",
-        y: 3,
-      },
-      {
-        x: "dia 28",
-        y: 3,
-      },
-      {
-        x: "dia 29",
-        y: 3,
-      },
-      {
-        x: "dia 30",
-        y: 3,
+        x: "11",
+        y: 4,
+        textX: "f",
       },
     ],
   },
@@ -304,7 +203,6 @@ export const dataColor = [
       {
         x: "",
         y: null,
-        textX: "r",
       },
       {
         x: "01",
@@ -352,6 +250,7 @@ export const dataColor = [
       {
         x: "03",
         y: 2,
+        textX: "b",
       },
       {
         x: "04",

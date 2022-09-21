@@ -1,15 +1,113 @@
 import { ResponsiveLine } from "@nivo/line";
 import { dataX } from "../../constants";
 import { MainContainer } from "./styles";
-import SvgIcon from "./svgIcon";
+import Pele1 from "../../assets/icon/graficoHistorico/pele1.svg";
+import Pele2 from "../../assets/icon/graficoHistorico/pele2.svg";
+import Pele3 from "../../assets/icon/graficoHistorico/pele3.svg";
+import Pele4 from "../../assets/icon/graficoHistorico/pele4.svg";
+import Sentindo1 from "../../assets/icon/graficoHistorico/sentindo1.svg";
 
 // @ts-ignore
-const CustomSymbol = ({ ...props }: { size: any; datum: any }) => {
-  const { size, datum } = props;
+const CustomSymbol = ({
+  ...props
+}: {
+  size: any;
+  datum: any;
+  borderColor: any;
+  borderWidth: any;
+}) => {
+  const { size, datum, borderColor, borderWidth } = props;
 
-  console.log("datum", datum);
-
-  return <SvgIcon size={size} src={datum.textX} />;
+  if (datum.textX === "a") {
+    return (
+      <svg width={size} height={size} x="-20" y="-20">
+        <defs>
+          <pattern
+            id="myCircle"
+            patternUnits="userSpaceOnUse"
+            fill="#FF8412"
+            height={size}
+            width={size}
+          >
+            <image href={Pele1} x="0" y="0" height={size} width={size} />
+          </pattern>
+        </defs>
+        <circle
+          id="top"
+          cx={size / 2}
+          cy={size / 2}
+          r={size / 2}
+          fill="url(#myCircle)"
+          stroke={borderColor}
+          strokeWidth={borderWidth}
+        />
+      </svg>
+    );
+  } else if (datum.textX === "b") {
+    return (
+      <svg width={size} height={size} x="-20" y="-20">
+        <defs>
+          <clipPath id="myCircle">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          width={size}
+          height={size}
+          href={Pele2}
+          clipPath="url(#myCircle)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "c") {
+    return (
+      <svg width={size} height={size} x="-20" y="-20">
+        <defs>
+          <clipPath id="myCircle">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          width={size}
+          height={size}
+          href={Pele3}
+          clipPath="url(#myCircle)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "d") {
+    return (
+      <svg width={size} height={size} x="-20" y="-20">
+        <defs>
+          <clipPath id="myCircle">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          width={size}
+          height={size}
+          href={Pele4}
+          clipPath="url(#myCircle)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "e") {
+    return (
+      <svg width={size} height={size} x="-20" y="-20">
+        <defs>
+          <clipPath id="myCircle">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          width={size}
+          height={size}
+          href={Sentindo1}
+          clipPath="url(#myCircle)"
+        />
+      </svg>
+    );
+  }
 };
 
 const LineGraphicIcons = ({ bar, color }: { bar: any; color: string }) => {
@@ -46,7 +144,7 @@ const LineGraphicIcons = ({ bar, color }: { bar: any; color: string }) => {
             className="tick-legend"
             style={{ backgroundColor: "transparent" }}
           >
-            <p>Dia {tick.value.slice(1, 2)}</p>
+            <p>Dia {tick.value.slice(0, 2)}</p>
           </div>
         </MainContainer>
       </foreignObject>

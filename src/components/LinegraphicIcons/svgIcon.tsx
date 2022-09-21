@@ -15,22 +15,18 @@ const SvgIcon = ({ ...props }: { size: number; src: any }) => {
           height={size}
           width={size}
         >
-          <image
-            x="0"
-            y="0"
-            height={size}
-            width={size}
-            // href="http://i.imgur.com/7Nlcay7.jpg"
-            href={
-              src === "h1"
-                ? Pele1
-                : src === "h2"
-                ? Pele2
-                : src === "h3"
-                ? Pele3
-                : "http://i.imgur.com/7Nlcay7.jpg"
-            }
-          ></image>
+          {src === "d" && (
+            <image href={Pele4} x="0" y="0" height={size} width={size} />
+          )}
+          {src === "c" && (
+            <image href={Pele3} x="0" y="0" height={size} width={size} />
+          )}
+          {src === "b" && (
+            <image href={Pele2} x="0" y="0" height={size} width={size} />
+          )}
+          {src === "a" && (
+            <image href={Pele1} x="0" y="0" height={size} width={size} />
+          )}
         </pattern>
       </defs>
       <circle
