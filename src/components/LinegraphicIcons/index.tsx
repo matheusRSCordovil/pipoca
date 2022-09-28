@@ -109,7 +109,7 @@ const CustomSymbol = ({
           style={{ width: size, height: size }}
           // width={size}
           // height={size}
-          href={Sentindo1}
+          href={"https://i.imgur.com/FtSQ3lZ.png"}
           clipPath="url(#myCircle)"
         />
       </svg>
