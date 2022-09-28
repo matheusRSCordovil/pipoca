@@ -44,7 +44,10 @@ import Dia3active from "../../assets/icon/meuRegistroIcons/dia3active.svg";
 import Dia4 from "../../assets/icon/meuRegistroIcons/dia4.svg";
 import Dia4active from "../../assets/icon/meuRegistroIcons/dia4active.svg";
 import PencilIcon from "../../assets/icon/pencilIcon.svg";
+import EditAtivoIcon from "../../assets/icon/editIcon.svg";
+import LixeiraIcon from "../../assets/icon/lixeiraIcon.svg";
 import ProgressoDonePage from "../ProgressDonePage";
+import DeletarModal from "../DeletarModal";
 
 const RegistroPage = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -53,6 +56,20 @@ const RegistroPage = () => {
   const [activeDormir, setActiveDormir] = useState("");
   const [activeBanho, setActiveBanho] = useState("");
   const [activeDia, setActiveDia] = useState("");
+  const [editAtivo, setEditAtivo] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const handleDeletarModal = () => {
+    setOpen(!open);
+  };
+
+  const handleEditAtivo = (e: string) => {
+    if (editAtivo === e) {
+      setEditAtivo("");
+    } else {
+      setEditAtivo(e);
+    }
+  };
 
   return !showCalendar ? (
     <MainContainer>
@@ -279,7 +296,8 @@ const RegistroPage = () => {
           <p>
             Remédios
             <img
-              src={PencilIcon}
+              onClick={() => handleEditAtivo("remedio")}
+              src={editAtivo === "remedio" ? EditAtivoIcon : PencilIcon}
               alt="pencil-icon"
               style={{ marginLeft: "10px" }}
             />
@@ -291,7 +309,16 @@ const RegistroPage = () => {
         </div>
 
         <div className="remedio-container-tr">
-          <p>Remédios Nome</p>
+          <p>
+            Remédios Nome{" "}
+            {editAtivo === "remedio" && (
+              <img
+                alt="deletar-icone"
+                src={LixeiraIcon}
+                onClick={() => setOpen(true)}
+              />
+            )}
+          </p>
           <p>
             <input type="radio" name="remedio-radio" />
           </p>
@@ -312,7 +339,8 @@ const RegistroPage = () => {
           <p>
             Pomadas
             <img
-              src={PencilIcon}
+              onClick={() => handleEditAtivo("pomada")}
+              src={editAtivo === "pomada" ? EditAtivoIcon : PencilIcon}
               alt="pencil-icon"
               style={{ marginLeft: "10px" }}
             />
@@ -323,7 +351,16 @@ const RegistroPage = () => {
           <p>Não precisei</p>
         </div>
         <div className="remedio-container-tr">
-          <p>Remédios Nome</p>
+          <p>
+            Remédios Nome{" "}
+            {editAtivo === "pomada" && (
+              <img
+                alt="deletar-icone"
+                src={LixeiraIcon}
+                onClick={() => setOpen(true)}
+              />
+            )}
+          </p>
           <p>
             <input type="radio" name="pomada-radio" />
           </p>
@@ -344,7 +381,8 @@ const RegistroPage = () => {
           <p>
             Hidratante
             <img
-              src={PencilIcon}
+              onClick={() => handleEditAtivo("hidratante")}
+              src={editAtivo === "hidratante" ? EditAtivoIcon : PencilIcon}
               alt="pencil-icon"
               style={{ marginLeft: "10px" }}
             />
@@ -355,7 +393,16 @@ const RegistroPage = () => {
           <p>Não precisei</p>
         </div>
         <div className="remedio-container-tr">
-          <p>Remédios Nome</p>
+          <p>
+            Remédios Nome{" "}
+            {editAtivo === "hidratante" && (
+              <img
+                alt="deletar-icone"
+                src={LixeiraIcon}
+                onClick={() => setOpen(true)}
+              />
+            )}
+          </p>
           <p>
             <input type="radio" name="radio" />
           </p>
@@ -370,6 +417,7 @@ const RegistroPage = () => {
           </p>
         </div>
       </div>
+      <DeletarModal open={open} setOpen={setOpen} />
 
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais algum comentário sobre seus cuidados de hoje?

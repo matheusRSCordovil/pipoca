@@ -111,6 +111,7 @@ export const MainContainer = styled.div`
   }
 
   .remedio-container-tr > p:first-child {
+    display: flex;
     width: 30%;
     color: #7d7d7d;
     font-size: 12px;
@@ -119,6 +120,13 @@ export const MainContainer = styled.div`
     line-height: 22px;
     letter-spacing: 0em;
     text-align: left;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .remedio-container-tr > p:first-child > img {
+    height: 12px;
+    width: 11px;
   }
 
   .remedio-container > div:first-child > p {
