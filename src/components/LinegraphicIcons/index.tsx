@@ -20,75 +20,80 @@ const CustomSymbol = ({
 
   if (datum.textX === "a") {
     return (
-      <svg width={size} height={size} x="-20" y="-20">
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
         <defs>
-          <pattern
-            id="myCircle"
-            patternUnits="userSpaceOnUse"
-            fill="#FF8412"
-            height={size}
-            width={size}
-          >
-            <image href="/pele1.svg" x="0" y="0" height={size} width={size} />
-          </pattern>
+          <clipPath className="pele1">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
         </defs>
-        <circle
-          id="top"
-          cx={size / 2}
-          cy={size / 2}
-          r={size / 2}
-          fill="url(#myCircle)"
-          stroke={borderColor}
-          strokeWidth={borderWidth}
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Pele1}
+          clipPath="url(.pele1)"
         />
       </svg>
+      // <svg width={size} height={size} x="-20" y="-20">
+      //   <defs>
+      //     <pattern
+      //       id="myCircle"
+      //       patternUnits="userSpaceOnUse"
+      //       fill="#FF8412"
+      //       height={size}
+      //       width={size}
+      //     >
+      //       <image href="/pele1.svg" x="0" y="0" height={size} width={size} />
+      //     </pattern>
+      //   </defs>
+      //   <circle
+      //     id="top"
+      //     cx={size / 2}
+      //     cy={size / 2}
+      //     r={size / 2}
+      //     fill="url(#myCircle)"
+      //     stroke={borderColor}
+      //     strokeWidth={borderWidth}
+      //   />
+      // </svg>
     );
   } else if (datum.textX === "b") {
     return (
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
-          <clipPath id="myCircle">
+          <clipPath className="pele2">
             <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
           </clipPath>
         </defs>
-        <image
-          width={size}
-          height={size}
-          href={Pele2}
-          clipPath="url(#myCircle)"
-        />
+        <image width={size} height={size} href={Pele2} clipPath="url(.pele2)" />
       </svg>
     );
   } else if (datum.textX === "c") {
     return (
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
-          <clipPath id="myCircle">
+          <clipPath className="pele3">
             <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
           </clipPath>
         </defs>
-        <image
-          width={size}
-          height={size}
-          href={Pele3}
-          clipPath="url(#myCircle)"
-        />
+        <image width={size} height={size} href={Pele3} clipPath="url(.pele3)" />
       </svg>
     );
   } else if (datum.textX === "d") {
     return (
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
-          <clipPath id="myCircle">
+          <clipPath className="pele4">
             <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
           </clipPath>
         </defs>
-        <image
-          width={size}
-          height={size}
-          href={Pele4}
-          clipPath="url(#myCircle)"
-        />
+        <image width={size} height={size} href={Pele4} clipPath="url(.pele4)" />
       </svg>
     );
   } else if (datum.textX === "e") {
@@ -101,16 +106,16 @@ const CustomSymbol = ({
         y="-20"
       >
         <defs>
-          <clipPath id="myCircle">
-            {/* <circle cx="250" cy="145" r="125" fill="#FFFFFF" /> */}
+          <clipPath className="sentindo1">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
           </clipPath>
         </defs>
         <image
           style={{ width: size, height: size }}
-          // width={size}
-          // height={size}
-          href={"https://i.imgur.com/FtSQ3lZ.png"}
-          clipPath="url(#myCircle)"
+          width={size}
+          height={size}
+          href={Sentindo1}
+          clipPath="url(.sentindo1)"
         />
       </svg>
     );
