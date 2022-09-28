@@ -96,7 +96,7 @@ const CustomSymbol = ({
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
           <clipPath id="myCircle">
-            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+            {/* <circle cx="250" cy="145" r="125" fill="#FFFFFF" /> */}
           </clipPath>
         </defs>
         <image
