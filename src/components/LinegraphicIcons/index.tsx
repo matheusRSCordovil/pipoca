@@ -93,15 +93,22 @@ const CustomSymbol = ({
     );
   } else if (datum.textX === "e") {
     return (
-      <svg width={size} height={size} x="-20" y="-20">
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
         <defs>
           <clipPath id="myCircle">
             {/* <circle cx="250" cy="145" r="125" fill="#FFFFFF" /> */}
           </clipPath>
         </defs>
         <image
-          width={size}
-          height={size}
+          style={{ width: size, height: size }}
+          // width={size}
+          // height={size}
           href={Sentindo1}
           clipPath="url(#myCircle)"
         />
