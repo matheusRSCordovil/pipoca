@@ -29,7 +29,7 @@ const CustomSymbol = ({
             height={size}
             width={size}
           >
-            <image href={Pele1} x="0" y="0" height={size} width={size} />
+            <image href="/pele1.svg" x="0" y="0" height={size} width={size} />
           </pattern>
         </defs>
         <circle
