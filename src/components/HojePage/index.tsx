@@ -33,7 +33,7 @@ const HojePage = () => {
           <p className="mensagem-do-dia-text">
             {mesCompleto ? "Você chegou no dia" : "Você está no dia"}
           </p>
-          <p className="dias-texto">{mesCompleto ? "30" : "00"}</p>
+          <p className="dias-texto">{mesCompleto ? "30" : "01"}</p>
           <p className="mensagem-do-dia-text">
             da sua jornada{mesCompleto && "!"}
           </p>

@@ -1,5 +1,5 @@
 import { ResponsiveLine } from "@nivo/line";
-import { dataX } from "../../constants";
+import { dataY } from "../../constants";
 import { MainContainer } from "./styles";
 import TickIcon from "../../assets/icon/tickIcon.png";
 
@@ -99,7 +99,7 @@ const LineDotGreen = ({ bar, color }: { bar: any; color: string }) => {
       <div className="grafico-container">
         <ResponsiveLine
           theme={dataTheme}
-          data={dataX}
+          data={dataY}
           colors={[color]}
           margin={{ top: 50, right: 60, bottom: 50, left: -15 }}
           xScale={{ type: "point" }}

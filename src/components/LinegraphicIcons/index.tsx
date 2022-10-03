@@ -16,7 +16,7 @@ const CustomSymbol = ({
   borderColor: any;
   borderWidth: any;
 }) => {
-  const { size, datum, borderColor, borderWidth } = props;
+  const { size, datum } = props;
 
   if (datum.textX === "a") {
     return (
@@ -40,28 +40,6 @@ const CustomSymbol = ({
           clipPath="url(.pele1)"
         />
       </svg>
-      // <svg width={size} height={size} x="-20" y="-20">
-      //   <defs>
-      //     <pattern
-      //       id="myCircle"
-      //       patternUnits="userSpaceOnUse"
-      //       fill="#FF8412"
-      //       height={size}
-      //       width={size}
-      //     >
-      //       <image href="/pele1.svg" x="0" y="0" height={size} width={size} />
-      //     </pattern>
-      //   </defs>
-      //   <circle
-      //     id="top"
-      //     cx={size / 2}
-      //     cy={size / 2}
-      //     r={size / 2}
-      //     fill="url(#myCircle)"
-      //     stroke={borderColor}
-      //     strokeWidth={borderWidth}
-      //   />
-      // </svg>
     );
   } else if (datum.textX === "b") {
     return (

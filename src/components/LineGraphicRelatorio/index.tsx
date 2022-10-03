@@ -37,7 +37,7 @@ const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
             className="tick-legend"
             style={{ backgroundColor: "transparent" }}
           >
-            <p>Dia {tick.value.slice(1, 2)}</p>
+            <p>Dia {tick.value.slice(0, 2)}</p>
           </div>
         </MainContainer>
       </foreignObject>
