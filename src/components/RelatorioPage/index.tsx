@@ -1,4 +1,5 @@
 import { MainContainer } from "./styles";
+import { useState } from "react";
 import ShareIcon from "../../assets/img/shareIcon.png";
 import LineGraphicRelatorio from "../LineGraphicRelatorio";
 import BarRed from "../../assets/img/barRed.png";
@@ -10,8 +11,17 @@ import BarGreen from "../../assets/img/barGreen.png";
 import LineGraphicIcons from "../LinegraphicIcons";
 import LineDotGreen from "../LineDotGreen";
 import LineGraphicMultiColor from "../LineGraphicMultiColor";
+import ComentarioModal from "../ComentarioModal";
 
 const RelatorioPage = () => {
+  const [open, setOpen] = useState(false);
+  const [borderColor, setBorderColor] = useState("#104F92");
+
+  const handleOpen = (color: string) => {
+    setOpen(true);
+    setBorderColor(color);
+  };
+
   return (
     <MainContainer>
       <div className="registro-diario-box">
@@ -40,7 +50,12 @@ const RelatorioPage = () => {
         >
           Nestes dias, sua pele estava:
         </div>
-        <LineGraphicRelatorio bar={BarRed} color={"#F84A24"} />
+        <LineGraphicRelatorio
+          bar={BarRed}
+          color={"#F84A24"}
+          open={open}
+          setOpen={handleOpen}
+        />
 
         <div
           className="grafico-titulo-container-label"
@@ -48,7 +63,12 @@ const RelatorioPage = () => {
         >
           Nestes dias, você se sentiu:
         </div>
-        <LineGraphicRelatorio bar={BarOrange} color={"#FB991C"} />
+        <LineGraphicRelatorio
+          bar={BarOrange}
+          color={"#FB991C"}
+          open={open}
+          setOpen={handleOpen}
+        />
 
         <div
           className="grafico-titulo-container-label"
@@ -56,7 +76,12 @@ const RelatorioPage = () => {
         >
           Nestes dias, você dormiu:
         </div>
-        <LineGraphicRelatorio bar={BarPurple} color={"#104F92"} />
+        <LineGraphicRelatorio
+          bar={BarPurple}
+          color={"#104F92"}
+          open={open}
+          setOpen={handleOpen}
+        />
 
         <div
           className="grafico-titulo-container-label"
@@ -64,7 +89,12 @@ const RelatorioPage = () => {
         >
           Nestes dias, seu banho foi:
         </div>
-        <LineGraphicRelatorio bar={BarBlue} color={"#1391ED"} />
+        <LineGraphicRelatorio
+          bar={BarBlue}
+          color={"#1391ED"}
+          open={open}
+          setOpen={handleOpen}
+        />
 
         <div
           className="grafico-titulo-container-label"
@@ -90,6 +120,11 @@ const RelatorioPage = () => {
         </div>
         <LineGraphicMultiColor color={"#7D7D7D"} />
       </div>
+      <ComentarioModal
+        open={open}
+        setOpen={setOpen}
+        borderColor={borderColor}
+      />
     </MainContainer>
   );
 };

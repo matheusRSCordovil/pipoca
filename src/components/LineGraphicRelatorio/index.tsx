@@ -3,7 +3,17 @@ import { dataR } from "../../constants";
 import TickIcon from "../../assets/icon/tickIcon.png";
 import { MainContainer } from "./styles";
 
-const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
+const LineGraphicRelatorio = ({
+  bar,
+  color,
+  open,
+  setOpen,
+}: {
+  bar: any;
+  color: string;
+  open: boolean;
+  setOpen: any;
+}) => {
   const dataTheme = {
     background: "#ffffff",
     textColor: "#333333",
@@ -50,7 +60,7 @@ const LineGraphicRelatorio = ({ bar, color }: { bar: any; color: string }) => {
         width={29}
         height={80}
         transform={`translate(${tick.x - 15},${tick.y + 0})`}
-        onClick={() => console.log(tick.value)}
+        onClick={() => setOpen(color)}
       >
         <MainContainer>
           <div

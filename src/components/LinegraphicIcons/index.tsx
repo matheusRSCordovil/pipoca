@@ -5,7 +5,14 @@ import Pele1 from "../../assets/icon/graficoHistorico/pele1.svg";
 import Pele2 from "../../assets/icon/graficoHistorico/pele2.svg";
 import Pele3 from "../../assets/icon/graficoHistorico/pele3.svg";
 import Pele4 from "../../assets/icon/graficoHistorico/pele4.svg";
+import Sono1 from "../../assets/icon/graficoHistorico/sono1.svg";
+import Sono2 from "../../assets/icon/graficoHistorico/sono2.svg";
+import Banho2 from "../../assets/icon/graficoHistorico/banho2.svg";
+import Banho3 from "../../assets/icon/graficoHistorico/banho3.svg";
 import Sentindo1 from "../../assets/icon/graficoHistorico/sentindo1.svg";
+import Rotina1 from "../../assets/icon/graficoHistorico/rotina1.svg";
+import Rotina2 from "../../assets/icon/graficoHistorico/rotina2.svg";
+import EmptyIcon from "../../assets/icon/graficoHistorico/empty.svg";
 
 // @ts-ignore
 const CustomSymbol = ({
@@ -94,6 +101,167 @@ const CustomSymbol = ({
           height={size}
           href={Sentindo1}
           clipPath="url(.sentindo1)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "f") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sono1">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Sono1}
+          clipPath="url(.sono1)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "g") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sono2">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Sono2}
+          clipPath="url(.sono2)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "h") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="banho2">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Banho2}
+          clipPath="url(.banho2)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "i") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="banho3">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Banho3}
+          clipPath="url(.banho3)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "j") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="rotina1">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Rotina1}
+          clipPath="url(.rotina1)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "k") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="rotina2">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Rotina2}
+          clipPath="url(.rotina2)"
+        />
+      </svg>
+    );
+  } else {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="emptyIcon">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={EmptyIcon}
+          clipPath="url(.emptyIcon)"
         />
       </svg>
     );
