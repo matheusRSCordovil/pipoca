@@ -4,6 +4,7 @@ export const MainContainer = styled.div`
   display: flex;
   height: 120px;
   font-family: Roboto-Condensed;
+  margin-bottom: 20px;
 
   .block {
     height: 116px;

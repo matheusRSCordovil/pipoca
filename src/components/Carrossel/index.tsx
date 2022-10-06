@@ -28,7 +28,9 @@ function Carrossel() {
         ]}
       >
         {Array.from({ length: 10 }).map((_, index) => (
-          <div key={index} className="block">{index}</div>
+          <div key={index} className="block">
+            {index}
+          </div>
         ))}
       </Carousel>
     </MainContainer>

@@ -1,10 +1,29 @@
 import { MainContainer } from "./styles";
 import PlusIcon from "../../assets/icon/hojeIcons/plus.png";
 import Carrossel from "../Carrossel";
+import { useHomeProvider } from "../../providers/HomeProvider";
+import FiltroIcon from "../../assets/icon/filtroIcon.svg";
 
 const AprendizagemPage = () => {
+  const { openFilterMenu, setOpenFilterMenu } = useHomeProvider();
+
   return (
     <MainContainer>
+      <div
+        style={{
+          width: "95%",
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: 20,
+        }}
+      >
+        <img
+          onClick={() => setOpenFilterMenu(!openFilterMenu)}
+          src={FiltroIcon}
+          alt="Depoimentos"
+          style={{ width: 26, height: 26 }}
+        />
+      </div>
       <p className="aprendizagem-do-dia-text">Aprendizagem do dia</p>
 
       <div className="aprendizagem-card">

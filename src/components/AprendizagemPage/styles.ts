@@ -34,7 +34,6 @@ export const MainContainer = styled.div`
     letter-spacing: 0em;
     text-align: left;
     color: ${PRIMARY.grey};
-    margin-top: 30px;
     padding-left: 20px;
   }
 
