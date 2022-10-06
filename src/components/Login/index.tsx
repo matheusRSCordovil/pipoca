@@ -12,11 +12,12 @@ import CellImg5 from "../../assets/img/group414.png";
 import CalendarImg from "../../assets/img/group404.png";
 import MutedtIcon from "../../assets/img/speaker.png";
 import AadaLogo from "../../assets/icon/logo-aada.png";
-import { CSSProperties } from "react";
+import { CSSProperties, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [value, setValue] = useState("");
 
   const handleClick = () => {
     navigate("/");
@@ -120,6 +121,7 @@ const Login = () => {
             <p>Como podemos te chamar?</p>
             <input
               type="text"
+              onChange={(e) => setValue(e.target.value)}
               style={{
                 width: "354px",
                 height: "50px",
@@ -164,7 +166,7 @@ const Login = () => {
           />
 
           <div className="text-2-container">
-            <h4>Oi Ana,</h4>
+            <h4>Oi {value},</h4>
             <p>Verificamos aqui que esta é sua primeira jornada!</p>
             <p>
               Nosso objetivo é conhecer melhor sua vida com a dermatite atópica

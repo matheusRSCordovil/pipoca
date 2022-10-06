@@ -416,6 +416,7 @@ const RegistroPage = () => {
             <input type="radio" name="radio" />
           </p>
         </div>
+        {editAtivo === "hidratante" && <p>+ </p>}
       </div>
       <DeletarModal open={open} setOpen={setOpen} />
 

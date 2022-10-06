@@ -30,7 +30,7 @@ const Home = () => {
       {ativo === "aprendizagem" && <AprendizagemPage />}
       {ativo === "depoimentos" && <DepoimentosPage />}
       <FullScreenDialog open={openMenu} handleClose={handleClose} />
-      {ativo === "depoimentos" && (
+      {(ativo === "depoimentos" || ativo === "aprendizagem") && (
         <FilterMenu open={openFilterMenu} handleClose={handleClose} />
       )}
     </MainContainer>
