@@ -368,6 +368,49 @@ const Login = () => {
             />
           </div>
         </div>
+
+        <div className="login-container-7">
+          <img
+            style={{ width: "106px" }}
+            alt="aada-icon"
+            src={AadaLogo}
+            className="aada-icon"
+          />
+          <img
+            style={{
+              width: "38px",
+            }}
+            alt="muted-icon"
+            className="muted-icon"
+            src={MutedtIcon}
+          />
+          <p className="text-login-7">
+            Mas antes de começar nossa jornada, gostaríamos de saber qual{" "}
+            <span>e-mail</span> e a <span>senha</span> deseja colocar aqui, para
+            fazermos o seu cadastro.
+          </p>
+
+          <div className="bottom-div-7">
+            <form>
+              <label htmlFor="email">E-mail:</label>
+              <input id="email" type="email" placeholder="E-mail" />
+
+              <label htmlFor="password">Senha:</label>
+              <input id="senha" type="password" placeholder="Senha" />
+
+              <input type="password" placeholder="Confirmar senha" />
+            </form>
+
+            <p style={{ marginTop: 30 }}>
+              Você receberá um e-mail para confirmar seu cadastro, ok?
+            </p>
+            <p>
+              {" "}
+              Assim, mesmo que troque de celular, você sempre terá acesso aos
+              seus registros!
+            </p>
+          </div>
+        </div>
       </Carousel>
     </MainContainer>
   );

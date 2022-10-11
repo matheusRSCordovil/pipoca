@@ -5,6 +5,7 @@ import Bg3 from "../../assets/img/group392.png";
 import Bg4 from "../../assets/img/group92.png";
 import Bg5 from "../../assets/img/group412.png";
 import Bg6 from "../../assets/img/group415.png";
+import Bg7 from "../../assets/img/group922.png";
 import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
@@ -30,6 +31,38 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+
+  .login-container-7 {
+    background-color: rgb(19, 145, 237);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .login-container-7 label {
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-align: left;
+    color: #104f92;
+    padding-left: 20px;
+  }
+
+  .text-login-7 {
+    position: absolute;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: -0.015em;
+    text-align: left;
+    padding: 0 20px;
+    top: 70px;
+  }
+
+  .text-login-7 span {
+    font-weight: 700;
   }
 
   .login-container-6 {
@@ -161,6 +194,46 @@ export const MainContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 100%;
+  }
+
+  .bottom-div-7 {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    bottom: 0;
+    width: 100%;
+    height: 580px;
+    background-image: url(${Bg7});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 50%;
+  }
+
+  .bottom-div-7 > form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+  }
+
+  .bottom-div-7 > p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    text-align: left;
+    color: #104f92;
+    margin: 0;
+    padding: 0 40px;
+  }
+
+  .bottom-div-7 form > input {
+    width: 354px;
+    height: 50px;
+    margin: 10px auto;
+    border: none;
+    border-radius: 20.5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px 0px;
+    z-index: 100;
   }
 
   .bottom-div-1 {
