@@ -18,6 +18,8 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
+    "axios": "^1.1.2",
+    "formik": "^2.2.9",
     "framer-motion": "^7.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -38,7 +40,8 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4"
+    "workbox-streams": "^6.5.4",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest"

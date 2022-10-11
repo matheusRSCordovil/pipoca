@@ -24,7 +24,7 @@ const TopMenu = () => {
         src={NotificationOnIcon}
         alt="notificationOnIcon"
         className="notificationOnIcon"
-        onClick={() => navigate("/login")}
+        onClick={() => navigate("/register")}
       />
 
       {openMenu ? (
