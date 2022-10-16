@@ -15,6 +15,11 @@ export const MainContainer = styled.div`
     min-height: 125vh;
   }
 
+  .error-msg {
+    color: #ff0000;
+    height: 20px;
+  }
+
   .login-container-7 {
     background-color: rgb(19, 145, 237);
     height: 100vh;

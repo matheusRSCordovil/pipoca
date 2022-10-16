@@ -80,6 +80,10 @@ const Login = () => {
               value={formik.values.email}
             />
 
+            {formik.touched.email && formik.errors.email && (
+              <div className="error-msg">{formik.errors.email}</div>
+            )}
+
             <label htmlFor="senha">Senha:</label>
             <input
               id="senha"
@@ -90,6 +94,11 @@ const Login = () => {
               type="senha"
               placeholder="Senha"
             />
+
+            {formik.touched.senha && formik.errors.senha && (
+              <div className="error-msg">{formik.errors.senha}</div>
+            )}
+
             <button type="submit">Login</button>
           </form>
 

@@ -21,6 +21,11 @@ export const MainContainer = styled.div`
     min-height: 125vh;
   }
 
+  .error-msg {
+    color: #ff0000;
+    height: 20px;
+  }
+
   .carousel .control-dots {
     margin-bottom: 30px;
   }

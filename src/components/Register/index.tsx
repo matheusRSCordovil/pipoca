@@ -12,12 +12,17 @@ import CellImg5 from "../../assets/img/group414.png";
 import CalendarImg from "../../assets/img/group404.png";
 import MutedtIcon from "../../assets/img/speaker.png";
 import AadaLogo from "../../assets/icon/logo-aada.png";
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import axios from "axios";
+import { useHomeProvider } from "../../providers/HomeProvider";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState("");
+
+  const { userNome, setUserNome } = useHomeProvider();
 
   const getToken = () => {
     let token = localStorage.getItem("token");
@@ -28,9 +33,38 @@ const Register = () => {
     getToken();
   }, []);
 
-  const handleClick = () => {
-    navigate("/");
-  };
+  const formik = useFormik({
+    initialValues: {
+      senha: "",
+      repeatSenha: "",
+      email: "",
+      nome: userNome,
+      admin: false,
+      ativo: true,
+    },
+    validationSchema: yup.object({
+      email: yup.string().required("O campo é obrigatório."),
+      senha: yup.string().required("O campo é obrigatório."),
+      repeatSenha: yup
+        .string()
+        .required("O campo é obrigatório.")
+        .oneOf([yup.ref("senha"), null], "senhas não conferem"),
+    }),
+    onSubmit: (values: { email: string; senha: string; nome: string }) => {
+      values.nome = userNome;
+      axios
+        .post(
+          "https://pipocaatopica.jelastic.saveincloud.net/api/Usuario",
+          values
+        )
+        .then((response: { data: { token: string } }) => {
+          navigate("/login");
+        })
+        .catch((error: any) => {
+          console.log(error);
+        });
+    },
+  });
 
   const indicatorStyles: CSSProperties = {
     background: "#1391ED",
@@ -90,7 +124,12 @@ const Register = () => {
               <img alt="next" src={NextIcon} />
             </button>
           ) : (
-            <button className="arrow-next" title={label} onClick={handleClick}>
+            <button
+              className="arrow-next"
+              title={label}
+              type="submit"
+              form="form1"
+            >
               <p>Entrar!</p>
               <img alt="next" src={NextIcon} />
             </button>
@@ -130,7 +169,7 @@ const Register = () => {
             <p>Como podemos te chamar?</p>
             <input
               type="text"
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => setUserNome(e.target.value)}
               style={{
                 width: "354px",
                 height: "50px",
@@ -175,7 +214,7 @@ const Register = () => {
           />
 
           <div className="text-2-container">
-            <h4>Oi {value},</h4>
+            <h4>Oi {userNome},</h4>
             <p>Verificamos aqui que esta é sua primeira jornada!</p>
             <p>
               Nosso objetivo é conhecer melhor sua vida com a dermatite atópica
@@ -400,15 +439,51 @@ const Register = () => {
           </p>
 
           <div className="bottom-div-7">
-            <form>
+            <form id="form1" onSubmit={formik.handleSubmit}>
               <label htmlFor="email">E-mail:</label>
-              <input id="email" type="email" placeholder="E-mail" />
+              <input
+                id="email"
+                name="email"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+                type="email"
+                placeholder="E-mail"
+              />
+
+              {formik.touched.email && formik.errors.email && (
+                <div className="error-msg">{formik.errors.email}</div>
+              )}
 
               <label htmlFor="password">Senha:</label>
-              <input id="senha" type="password" placeholder="Senha" />
+              <input
+                id="senha"
+                name="senha"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.senha}
+                type="password"
+                placeholder="Senha"
+              />
 
-              <input type="password" placeholder="Confirmar senha" />
+              {formik.touched.senha && formik.errors.senha && (
+                <div className="error-msg">{formik.errors.senha}</div>
+              )}
+
+              <input
+                id="repeatSenha"
+                name="repeatSenha"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.repeatSenha}
+                type="password"
+                placeholder="Confirmar senha"
+              />
             </form>
+
+            {formik.touched.repeatSenha && formik.errors.repeatSenha && (
+              <div className="error-msg">{formik.errors.repeatSenha}</div>
+            )}
 
             <p style={{ marginTop: 30 }}>
               Você receberá um e-mail para confirmar seu cadastro, ok?

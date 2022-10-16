@@ -91,4 +91,9 @@ export const MainContainer = styled.div`
     border-radius: 3px;
     background-color: ${PRIMARY.darkBlue};
   }
+
+  strong.intro {
+    color: blue;
+    background-color: blue;
+  }
 `;

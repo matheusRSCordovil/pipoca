@@ -10,14 +10,15 @@ const TopMenu = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { ativo, setOpenMenu, openMenu, setAtivo } = useHomeProvider();
+  const { ativo, setOpenMenu, openMenu, setAtivo, userNome } =
+    useHomeProvider();
 
   return location.pathname === "/" ? (
     <MainContainer>
       {ativo === "relatorio" && !openMenu ? (
         <p>Relatório</p>
       ) : !openMenu ? (
-        <p>Bom dia, Ana!</p>
+        <p>Bom dia, {userNome}!</p>
       ) : null}
 
       <img
