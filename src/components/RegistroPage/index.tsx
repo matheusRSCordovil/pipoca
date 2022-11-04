@@ -50,6 +50,7 @@ import Dia3active from "../../assets/icon/meuRegistroIcons/dia3active.svg";
 import Dia4 from "../../assets/icon/meuRegistroIcons/dia4.svg";
 import Dia4active from "../../assets/icon/meuRegistroIcons/dia4active.svg";
 import PencilIcon from "../../assets/icon/pencilIcon.svg";
+import CheckIcon from "../../assets/icon/doneIcon.svg";
 import EditAtivoIcon from "../../assets/icon/editIcon.svg";
 import LixeiraIcon from "../../assets/icon/lixeiraIcon.svg";
 import ProgressoDonePage from "../ProgressDonePage";
@@ -69,6 +70,29 @@ const RegistroPage = () => {
   const [activeJornadaIds, setActiveJornadaIds] = useState<number[]>([
     12, 20, 16, 4, 8,
   ]);
+  const [comentarioAtivo, setComentarioAtivo] = useState("");
+  const [comentariosList, setComentariosList] = useState<string[]>([
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
+
+  const handleComentario = (e: any, index?: number, ativo?: string) => {
+    if (ativo) {
+      setComentarioAtivo(ativo);
+    }
+
+    if (index !== undefined) {
+      comentariosList[index] = e;
+    }
+    console.log(comentariosList, e);
+  };
+
+  const handleComentarioChange = () => {
+    handleClick("", "");
+  };
 
   // const handleDeletarModal = () => {
   //   setOpen(!open);
@@ -154,7 +178,9 @@ const RegistroPage = () => {
 
     let decoded: any = jwt_decode(localStorage.getItem("token") || "");
 
-    // let userId = parseInt(decoded.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid, 10);
+    let userId = decoded.userId;
+
+    console.log(userId);
 
     handleJornadaId(e);
 
@@ -198,7 +224,7 @@ const RegistroPage = () => {
       }
     }
 
-    API.post("Jornada", {
+    API.put("Jornada/1", {
       usuarioId: 1,
       dia: 1,
       data: today,
@@ -206,7 +232,7 @@ const RegistroPage = () => {
       registro: [
         {
           jornadaId: 1,
-          observacao: "",
+          observacao: comentariosList[0],
           jornadaCategoriaOpcaoId: activeJornadaIds[0],
           opcao: "string",
           jornadaCategoriaId: 3,
@@ -215,7 +241,7 @@ const RegistroPage = () => {
         },
         {
           jornadaId: 1,
-          observacao: "",
+          observacao: comentariosList[1],
           jornadaCategoriaOpcaoId: activeJornadaIds[1],
           opcao: "string",
           jornadaCategoriaId: 1,
@@ -224,7 +250,7 @@ const RegistroPage = () => {
         },
         {
           jornadaId: 1,
-          observacao: "",
+          observacao: comentariosList[2],
           jornadaCategoriaOpcaoId: activeJornadaIds[2],
           opcao: "string",
           jornadaCategoriaId: 2,
@@ -233,7 +259,7 @@ const RegistroPage = () => {
         },
         {
           jornadaId: 1,
-          observacao: "",
+          observacao: comentariosList[3],
           jornadaCategoriaOpcaoId: activeJornadaIds[3],
           opcao: "string",
           jornadaCategoriaId: 6,
@@ -242,7 +268,7 @@ const RegistroPage = () => {
         },
         {
           jornadaId: 1,
-          observacao: "",
+          observacao: comentariosList[4],
           jornadaCategoriaOpcaoId: activeJornadaIds[4],
           opcao: "string",
           jornadaCategoriaId: 5,
@@ -313,7 +339,23 @@ const RegistroPage = () => {
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre como estava sua pele hoje?
       </label>
-      <input className="input-meu-registro" type="text" />
+
+      <span className="input-meu-registro-box">
+        <input
+          className="input-meu-registro"
+          onChange={(e) => handleComentario(e.target.value, 0, "pele")}
+          type="text"
+        />
+        {comentarioAtivo === "pele" ? (
+          <img
+            alt="chek-icon"
+            src={CheckIcon}
+            onClick={() => handleComentarioChange()}
+          />
+        ) : (
+          <img src={PencilIcon} alt="edit" />
+        )}
+      </span>
 
       {/* 17,18,19,20 */}
 
@@ -356,7 +398,22 @@ const RegistroPage = () => {
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre o seu humor de hoje?
       </label>
-      <input className="input-meu-registro" type="text" />
+      <span className="input-meu-registro-box">
+        <input
+          className="input-meu-registro"
+          onChange={(e) => handleComentario(e.target.value, 1, "sentindo")}
+          type="text"
+        />
+        {comentarioAtivo === "sentindo" ? (
+          <img
+            alt="chek-icon"
+            src={CheckIcon}
+            onClick={() => handleComentarioChange()}
+          />
+        ) : (
+          <img src={PencilIcon} alt="edit" />
+        )}
+      </span>
 
       {/* 13,14,15,16 */}
 
@@ -399,7 +456,22 @@ const RegistroPage = () => {
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre esse momento?
       </label>
-      <input className="input-meu-registro" type="text" />
+      <span className="input-meu-registro-box">
+        <input
+          className="input-meu-registro"
+          onChange={(e) => handleComentario(e.target.value, 2, "dormir")}
+          type="text"
+        />
+        {comentarioAtivo === "dormir" ? (
+          <img
+            alt="chek-icon"
+            src={CheckIcon}
+            onClick={() => handleComentarioChange()}
+          />
+        ) : (
+          <img src={PencilIcon} alt="edit" />
+        )}
+      </span>
 
       {/* 1,2,3,4 */}
 
@@ -442,7 +514,22 @@ const RegistroPage = () => {
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre seu banho?
       </label>
-      <input className="input-meu-registro" type="text" />
+      <span className="input-meu-registro-box">
+        <input
+          className="input-meu-registro"
+          onChange={(e) => handleComentario(e.target.value, 3, "banho")}
+          type="text"
+        />
+        {comentarioAtivo === "banho" ? (
+          <img
+            alt="chek-icon"
+            src={CheckIcon}
+            onClick={() => handleComentarioChange()}
+          />
+        ) : (
+          <img src={PencilIcon} alt="edit" />
+        )}
+      </span>
 
       {/* 5,6,7,8 */}
 
@@ -485,7 +572,22 @@ const RegistroPage = () => {
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais alguma coisa sobre seu dia?
       </label>
-      <input className="input-meu-registro" type="text" />
+      <span className="input-meu-registro-box">
+        <input
+          className="input-meu-registro"
+          onChange={(e) => handleComentario(e.target.value, 4, "dia")}
+          type="text"
+        />
+        {comentarioAtivo === "dia" ? (
+          <img
+            alt="chek-icon"
+            src={CheckIcon}
+            onClick={() => handleComentarioChange()}
+          />
+        ) : (
+          <img src={PencilIcon} alt="edit" />
+        )}
+      </span>
 
       <TitleDiv>Produtos de Cuidados</TitleDiv>
 

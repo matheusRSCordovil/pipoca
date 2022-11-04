@@ -10,15 +10,26 @@ export const MainContainer = styled.div`
   font-family: Roboto-Condensed;
   margin-top: 161px;
 
+  .input-meu-registro-box {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin: 0px auto;
+  }
+
+  .input-meu-registro-box img {
+    margin-left: -15px;
+  }
+
   .input-meu-registro {
     height: 15px;
     width: 321px;
     border: none;
     border-bottom: 2px solid #7d7d7d;
-    margin: 0px auto;
-    margin-bottom: 25px;
-    background: url(${PencilIcon}) no-repeat;
-    background-position-x: right;
+    /* margin: 0px auto; */
+    /* margin-bottom: 25px; */
+    /* background: url(${PencilIcon}) no-repeat; */
+    /* background-position-x: right; */
   }
 
   .label-input {
