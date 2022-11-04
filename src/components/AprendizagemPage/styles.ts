@@ -14,6 +14,14 @@ export const MainContainer = styled.div`
     display: none;
   }
 
+  input {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    text-align: left;
+  }
+
   .pesquisa-input {
     width: 354px;
     height: 50px;

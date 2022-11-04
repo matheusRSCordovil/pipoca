@@ -1,15 +1,21 @@
 import { MainContainer } from "./styles";
 import FiltroIcon from "../../assets/icon/filtroIcon.svg";
-import { useState } from "react";
-import Carrossel from "../Carrossel";
+import { useEffect, useState } from "react";
 import { useHomeProvider } from "../../providers/HomeProvider";
+import API from "../../services";
 
 const DepoimentosPage = () => {
-  const { openFilterMenu, setOpenFilterMenu } = useHomeProvider();
+  const { openFilterMenu, setOpenFilterMenu, setAtivo } = useHomeProvider();
 
-  const [singleDepoimento, setSingleDepoimento] = useState(false);
+  const [data, setData] = useState([]);
 
-  return !singleDepoimento ? (
+  useEffect(() => {
+    API.get("Conteudo").then((response) => {
+      setData(response.data);
+    });
+  }, []);
+
+  return (
     <MainContainer>
       <span className="depoimento-head">
         <h4>Depoimentos</h4>
@@ -31,7 +37,7 @@ const DepoimentosPage = () => {
       <div className="depoimento-body">
         {Array.from({ length: 18 }).map((_, i) => (
           <div
-            onClick={() => setSingleDepoimento(true)}
+            onClick={() => setAtivo("detalhes")}
             className="box-depoimento"
             key={i}
           >
@@ -40,68 +46,6 @@ const DepoimentosPage = () => {
           </div>
         ))}
       </div>
-    </MainContainer>
-  ) : (
-    <MainContainer>
-      <div className="img-box-header"></div>
-      <h4>Título deste conteúdo aqui</h4>
-      <p className="subtitle">
-        Dra. Natália Schmitz •19/01/22 • 5 min de duração
-      </p>
-      <div className="texto-box">
-        <p>
-          {" "}
-          <span>L</span>orem ipsum dolor sit amet consectetur adipiscing elit
-          sed do eiusmod tempor incididunt lorem ipsum dolor sit amet
-          consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis
-          lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam
-          purus sit amet luctus venenatis lorem ipsum dolor sit amet consectetur
-          adipiscing elit ut aliquam purus sit amet luctus venenatis lorem ipsum
-          dolor sit amet consectetur adipiscing elit ut aliquam purus sit amet
-          luctus venenatis lorem ipsum dolor sit amet consectetur adipiscing
-          elit ut aliquam purus sit amet luctus venenatis lorem ipsum dolor sit
-          amet consectetur adipiscing elit ut aliquam purus sit amet luctus
-          venenatis lorem ipsum dolor sit amet consectetur adipiscing elit ut
-          aliquam purus sit amet luctus venenatis lorem ipsum dolor sit amet
-          consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis
-          lorem ipsum dolor. Sit amet consectetur adipiscing elit ut aliquam
-          purus sit amet luctus venenatis lorem ipsum dolor sit amet consectetur
-          adipiscing elit ut aliquam purus sit amet luctus venenatis lorem ipsum
-          dolor sit amet consectetur adipiscing elit ut aliquam purus sit amet
-          luctus venenatis lorem ipsum dolor sit amet consectetur adipiscing
-          elit ut aliquam purus sit amet luctus venenatis lorem ipsum dolor sit
-          amet consectetur adipiscing elit ut aliquam purus sit amet luctus
-          venenatis lorem ipsum dolor sit amet consectetur adipiscing elit ut
-          aliquam purus sit amet luctus venenatis lorem ipsum dolor sit amet
-          consectetur adipiscing elit ut aliquam purus sit amet luctus
-          venenatis. Adipiscing elit ut aliquam purus sit amet luctus venenatis
-          lorem ipsum dolor sit amet consectetur adipiscing elit ut aliquam
-          purus sit amet luctus venenatis lorem ipsum dolor sit amet consectetur
-          adipiscing elit ut aliquam purus sit amet luctus venenatis lorem ipsum
-          dolor sit amet consectetur adipiscing elit ut aliquam purus sit amet
-          luctus venenatis lorem ipsum dolor sit amet consectetur adipiscing
-          elit ut aliquam purus sit amet luctus venenatis lorem ipsum dolor sit
-          amet consectetur adipiscing elit ut aliquam purus sit amet luctus
-          venenatis lorem ipsum dolor sit amet consectetur adipiscing elit ut
-          aliquam purus sit amet luctus venenatis lorem ipsum dolor luctus
-          venenatis lorem ipsum dolor sit amet consectetur adipiscing elit ut
-          aliquam adipiscing elit ut aliquam. Amet luctus venenatis lorem ipsum
-          dolor sit amet consectetur adipiscing elit ut aliquam purus sit amet
-          luctus venenatis lorem ipsum dolor sit amet consectetur adipiscing
-          elit ut aliquam purus sit amet luctus venenatis lorem ipsum dolor sit
-          ipsum dolor sit amet consectetur adipiscing elit ut aliquam purus sit
-          amet.
-        </p>
-      </div>
-
-      <hr />
-
-      <input type="text" className="pesquisa-input" />
-
-      <p className="recommend-text">
-        Se gostou desse conteúdo, poderá gostar de:
-      </p>
-      <Carrossel />
     </MainContainer>
   );
 };

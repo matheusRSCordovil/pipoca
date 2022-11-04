@@ -3,9 +3,30 @@ import PlusIcon from "../../assets/icon/hojeIcons/plus.png";
 import Carrossel from "../Carrossel";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import FiltroIcon from "../../assets/icon/filtroIcon.svg";
+import { useEffect, useState } from "react";
+import API from "../../services";
 
 const AprendizagemPage = () => {
-  const { openFilterMenu, setOpenFilterMenu } = useHomeProvider();
+  const { openFilterMenu, setOpenFilterMenu, filtrosAtivos } =
+    useHomeProvider();
+
+  const [level1, setLevel1] = useState([]);
+  const [level2, setLevel2] = useState([]);
+  const [level3, setLevel3] = useState([]);
+
+  useEffect(() => {
+    API.get(`Conteudo?NivelId=1${filtrosAtivos}`).then((response) => {
+      setLevel1(response.data);
+    });
+
+    API.get(`Conteudo?NivelId=2${filtrosAtivos}`).then((response) => {
+      setLevel2(response.data);
+    });
+
+    API.get(`Conteudo?NivelId=3${filtrosAtivos}`).then((response) => {
+      setLevel3(response.data);
+    });
+  }, [filtrosAtivos]);
 
   return (
     <MainContainer>
@@ -37,23 +58,37 @@ const AprendizagemPage = () => {
 
       <input type="text" className="pesquisa-input" />
 
-      <p
-        className="aprendizagem-do-dia-text"
-        style={{ marginBottom: 0, marginTop: 0 }}
-      >
-        Para quem começou esta jornada
-      </p>
-      <Carrossel />
+      {level1.length && (
+        <>
+          {" "}
+          <p
+            className="aprendizagem-do-dia-text"
+            style={{ marginBottom: 0, marginTop: 0 }}
+          >
+            Para quem começou esta jornada
+          </p>
+          <Carrossel data={level1} showPlus={true} />
+        </>
+      )}
 
-      <p className="aprendizagem-do-dia-text" style={{ marginBottom: 0 }}>
-        Para quem já entende de DA
-      </p>
-      <Carrossel />
+      {level2.length && (
+        <>
+          <p className="aprendizagem-do-dia-text" style={{ marginBottom: 0 }}>
+            Para quem já entende de DA
+          </p>
+          <Carrossel data={level2} showPlus={true} />
+        </>
+      )}
 
-      <p className="aprendizagem-do-dia-text" style={{ marginBottom: 0 }}>
-        Conhecimento avançado
-      </p>
-      <Carrossel />
+      {level3.length && (
+        <>
+          {" "}
+          <p className="aprendizagem-do-dia-text" style={{ marginBottom: 0 }}>
+            Conhecimento avançado
+          </p>
+          <Carrossel data={level3} showPlus={true} />
+        </>
+      )}
     </MainContainer>
   );
 };

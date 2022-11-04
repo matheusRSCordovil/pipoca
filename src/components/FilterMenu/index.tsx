@@ -6,10 +6,21 @@ import "./styles.css";
 
 const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
   const { open, handleClose } = props;
-  const { openFilterMenu, setOpenFilterMenu } = useHomeProvider();
+
+  const { openFilterMenu, setOpenFilterMenu, setFiltrosAtivos, filtrosAtivos } =
+    useHomeProvider();
 
   const handleModalClose = () => {
     handleClose();
+  };
+
+  const handleCheck = (e: any) => {
+    if (filtrosAtivos.includes(e)) {
+      setFiltrosAtivos(filtrosAtivos.replace(e, ""));
+      return;
+    }
+
+    setFiltrosAtivos(filtrosAtivos + e);
   };
 
   return (
@@ -39,23 +50,38 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <h4>Categorias:</h4>
 
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&categoriaId=2")}
+              />
               <label htmlFor="categoria">Artigos</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&categoriaId=1")}
+              />
               <label htmlFor="categoria">Dicas</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&categoriaId=3")}
+              />
               <label htmlFor="categoria">Depoimentos</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&categoriaId=4")}
+              />
               <label htmlFor="categoria">Indicações</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&categoriaId=5")}
+              />
               <label htmlFor="categoria">Pesquisas</label>
             </span>
           </div>
@@ -63,23 +89,38 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
           <div className="container-esquerdo">
             <h4>Conteúdos:</h4>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&tipoId=1")}
+              />
               <label htmlFor="categoria">Banho</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&tipoId=2")}
+              />
               <label htmlFor="categoria">Qualidade de vida</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&tipoId=3")}
+              />
               <label htmlFor="categoria">Medicações</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&tipoId=4")}
+              />
               <label htmlFor="categoria">Público infantil</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&tipoId=5")}
+              />
               <label htmlFor="categoria">Tratamentos</label>
             </span>
           </div>
@@ -88,19 +129,31 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
 
           <div className="formatos">
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&formatoId=3")}
+              />
               <label htmlFor="categoria">Textos</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&formatoId=1")}
+              />
               <label htmlFor="categoria">Vídeos</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&formatoId=2")}
+              />
               <label htmlFor="categoria">Áudios</label>
             </span>
             <span>
-              <input type="checkbox" />
+              <input
+                type="checkbox"
+                onChange={() => handleCheck("&formatoId=4")}
+              />
               <label htmlFor="categoria">Relatórios</label>
             </span>
           </div>

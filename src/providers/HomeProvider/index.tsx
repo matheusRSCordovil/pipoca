@@ -5,8 +5,12 @@ interface Props {
 }
 
 type HomeProviderProps = {
+  filtrosAtivos: string;
+  setFiltrosAtivos: (value: string) => void;
   ativo: string;
   setAtivo: (test: string) => void;
+  idAtivo: string;
+  setIdAtivo: (test: string) => void;
   openMenu: boolean;
   setOpenMenu: (test: boolean) => void;
   openFilterMenu: boolean;
@@ -16,8 +20,12 @@ type HomeProviderProps = {
 };
 
 const DEFAULT_VALUE = {
+  filtrosAtivos: "",
+  setFiltrosAtivos: () => {},
   ativo: "",
   setAtivo: () => {},
+  idAtivo: "",
+  setIdAtivo: () => {},
   openMenu: false,
   setOpenMenu: () => {},
   openFilterMenu: false,
@@ -35,12 +43,20 @@ export const HomeProvider: React.FC<Props> = ({ children }) => {
     DEFAULT_VALUE.openFilterMenu
   );
   const [userNome, setUserNome] = useState<string>(DEFAULT_VALUE.userNome);
+  const [idAtivo, setIdAtivo] = useState<string>(DEFAULT_VALUE.idAtivo);
+  const [filtrosAtivos, setFiltrosAtivos] = useState<string>(
+    DEFAULT_VALUE.filtrosAtivos
+  );
 
   return (
     <HomeContext.Provider
       value={{
+        filtrosAtivos,
+        setFiltrosAtivos,
         ativo,
         setAtivo,
+        idAtivo,
+        setIdAtivo,
         openMenu,
         setOpenMenu,
         openFilterMenu,

@@ -8,10 +8,9 @@ import CloseIcon from "../../assets/img/closeIcon.png";
 
 const TopMenu = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { ativo, setOpenMenu, openMenu, setAtivo, userNome } =
-    useHomeProvider();
+  const { ativo, setOpenMenu, openMenu, userNome } = useHomeProvider();
 
   return location.pathname === "/" ? (
     <MainContainer>
@@ -25,7 +24,6 @@ const TopMenu = () => {
         src={NotificationOnIcon}
         alt="notificationOnIcon"
         className="notificationOnIcon"
-        onClick={() => navigate("/register")}
       />
 
       {openMenu ? (
@@ -45,14 +43,7 @@ const TopMenu = () => {
         />
       )}
 
-      {!openMenu && (
-        <img
-          src={LogoAada}
-          alt="logoAada"
-          className="logoAada"
-          onClick={() => setAtivo("depoimentos")}
-        />
-      )}
+      {!openMenu && <img src={LogoAada} alt="logoAada" className="logoAada" />}
     </MainContainer>
   ) : null;
 };

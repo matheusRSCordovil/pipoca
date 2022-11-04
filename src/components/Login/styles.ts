@@ -15,6 +15,14 @@ export const MainContainer = styled.div`
     min-height: 125vh;
   }
 
+  input {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    text-align: left;
+  }
+
   .error-msg {
     color: #ff0000;
     height: 20px;
@@ -115,6 +123,21 @@ export const MainContainer = styled.div`
     color: #104f92;
     text-decoration: underline;
     cursor: pointer;
+  }
+
+  form > button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 35px;
+    letter-spacing: 0em;
+    text-align: left;
+    cursor: pointer;
+    color: #1391ed;
   }
 
   .bottom-div-7 form > input {

@@ -44,7 +44,10 @@ const Register = () => {
     },
     validationSchema: yup.object({
       email: yup.string().required("O campo é obrigatório."),
-      senha: yup.string().required("O campo é obrigatório."),
+      senha: yup
+        .string()
+        .min(6, "mínimo de 6 caracteres")
+        .required("O campo é obrigatório."),
       repeatSenha: yup
         .string()
         .required("O campo é obrigatório.")
@@ -54,7 +57,7 @@ const Register = () => {
       values.nome = userNome;
       axios
         .post(
-          "https://pipocaatopica.jelastic.saveincloud.net/api/Usuario",
+          "https://pipocaatopica.jelastic.saveincloud.net/api/Usuario/Cadastro",
           values
         )
         .then((response: { data: { token: string } }) => {

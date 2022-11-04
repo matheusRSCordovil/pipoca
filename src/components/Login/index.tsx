@@ -1,14 +1,17 @@
 import { MainContainer } from "./styles";
-// import NextIcon from "../../assets/icon/play.fill.svg";
+import NextIcon from "../../assets/icon/play.fill.svg";
 import AadaLogo from "../../assets/icon/logo-aada.png";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
+import { useHomeProvider } from "../../providers/HomeProvider";
+import jwt_decode from "jwt-decode";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUserNome } = useHomeProvider();
 
   const getToken = () => {
     let token = localStorage.getItem("token");
@@ -40,8 +43,9 @@ const Login = () => {
           values
         )
         .then((response: { data: { token: string } }) => {
-          console.log(response);
           localStorage.setItem("token", response.data.token);
+          let decoded: any = jwt_decode(response.data.token);
+          setUserNome(decoded.name);
           navigate("/");
         })
         .catch((error: any) => {
@@ -99,7 +103,9 @@ const Login = () => {
               <div className="error-msg">{formik.errors.senha}</div>
             )}
 
-            <button type="submit">Login</button>
+            <button type="submit">
+              Entrar <img alt="next-icon" src={NextIcon} />
+            </button>
           </form>
 
           <p>Esqueci minha senha</p>

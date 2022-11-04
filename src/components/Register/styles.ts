@@ -21,6 +21,14 @@ export const MainContainer = styled.div`
     min-height: 125vh;
   }
 
+  input {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: -0.015em;
+    text-align: left;
+  }
+
   .error-msg {
     color: #ff0000;
     height: 20px;
