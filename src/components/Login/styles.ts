@@ -7,6 +7,7 @@ export const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  min-height: 896px;
   width: 100%;
   background-color: ${PRIMARY.darkBlue};
   font-family: Roboto-Condensed;

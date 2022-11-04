@@ -11,7 +11,7 @@ import jwt_decode from "jwt-decode";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUserNome } = useHomeProvider();
+  const { setUserNome, setAtivo } = useHomeProvider();
 
   const getToken = () => {
     let token = localStorage.getItem("token");
@@ -46,6 +46,7 @@ const Login = () => {
           localStorage.setItem("token", response.data.token);
           let decoded: any = jwt_decode(response.data.token);
           setUserNome(decoded.name);
+          setAtivo("hoje");
           navigate("/");
         })
         .catch((error: any) => {

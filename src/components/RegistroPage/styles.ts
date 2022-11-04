@@ -261,6 +261,27 @@ export const DayDiv = styled.div`
   }
 `;
 
+export const DayDivActive = styled.div`
+  display: flex;
+  height: 52px;
+  width: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 1.6595743894577026px;
+  background-color: #ffac33;
+  color: #ffffff;
+  margin: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  justify-content: right;
+  align-items: end;
+
+  p {
+    margin: 3px;
+    height: 8px;
+  }
+`;
+
 export const TitleDiv = styled.div`
   display: flex;
   height: 40px;

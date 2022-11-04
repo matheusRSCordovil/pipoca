@@ -1,16 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { MainContainer } from "./styles";
 import MenuIcon from "../../assets/img/menuIcon.png";
 import NotificationOnIcon from "../../assets/img/notificationOnIcon.png";
 import LogoAada from "../../assets/img/logo-aada.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import CloseIcon from "../../assets/img/closeIcon.png";
+import { useEffect } from "react";
+import jwt_decode from "jwt-decode";
 
 const TopMenu = () => {
   const location = useLocation();
-  // const navigate = useNavigate();
 
-  const { ativo, setOpenMenu, openMenu, userNome } = useHomeProvider();
+  const { ativo, setOpenMenu, openMenu, userNome, setUserNome } =
+    useHomeProvider();
+
+  useEffect(() => {
+    if (userNome === "") {
+      let decoded: any = jwt_decode(localStorage.getItem("token") || "");
+      setUserNome(decoded.name);
+    }
+  }, []);
 
   return location.pathname === "/" ? (
     <MainContainer>

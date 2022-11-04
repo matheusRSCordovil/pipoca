@@ -16,15 +16,15 @@ const AprendizagemPage = () => {
 
   useEffect(() => {
     API.get(`Conteudo?NivelId=1${filtrosAtivos}`).then((response) => {
-      setLevel1(response.data);
+      setLevel1(response.data.slice(0, 4));
     });
 
     API.get(`Conteudo?NivelId=2${filtrosAtivos}`).then((response) => {
-      setLevel2(response.data);
+      setLevel2(response.data.slice(0, 4));
     });
 
     API.get(`Conteudo?NivelId=3${filtrosAtivos}`).then((response) => {
-      setLevel3(response.data);
+      setLevel3(response.data.slice(0, 4));
     });
   }, [filtrosAtivos]);
 

@@ -1,4 +1,10 @@
-import { DayDiv, IconesDiv, MainContainer, TitleDiv } from "./styles";
+import {
+  DayDiv,
+  DayDivActive,
+  IconesDiv,
+  MainContainer,
+  TitleDiv,
+} from "./styles";
 import { PRIMARY } from "../../theme/palette";
 import { useState } from "react";
 import PipocaV2 from "../../assets/img/pipoca-puppet-v2.png";
@@ -48,6 +54,8 @@ import EditAtivoIcon from "../../assets/icon/editIcon.svg";
 import LixeiraIcon from "../../assets/icon/lixeiraIcon.svg";
 import ProgressoDonePage from "../ProgressDonePage";
 import DeletarModal from "../DeletarModal";
+import API from "../../services";
+import jwt_decode from "jwt-decode";
 
 const RegistroPage = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -58,9 +66,79 @@ const RegistroPage = () => {
   const [activeDia, setActiveDia] = useState("");
   const [editAtivo, setEditAtivo] = useState("");
   const [open, setOpen] = useState(false);
+  const [activeJornadaIds, setActiveJornadaIds] = useState<number[]>([
+    12, 20, 16, 4, 8,
+  ]);
 
-  const handleDeletarModal = () => {
-    setOpen(!open);
+  // const handleDeletarModal = () => {
+  //   setOpen(!open);
+  // };
+
+  const handleJornadaId = (categoria: string) => {
+    if (categoria === "pele4") {
+      activeJornadaIds[0] = 12;
+    }
+    if (categoria === "pele3") {
+      activeJornadaIds[0] = 11;
+    }
+    if (categoria === "pele2") {
+      activeJornadaIds[0] = 10;
+    }
+    if (categoria === "pele1") {
+      activeJornadaIds[0] = 9;
+    }
+
+    if (categoria === "sentindo4") {
+      activeJornadaIds[1] = 20;
+    }
+    if (categoria === "sentindo3") {
+      activeJornadaIds[1] = 19;
+    }
+    if (categoria === "sentindo2") {
+      activeJornadaIds[1] = 18;
+    }
+    if (categoria === "sentindo1") {
+      activeJornadaIds[1] = 17;
+    }
+
+    if (categoria === "dormir4") {
+      activeJornadaIds[2] = 16;
+    }
+    if (categoria === "dormir3") {
+      activeJornadaIds[2] = 15;
+    }
+    if (categoria === "dormir2") {
+      activeJornadaIds[2] = 14;
+    }
+    if (categoria === "dormir1") {
+      activeJornadaIds[2] = 13;
+    }
+
+    if (categoria === "banho4") {
+      activeJornadaIds[3] = 4;
+    }
+    if (categoria === "banho3") {
+      activeJornadaIds[3] = 3;
+    }
+    if (categoria === "banho2") {
+      activeJornadaIds[3] = 2;
+    }
+    if (categoria === "banho1") {
+      activeJornadaIds[3] = 1;
+    }
+
+    if (categoria === "dia4") {
+      activeJornadaIds[4] = 8;
+    }
+    if (categoria === "dia3") {
+      activeJornadaIds[4] = 7;
+    }
+    if (categoria === "dia2") {
+      activeJornadaIds[4] = 6;
+    }
+    if (categoria === "dia1") {
+      activeJornadaIds[4] = 5;
+    }
   };
 
   const handleEditAtivo = (e: string) => {
@@ -71,6 +149,110 @@ const RegistroPage = () => {
     }
   };
 
+  const handleClick = (e: string, categoria: string) => {
+    let today = new Date().toISOString();
+
+    let decoded: any = jwt_decode(localStorage.getItem("token") || "");
+
+    // let userId = parseInt(decoded.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/sid, 10);
+
+    handleJornadaId(e);
+
+    if (categoria === "dia") {
+      if (activeDia === e) {
+        return;
+      } else {
+        setActiveDia(e);
+      }
+    }
+
+    if (categoria === "banho") {
+      if (activeBanho === e) {
+        return;
+      } else {
+        setActiveBanho(e);
+      }
+    }
+
+    if (categoria === "dormir") {
+      if (activeDormir === e) {
+        return;
+      } else {
+        setActiveDormir(e);
+      }
+    }
+
+    if (categoria === "pele") {
+      if (activePele === e) {
+        return;
+      } else {
+        setActivePele(e);
+      }
+    }
+
+    if (categoria === "sentindo") {
+      if (activeSentindo === e) {
+        return;
+      } else {
+        setActiveSentindo(e);
+      }
+    }
+
+    API.post("Jornada", {
+      usuarioId: 1,
+      dia: 1,
+      data: today,
+      ciclo: 1,
+      registro: [
+        {
+          jornadaId: 1,
+          observacao: "",
+          jornadaCategoriaOpcaoId: activeJornadaIds[0],
+          opcao: "string",
+          jornadaCategoriaId: 3,
+          categoria: "Sintomas",
+          data: today,
+        },
+        {
+          jornadaId: 1,
+          observacao: "",
+          jornadaCategoriaOpcaoId: activeJornadaIds[1],
+          opcao: "string",
+          jornadaCategoriaId: 1,
+          categoria: "Humor",
+          data: today,
+        },
+        {
+          jornadaId: 1,
+          observacao: "",
+          jornadaCategoriaOpcaoId: activeJornadaIds[2],
+          opcao: "string",
+          jornadaCategoriaId: 2,
+          categoria: "Sono",
+          data: today,
+        },
+        {
+          jornadaId: 1,
+          observacao: "",
+          jornadaCategoriaOpcaoId: activeJornadaIds[3],
+          opcao: "string",
+          jornadaCategoriaId: 6,
+          categoria: "Banho",
+          data: today,
+        },
+        {
+          jornadaId: 1,
+          observacao: "",
+          jornadaCategoriaOpcaoId: activeJornadaIds[4],
+          opcao: "string",
+          jornadaCategoriaId: 5,
+          categoria: "Rotina",
+          data: today,
+        },
+      ],
+    });
+  };
+
   return !showCalendar ? (
     <MainContainer>
       <div className="calendar-registro">
@@ -79,41 +261,49 @@ const RegistroPage = () => {
         <div className="calendar-list" onClick={() => setShowCalendar(true)}>
           <div className="calendar-white-end"></div>
           <div className="calendar-scroll-div">
-            {Array.from(Array(10), (_, i) => i + 1).map((day, i) => (
-              <DayDiv key={i}>
-                <p>{day}</p>
-              </DayDiv>
-            ))}
+            {Array.from(Array(10), (_, i) => i + 1).map((day, i) =>
+              i === 0 ? (
+                <DayDivActive>
+                  <p>1</p>
+                </DayDivActive>
+              ) : (
+                <DayDiv key={i}>
+                  <p>{day}</p>
+                </DayDiv>
+              )
+            )}
           </div>
         </div>
       </div>
+
+      {/* 9,10,11,12 */}
 
       <TitleDiv>Como está sua pele?</TitleDiv>
       <IconesDiv>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => setActivePele("pele1")}
+          onClick={() => handleClick("pele1", "pele")}
         >
           <img src={activePele === "pele1" ? Pele1active : Pele1} alt="icone" />
           <p>Boa</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => setActivePele("pele2")}
+          onClick={() => handleClick("pele2", "pele")}
         >
           <img src={activePele === "pele2" ? Pele2active : Pele2} alt="icone" />
           <p>Ressecada</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => setActivePele("pele3")}
+          onClick={() => handleClick("pele3", "pele")}
         >
           <img src={activePele === "pele3" ? Pele3active : Pele3} alt="icone" />
           <p>Com coceira</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => setActivePele("pele4")}
+          onClick={() => handleClick("pele4", "pele")}
         >
           <img src={activePele === "pele4" ? Pele4active : Pele4} alt="icone" />
           <p>Com dor</p>
@@ -125,11 +315,13 @@ const RegistroPage = () => {
       </label>
       <input className="input-meu-registro" type="text" />
 
+      {/* 17,18,19,20 */}
+
       <TitleDiv>Como você está se sentindo hoje? </TitleDiv>
       <IconesDiv>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => setActiveSentindo("sentindo1")}
+            onClick={() => handleClick("sentindo1", "sentindo")}
             src={activeSentindo === "sentindo1" ? Sentindo1active : Sentindo1}
             alt="icone"
           />
@@ -137,7 +329,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => setActiveSentindo("sentindo2")}
+            onClick={() => handleClick("sentindo2", "sentindo")}
             src={activeSentindo === "sentindo2" ? Sentindo2active : Sentindo2}
             alt="icone"
           />
@@ -145,7 +337,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => setActiveSentindo("sentindo3")}
+            onClick={() => handleClick("sentindo3", "sentindo")}
             src={activeSentindo === "sentindo3" ? Sentindo3active : Sentindo3}
             alt="icone"
           />
@@ -153,7 +345,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => setActiveSentindo("sentindo4")}
+            onClick={() => handleClick("sentindo4", "sentindo")}
             src={activeSentindo === "sentindo4" ? Sentindo4active : Sentindo4}
             alt="icone"
           />
@@ -166,11 +358,13 @@ const RegistroPage = () => {
       </label>
       <input className="input-meu-registro" type="text" />
 
+      {/* 13,14,15,16 */}
+
       <TitleDiv>Como você dormiu?</TitleDiv>
       <IconesDiv>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => setActiveDormir("dormir1")}
+            onClick={() => handleClick("dormir1", "dormir")}
             src={activeDormir === "dormir1" ? dormir1active : dormir1}
             alt="icone"
           />
@@ -178,7 +372,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => setActiveDormir("dormir2")}
+            onClick={() => handleClick("dormir2", "dormir")}
             src={activeDormir === "dormir2" ? dormir2active : dormir2}
             alt="icone"
           />
@@ -186,7 +380,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => setActiveDormir("dormir3")}
+            onClick={() => handleClick("dormir3", "dormir")}
             src={activeDormir === "dormir3" ? dormir3active : dormir3}
             alt="icone"
           />
@@ -194,7 +388,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => setActiveDormir("dormir4")}
+            onClick={() => handleClick("dormir4", "dormir")}
             src={activeDormir === "dormir4" ? dormir4active : dormir4}
             alt="icone"
           />
@@ -207,11 +401,13 @@ const RegistroPage = () => {
       </label>
       <input className="input-meu-registro" type="text" />
 
+      {/* 1,2,3,4 */}
+
       <TitleDiv>Como foi seu banho?</TitleDiv>
       <IconesDiv>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => setActiveBanho("banho1")}
+            onClick={() => handleClick("banho1", "banho")}
             src={activeBanho === "banho1" ? Banho1active : Banho1}
             alt="icone"
           />
@@ -219,7 +415,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => setActiveBanho("banho2")}
+            onClick={() => handleClick("banho2", "banho")}
             src={activeBanho === "banho2" ? Banho2active : Banho2}
             alt="icone"
           />
@@ -227,7 +423,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => setActiveBanho("banho3")}
+            onClick={() => handleClick("banho3", "banho")}
             src={activeBanho === "banho3" ? Banho3active : Banho3}
             alt="icone"
           />
@@ -235,7 +431,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => setActiveBanho("banho4")}
+            onClick={() => handleClick("banho4", "banho")}
             src={activeBanho === "banho4" ? Banho4active : Banho4}
             alt="icone"
           />
@@ -248,11 +444,13 @@ const RegistroPage = () => {
       </label>
       <input className="input-meu-registro" type="text" />
 
+      {/* 5,6,7,8 */}
+
       <TitleDiv>Como foi seu dia?</TitleDiv>
       <IconesDiv>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => setActiveDia("dia1")}
+            onClick={() => handleClick("dia1", "dia")}
             src={activeDia === "dia1" ? Dia1active : Dia1}
             alt="icone"
           />
@@ -260,7 +458,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => setActiveDia("dia2")}
+            onClick={() => handleClick("dia2", "dia")}
             src={activeDia === "dia2" ? Dia2active : Dia2}
             alt="icone"
           />
@@ -268,7 +466,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => setActiveDia("dia3")}
+            onClick={() => handleClick("dia3", "dia")}
             src={activeDia === "dia3" ? Dia3active : Dia3}
             alt="icone"
           />
@@ -276,7 +474,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => setActiveDia("dia4")}
+            onClick={() => handleClick("dia4", "dia")}
             src={activeDia === "dia4" ? Dia4active : Dia4}
             alt="icone"
           />

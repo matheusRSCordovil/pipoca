@@ -20,11 +20,11 @@ const HojePage = () => {
   const { setAtivo } = useHomeProvider();
 
   const dias = [
-    1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0,
   ];
 
-  const [mesCompleto, setMesCompleto] = useState<boolean>(true);
+  const [mesCompleto, setMesCompleto] = useState<boolean>(false);
 
   return (
     <MainContainer mesCompleto={mesCompleto}>

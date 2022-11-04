@@ -1,11 +1,11 @@
 import { MainContainer } from "./styles";
-import FiltroIcon from "../../assets/icon/filtroIcon.svg";
+// import FiltroIcon from "../../assets/icon/filtroIcon.svg";
 import { useEffect, useState } from "react";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import API from "../../services";
 
 const DepoimentosPage = () => {
-  const { openFilterMenu, setOpenFilterMenu, setAtivo } = useHomeProvider();
+  const { setAtivo } = useHomeProvider();
 
   const [data, setData] = useState([]);
 
@@ -19,12 +19,12 @@ const DepoimentosPage = () => {
     <MainContainer>
       <span className="depoimento-head">
         <h4>Depoimentos</h4>
-        <img
+        {/* <img
           onClick={() => setOpenFilterMenu(!openFilterMenu)}
           src={FiltroIcon}
           alt="Depoimentos"
           style={{ width: 26, height: 26 }}
-        />
+        /> */}
       </span>
 
       <p className="resumo">

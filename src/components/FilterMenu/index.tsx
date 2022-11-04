@@ -2,25 +2,40 @@ import Dialog from "@mui/material/Dialog";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import FiltroIcon from "../../assets/icon/filtroIcon.svg";
 import { MainContainer } from "./styles";
+import { useEffect, useState } from "react";
 import "./styles.css";
 
 const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
   const { open, handleClose } = props;
 
+  const [filter, setFilter] = useState<string>("");
+
   const { openFilterMenu, setOpenFilterMenu, setFiltrosAtivos, filtrosAtivos } =
     useHomeProvider();
+
+  useEffect(() => {
+    if (filtrosAtivos.length) {
+      setFilter(filtrosAtivos);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleModalClose = () => {
     handleClose();
   };
 
+  const handleSearch = () => {
+    setFiltrosAtivos(filter);
+    handleClose();
+  };
+
   const handleCheck = (e: any) => {
-    if (filtrosAtivos.includes(e)) {
-      setFiltrosAtivos(filtrosAtivos.replace(e, ""));
+    if (filter.includes(e)) {
+      setFilter(filter.replace(e, ""));
       return;
     }
 
-    setFiltrosAtivos(filtrosAtivos + e);
+    setFilter(filter + e);
   };
 
   return (
@@ -52,6 +67,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&categoriaId=2")}
                 onChange={() => handleCheck("&categoriaId=2")}
               />
               <label htmlFor="categoria">Artigos</label>
@@ -59,6 +75,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&categoriaId=1")}
                 onChange={() => handleCheck("&categoriaId=1")}
               />
               <label htmlFor="categoria">Dicas</label>
@@ -66,6 +83,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&categoriaId=3")}
                 onChange={() => handleCheck("&categoriaId=3")}
               />
               <label htmlFor="categoria">Depoimentos</label>
@@ -73,6 +91,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&categoriaId=4")}
                 onChange={() => handleCheck("&categoriaId=4")}
               />
               <label htmlFor="categoria">Indicações</label>
@@ -80,6 +99,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&categoriaId=5")}
                 onChange={() => handleCheck("&categoriaId=5")}
               />
               <label htmlFor="categoria">Pesquisas</label>
@@ -91,6 +111,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&tipoId=1")}
                 onChange={() => handleCheck("&tipoId=1")}
               />
               <label htmlFor="categoria">Banho</label>
@@ -98,6 +119,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&tipoId=2")}
                 onChange={() => handleCheck("&tipoId=2")}
               />
               <label htmlFor="categoria">Qualidade de vida</label>
@@ -105,6 +127,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&tipoId=3")}
                 onChange={() => handleCheck("&tipoId=3")}
               />
               <label htmlFor="categoria">Medicações</label>
@@ -112,6 +135,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&tipoId=4")}
                 onChange={() => handleCheck("&tipoId=4")}
               />
               <label htmlFor="categoria">Público infantil</label>
@@ -119,6 +143,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&tipoId=5")}
                 onChange={() => handleCheck("&tipoId=5")}
               />
               <label htmlFor="categoria">Tratamentos</label>
@@ -131,6 +156,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&formatoId=3")}
                 onChange={() => handleCheck("&formatoId=3")}
               />
               <label htmlFor="categoria">Textos</label>
@@ -138,6 +164,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&formatoId=1")}
                 onChange={() => handleCheck("&formatoId=1")}
               />
               <label htmlFor="categoria">Vídeos</label>
@@ -145,6 +172,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&formatoId=2")}
                 onChange={() => handleCheck("&formatoId=2")}
               />
               <label htmlFor="categoria">Áudios</label>
@@ -152,6 +180,7 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
             <span>
               <input
                 type="checkbox"
+                checked={filter.includes("&formatoId=4")}
                 onChange={() => handleCheck("&formatoId=4")}
               />
               <label htmlFor="categoria">Relatórios</label>
@@ -159,8 +188,8 @@ const FilterMenu = ({ ...props }: { open: any; handleClose: any }) => {
           </div>
 
           <div className="button-container">
-            <button>Limpar filtros</button>
-            <button>Pesquisar</button>
+            <button onClick={() => setFilter("")}>Limpar filtros</button>
+            <button onClick={handleSearch}>Pesquisar</button>
           </div>
         </div>
       </Dialog>
