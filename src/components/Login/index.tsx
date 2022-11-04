@@ -100,7 +100,7 @@ const Login = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.senha}
-              type="senha"
+              type="password"
               placeholder="Senha"
             />
 
