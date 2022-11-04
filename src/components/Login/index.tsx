@@ -1,7 +1,7 @@
 import { MainContainer } from "./styles";
 import NextIcon from "../../assets/icon/play.fill.svg";
 import AadaLogo from "../../assets/icon/logo-aada.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -12,6 +12,8 @@ import jwt_decode from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate();
   const { setUserNome, setAtivo } = useHomeProvider();
+
+  const [error, setError] = useState<boolean>(false);
 
   const getToken = () => {
     let token = localStorage.getItem("token");
@@ -50,7 +52,9 @@ const Login = () => {
           navigate("/");
         })
         .catch((error: any) => {
-          console.log(error);
+          if (error.response.status === 401) {
+            setError(true);
+          }
         });
     },
   });
@@ -69,7 +73,7 @@ const Login = () => {
 
         <p className="text-sub-login-8">
           {" "}
-          Vamos volta a percorrer esta jornada?
+          Vamos voltar a percorrer esta jornada?
         </p>
 
         <div className="bottom-div-7">
@@ -102,6 +106,10 @@ const Login = () => {
 
             {formik.touched.senha && formik.errors.senha && (
               <div className="error-msg">{formik.errors.senha}</div>
+            )}
+
+            {error && (
+              <div className="error-msg">Usuário ou senha inválidos</div>
             )}
 
             <button type="submit">

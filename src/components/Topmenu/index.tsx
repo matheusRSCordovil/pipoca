@@ -17,7 +17,11 @@ const TopMenu = () => {
 
   useEffect(() => {
     if (userNome === "") {
-      let decoded: any = jwt_decode(localStorage.getItem("token") || "");
+      let decoded: any = "";
+      let token = localStorage.getItem("token");
+      if (token) {
+        decoded = jwt_decode(localStorage.getItem("token") || "");
+      }
       setUserNome(decoded.name);
     }
   }, []);

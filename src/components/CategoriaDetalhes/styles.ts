@@ -120,13 +120,13 @@ export const MainContainer = styled.div`
     color: #7d7d7d;
   }
 
-  .texto-box span {
+  /* .texto-box span {
     font-size: 20px;
     font-weight: 700;
     line-height: 16px;
     letter-spacing: 0em;
     text-align: justified;
-  }
+  } */
 
   .pesquisa-input {
     width: 354px;

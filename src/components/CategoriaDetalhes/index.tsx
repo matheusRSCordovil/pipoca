@@ -35,8 +35,9 @@ const CategoriaDetalhes = () => {
       <div className="texto-box">
         <p>
           {" "}
-          <span>{data?.texto.slice(0, 1)}</span>
-          {data?.texto.slice(1, 5000)}
+          {/* <span>{data?.texto.slice(0, 1)}</span>
+          {data?.texto.slice(1, 5000)} */}
+          <span dangerouslySetInnerHTML={{ __html: data?.texto }}></span>
         </p>
       </div>
 
