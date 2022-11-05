@@ -18,12 +18,18 @@ export const FormContainer = styled.div`
     margin-bottom: 35px;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
   form label {
     font-size: 22px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
+    /* white-space: nowrap; */
   }
 
   form input {

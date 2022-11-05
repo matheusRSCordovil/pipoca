@@ -68,10 +68,7 @@ const Login = () => {
 
   return (
     <MainContainer>
-      <div
-        className="login-container-7"
-        // style={{ width: isLoading ? "900px" : "100%" }}
-      >
+      <div className="login-container-7">
         <img
           style={{ width: "106px" }}
           alt="aada-icon"
@@ -79,12 +76,16 @@ const Login = () => {
           className="aada-icon-login"
         />
 
-        <p className="text-login-8">Que bom te ver por aqui de novo!</p>
+        <span
+          style={{ display: "flex", flexDirection: "column", marginTop: 190 }}
+        >
+          <p className="text-login-8">Que bom te ver por aqui de novo!</p>
 
-        <p className="text-sub-login-8">
-          {" "}
-          Vamos voltar a percorrer esta jornada?
-        </p>
+          <p className="text-sub-login-8">
+            {" "}
+            Vamos voltar a percorrer esta jornada?
+          </p>
+        </span>
 
         <div className="bottom-div-7">
           <form onSubmit={formik.handleSubmit}>

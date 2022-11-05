@@ -7,15 +7,9 @@ export const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  /* min-height: 130vh;
-  min-height: 896px; */
   width: 100vw;
   background-color: ${PRIMARY.blue};
   font-family: Roboto-Condensed;
-
-  /* @media (max-width: 389px) {
-    min-height: 125vh;
-  } */
 
   input {
     font-size: 20px;
@@ -60,25 +54,23 @@ export const MainContainer = styled.div`
   }
 
   .text-login-8 {
-    position: absolute;
     font-size: 45px;
     font-weight: 400;
     line-height: 54px;
     letter-spacing: 0em;
     text-align: left;
     padding-left: 30px;
-    top: 50px;
+    margin: 0;
   }
 
   .text-sub-login-8 {
-    position: absolute;
+    margin-top: 0%;
     font-size: 30px;
     font-weight: 400;
     line-height: 36px;
     letter-spacing: 0em;
     text-align: left;
     padding-left: 30px;
-    top: 190px;
   }
 
   .text-login-7 span {

@@ -22,6 +22,7 @@ const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
           boxShadow: "0px 4px 4px 0px #00000026",
           height: 44,
           textAlign: "center",
+          backgroundColor: "#ffffff",
         }}
         onClick={() => handleClick("relatorio")}
       >
@@ -34,6 +35,7 @@ const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
           boxShadow: "0px 4px 4px 0px #00000026",
           height: 44,
           textAlign: "center",
+          backgroundColor: "#ffffff",
         }}
         onClick={() => handleClick("aprendizagem")}
       >
@@ -46,6 +48,7 @@ const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
           boxShadow: "0px 4px 4px 0px #00000026",
           height: 44,
           textAlign: "center",
+          backgroundColor: "#ffffff",
         }}
         onClick={() => handleClick("registro")}
       >
@@ -58,6 +61,7 @@ const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
           boxShadow: "0px 4px 4px 0px #00000026",
           height: 44,
           textAlign: "center",
+          backgroundColor: "#ffffff",
         }}
         onClick={() => handleSelect("config")}
       >

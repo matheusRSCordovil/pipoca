@@ -271,18 +271,7 @@ const Register = () => {
               Aqui você pode nos contar de tudo, desde como está sua pele, seu
               humor, e até quais medicamentos esta usando!
             </p>
-            <img
-              alt="pipoca-puppet"
-              src={CellImg2}
-              className="cell-img-2"
-              // style={{
-              //   width: "200px",
-              //   height: "319px",
-              //   position: "absolute",
-              //   bottom: "84px",
-              //   right: "3px",
-              // }}
-            />
+            <img alt="pipoca-puppet" src={CellImg2} className="cell-img-2" />
           </div>
         </div>
 
