@@ -460,7 +460,7 @@ export const MainContainer = styled.div`
     background-color: transparent;
     align-items: baseline;
     z-index: 2;
-    top: calc(92.8%);
+    top: calc(96.5%);
     width: 100;
     height: 30;
     cursor: pointer;

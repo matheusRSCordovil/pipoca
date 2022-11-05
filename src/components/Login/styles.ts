@@ -94,6 +94,10 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 60px;
+
+    @media (max-width: 390px) {
+      margin-top: 80px;
+    }
   }
 
   .bottom-div-7 p:nth-child(2) {
@@ -137,7 +141,7 @@ export const MainContainer = styled.div`
 
   .bottom-div-7 form > input {
     max-width: 354px;
-    width: 95%;
+    width: 90%;
     height: 50px;
     margin: 10px auto;
     border: none;

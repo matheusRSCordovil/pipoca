@@ -428,6 +428,10 @@ const Register = () => {
               seus registros!
             </p>
           </div>
+          <button className="arrow-next" type="submit" form="form1">
+            <p>Entrar!</p>
+            <img src={NextIcon} alt="next-icon" />
+          </button>
         </div>
       </Carousel>
     </MainContainer>
