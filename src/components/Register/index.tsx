@@ -13,7 +13,7 @@ import CellImg5 from "../../assets/img/group414.png";
 import CalendarImg from "../../assets/img/group404.png";
 import MutedtIcon from "../../assets/img/speaker.png";
 import AadaLogo from "../../assets/icon/logo-aada.png";
-import { CSSProperties, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -70,24 +70,6 @@ const Register = () => {
         });
     },
   });
-
-  const indicatorStyles: CSSProperties = {
-    background: "#1391ED",
-    width: 17,
-    height: 17,
-    display: "inline-block",
-    margin: "0 5px",
-    borderRadius: "50%",
-  };
-
-  const indicatorStylesOn: CSSProperties = {
-    background: "#fff",
-    width: 17,
-    height: 17,
-    display: "inline-block",
-    margin: "0 5px",
-    borderRadius: "50%",
-  };
 
   return (
     <MainContainer>

@@ -15,7 +15,7 @@ export const MainContainer = styled.div`
   height: 100vh;
   min-height: 896px;
   width: 100%;
-  background-color: ${PRIMARY.darkBlue};
+  background-color: ${PRIMARY.blue};
   font-family: Roboto-Condensed;
 
   @media (max-width: 389px) {

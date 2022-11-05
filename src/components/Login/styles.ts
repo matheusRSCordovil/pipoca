@@ -8,13 +8,13 @@ export const MainContainer = styled.div`
   justify-content: center;
   height: 100vh;
   min-height: 896px;
-  width: 100%;
-  background-color: ${PRIMARY.darkBlue};
+  width: 100vw;
+  background-color: ${PRIMARY.blue};
   font-family: Roboto-Condensed;
 
-  @media (max-width: 389px) {
+  /* @media (max-width: 389px) {
     min-height: 125vh;
-  }
+  } */
 
   input {
     font-size: 20px;
