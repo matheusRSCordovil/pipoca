@@ -34,7 +34,7 @@ export const MainContainer = styled.div`
     height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    /* width: 100%; */
   }
 
   .login-container-7 label {
