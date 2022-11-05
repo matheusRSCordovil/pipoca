@@ -263,7 +263,8 @@ export const MainContainer = styled.div`
   }
 
   .bottom-div-7 form > input {
-    width: 354px;
+    max-width: 354px;
+    width: 85%;
     height: 50px;
     margin: 10px auto;
     border: none;

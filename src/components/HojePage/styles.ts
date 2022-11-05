@@ -23,7 +23,7 @@ export const MainContainer = styled.div<IProps>`
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-width: 390px;
+    /* min-width: 390px; */
     height: 122px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -258,7 +258,8 @@ export const MainContainer = styled.div<IProps>`
   .aprendizagem-card {
     min-height: 156px;
     height: fit-content;
-    width: 350px;
+    /* width: 350px; */
+    width: 87%;
     border-radius: 22px;
     background-color: ${PRIMARY.darkBlue};
     color: #ffffff;

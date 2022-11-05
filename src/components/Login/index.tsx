@@ -70,7 +70,7 @@ const Login = () => {
     <MainContainer>
       <div
         className="login-container-7"
-        style={{ width: isLoading ? "900px" : "100vw" }}
+        // style={{ width: isLoading ? "900px" : "100%" }}
       >
         <img
           style={{ width: "106px" }}

@@ -36,7 +36,7 @@
 .App-header {
   background-color: #ffffff;
   min-height: 100vh;
-  min-width: 390px;
+  /* min-width: 390px; */
   width: 100vw;
   height: fit-content;
   display: flex;

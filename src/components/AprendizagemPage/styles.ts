@@ -23,7 +23,8 @@ export const MainContainer = styled.div`
   }
 
   .pesquisa-input {
-    width: 354px;
+    max-width: 354px;
+    width: 95%;
     height: 50px;
     margin: 35px auto;
     border: none;
@@ -48,7 +49,8 @@ export const MainContainer = styled.div`
   .aprendizagem-card {
     min-height: 156px;
     height: fit-content;
-    width: 350px;
+    max-width: 350px;
+    width: 87%;
     border-radius: 22px;
     background-color: ${PRIMARY.darkBlue};
     color: #ffffff;

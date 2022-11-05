@@ -4,7 +4,7 @@ export const MainContainer = styled.div`
   display: flex;
   height: 161px;
   width: 100%;
-  min-width: 390px;
+  /* min-width: 390px; */
   background-color: #ffffff;
   font-family: Roboto-Condensed;
   position: absolute;

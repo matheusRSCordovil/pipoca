@@ -101,6 +101,7 @@ const Register = () => {
             alt="muted-icon"
             className="muted-icon"
             src={MutedtIcon}
+            onClick={() => navigate("/login")}
           />
           <div className="text-1-container">
             <h4>Olá!</h4>
@@ -114,7 +115,8 @@ const Register = () => {
               type="text"
               onChange={(e) => setUserNome(e.target.value)}
               style={{
-                width: "354px",
+                maxWidth: "354px",
+                width: "85%",
                 height: "50px",
                 margin: "0 auto",
                 border: "none",

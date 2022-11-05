@@ -7,7 +7,8 @@ export const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
-  min-height: 896px;
+  /* min-height: 130vh;
+  min-height: 896px; */
   width: 100vw;
   background-color: ${PRIMARY.blue};
   font-family: Roboto-Condensed;
@@ -32,9 +33,10 @@ export const MainContainer = styled.div`
   .login-container-7 {
     background-color: rgb(19, 145, 237);
     height: 100vh;
+    min-height: 896px;
     display: flex;
     flex-direction: column;
-    /* width: 100%; */
+    width: 100%;
   }
 
   .login-container-7 label {
@@ -87,7 +89,7 @@ export const MainContainer = styled.div`
     display: flex;
     position: absolute;
     flex-direction: column;
-    bottom: 0;
+    bottom: -205px;
     width: 100%;
     height: 580px;
     background-image: url(${Bg7});
@@ -142,7 +144,8 @@ export const MainContainer = styled.div`
   }
 
   .bottom-div-7 form > input {
-    width: 354px;
+    max-width: 354px;
+    width: 95%;
     height: 50px;
     margin: 10px auto;
     border: none;
