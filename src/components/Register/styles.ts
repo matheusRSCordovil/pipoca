@@ -149,7 +149,6 @@ export const MainContainer = styled.div`
       padding-left: 20px;
       margin: 0;
       bottom: 440px;
-      width: 100%;
       padding-left: 20px;
 
       @media (min-width: 400px) {
@@ -313,6 +312,10 @@ export const MainContainer = styled.div`
     letter-spacing: -0.015em;
     text-align: left;
 
+    @media (max-width: 373px) {
+      width: 75%;
+    }
+
     span {
       font-weight: 700;
       line-height: 39px;
@@ -341,6 +344,10 @@ export const MainContainer = styled.div`
       letter-spacing: -0.015em;
       text-align: left;
       margin-bottom: 100px;
+
+      @media (max-width: 365px) {
+        width: 41%;
+      }
     }
   }
 
@@ -511,5 +518,17 @@ export const MainContainer = styled.div`
     line-height: 35px;
     letter-spacing: -0.015em;
     text-align: center;
+  }
+
+  .cell-img-2 {
+    width: 200px;
+    height: 319px;
+    position: absolute;
+    bottom: 84px;
+    right: 3px;
+
+    @media (max-width: 360px) {
+      right: -22px;
+    }
   }
 `;

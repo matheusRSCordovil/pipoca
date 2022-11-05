@@ -198,8 +198,7 @@ const Register = () => {
 
           <img
             style={{
-              position: "absolute",
-              width: "350px",
+              width: "85%",
               transform: "translate(6%,16%)",
             }}
             src={CalendarImg}
@@ -275,13 +274,14 @@ const Register = () => {
             <img
               alt="pipoca-puppet"
               src={CellImg2}
-              style={{
-                width: "200px",
-                height: "319px",
-                position: "absolute",
-                bottom: "84px",
-                right: "3px",
-              }}
+              className="cell-img-2"
+              // style={{
+              //   width: "200px",
+              //   height: "319px",
+              //   position: "absolute",
+              //   bottom: "84px",
+              //   right: "3px",
+              // }}
             />
           </div>
         </div>
