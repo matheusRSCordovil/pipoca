@@ -53,7 +53,7 @@ export const MainContainer = styled.div`
     min-height: 865px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
   }
 
   .login-container-7 label {
@@ -108,7 +108,7 @@ export const MainContainer = styled.div`
     min-height: 865px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
   }
 
   .login-container-5 {
@@ -116,7 +116,7 @@ export const MainContainer = styled.div`
     background-color: rgb(19, 145, 237);
     min-height: 865px;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     flex-direction: column;
   }
 
@@ -126,7 +126,7 @@ export const MainContainer = styled.div`
     min-height: 865px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
   }
 
   .login-container-3 {
@@ -135,7 +135,7 @@ export const MainContainer = styled.div`
     min-height: 850px;
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100vw;
 
     span {
       font-size: 32px;
@@ -167,7 +167,7 @@ export const MainContainer = styled.div`
     /* min-height: 100vh; */
     height: 100%;
     min-height: 865px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     background-image: url(${Bg2});
