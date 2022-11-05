@@ -1,5 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
+// import { Carousel } from "react-responsive-carousel";
+import Carousel from "../re-carousel-master/src/carousel";
 import { MainContainer } from "./styles";
 import NextIcon from "../../assets/icon/play.fill.svg";
 import PipocaPuppet from "../../assets/img/pipoca-puppet.png";
@@ -18,6 +19,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { useHomeProvider } from "../../providers/HomeProvider";
+import IndicatorDots from "./indicator-dots";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -89,60 +91,11 @@ const Register = () => {
 
   return (
     <MainContainer>
-      <Carousel
-        showThumbs={false}
-        showStatus={false}
-        renderIndicator={(onClickHandler, isSelected, index, label) => {
-          if (isSelected) {
-            return (
-              <li
-                style={{ ...indicatorStylesOn, background: "#FB991C" }}
-                aria-label={`Selected: ${label} ${index + 1}`}
-                title={`Selected: ${label} ${index + 1}`}
-              />
-            );
-          }
-          return (
-            <li
-              style={indicatorStyles}
-              onClick={onClickHandler}
-              onKeyDown={onClickHandler}
-              value={index}
-              key={index}
-              role="button"
-              tabIndex={0}
-              title={`${label} ${index + 1}`}
-              aria-label={`${label} ${index + 1}`}
-            />
-          );
-        }}
-        renderArrowNext={(onClickHandler, hasNext, label) =>
-          hasNext ? (
-            <button
-              className="arrow-next"
-              onClick={onClickHandler}
-              title={label}
-            >
-              <p>Próximo</p>
-              <img alt="next" src={NextIcon} />
-            </button>
-          ) : (
-            <button
-              className="arrow-next"
-              title={label}
-              type="submit"
-              form="form1"
-            >
-              <p>Entrar!</p>
-              <img alt="next" src={NextIcon} />
-            </button>
-          )
-        }
-      >
+      <Carousel widgets={[IndicatorDots]}>
         <div
           className="login-container"
           style={{
-            minHeight: "100vh",
+            minHeight: "865px",
             width: "100%",
             height: "100%",
             minWidth: "390px",

@@ -50,6 +50,7 @@ export const MainContainer = styled.div`
   .login-container-7 {
     background-color: rgb(19, 145, 237);
     height: 100vh;
+    min-height: 865px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -104,6 +105,7 @@ export const MainContainer = styled.div`
   .login-container-6 {
     background-color: rgb(19, 145, 237);
     height: 100vh;
+    min-height: 865px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -112,6 +114,7 @@ export const MainContainer = styled.div`
   .login-container-5 {
     display: flex;
     background-color: rgb(19, 145, 237);
+    min-height: 865px;
     height: 100vh;
     width: 100%;
     flex-direction: column;
@@ -120,6 +123,7 @@ export const MainContainer = styled.div`
   .login-container-4 {
     background-color: rgb(19, 145, 237);
     height: 100vh;
+    min-height: 865px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -148,9 +152,9 @@ export const MainContainer = styled.div`
       letter-spacing: -0.015em;
       padding-left: 20px;
       margin: 0;
-      bottom: 382px;
+      bottom: 440px;
       width: 100%;
-      padding-left: 40px;
+      padding-left: 20px;
 
       @media (min-width: 400px) {
         bottom: 400px;
@@ -160,7 +164,9 @@ export const MainContainer = styled.div`
 
   .login-container-2 {
     background-color: rgb(19, 145, 237);
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100%;
+    min-height: 865px;
     width: 100%;
     display: flex;
     flex-direction: column;
