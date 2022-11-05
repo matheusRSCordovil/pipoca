@@ -18,8 +18,48 @@ export const MainContainer = styled.div`
   background-color: ${PRIMARY.blue};
   font-family: Roboto-Condensed;
 
-  @media (max-width: 389px) {
-    min-height: 125vh;
+  .login-container {
+    background-color: rgb(19, 145, 237);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .login-container-7 {
+    background-color: rgb(19, 145, 237);
+    height: 100vh;
+    min-height: 865px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .login-container-6 {
+    background-color: rgb(19, 145, 237);
+    height: 100vh;
+    min-height: 865px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+  }
+
+  .login-container-5 {
+    display: flex;
+    background-color: rgb(19, 145, 237);
+    min-height: 865px;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+  }
+
+  .login-container-4 {
+    background-color: rgb(19, 145, 237);
+    height: 100vh;
+    min-height: 865px;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
   }
 
   input {
@@ -37,23 +77,6 @@ export const MainContainer = styled.div`
 
   .carousel .control-dots {
     margin-bottom: 30px;
-  }
-
-  .login-container {
-    background-color: rgb(19, 145, 237);
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .login-container-7 {
-    background-color: rgb(19, 145, 237);
-    height: 100vh;
-    min-height: 865px;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
   }
 
   .login-container-7 label {
@@ -102,33 +125,6 @@ export const MainContainer = styled.div`
     font-weight: 700;
   }
 
-  .login-container-6 {
-    background-color: rgb(19, 145, 237);
-    height: 100vh;
-    min-height: 865px;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-  }
-
-  .login-container-5 {
-    display: flex;
-    background-color: rgb(19, 145, 237);
-    min-height: 865px;
-    height: 100vh;
-    width: 100vw;
-    flex-direction: column;
-  }
-
-  .login-container-4 {
-    background-color: rgb(19, 145, 237);
-    height: 100vh;
-    min-height: 865px;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-  }
-
   .login-container-3 {
     background-color: rgb(19, 145, 237);
     height: 100vh;
@@ -164,10 +160,8 @@ export const MainContainer = styled.div`
 
   .login-container-2 {
     background-color: rgb(19, 145, 237);
-    /* min-height: 100vh; */
     height: 100%;
     min-height: 865px;
-    width: 100vw;
     display: flex;
     flex-direction: column;
     background-image: url(${Bg2});

@@ -80,7 +80,6 @@ const Register = () => {
             minHeight: "865px",
             width: "100vw",
             height: "100%",
-            minWidth: "390px",
           }}
         >
           <img
