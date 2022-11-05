@@ -14,6 +14,7 @@ const Login = () => {
   const { setUserNome, setAtivo } = useHomeProvider();
 
   const [error, setError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getToken = () => {
     let token = localStorage.getItem("token");
@@ -26,6 +27,12 @@ const Login = () => {
     if (token) {
       navigate("/");
     }
+
+    let timer1 = setTimeout(() => setIsLoading(false), 500);
+    return () => {
+      clearTimeout(timer1);
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -61,7 +68,10 @@ const Login = () => {
 
   return (
     <MainContainer>
-      <div className="login-container-7">
+      <div
+        className="login-container-7"
+        style={{ width: isLoading ? "900px" : "100%" }}
+      >
         <img
           style={{ width: "106px" }}
           alt="aada-icon"

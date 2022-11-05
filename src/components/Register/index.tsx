@@ -13,7 +13,7 @@ import CellImg5 from "../../assets/img/group414.png";
 import CalendarImg from "../../assets/img/group404.png";
 import MutedtIcon from "../../assets/img/speaker.png";
 import AadaLogo from "../../assets/icon/logo-aada.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -26,6 +26,8 @@ const Register = () => {
 
   const { userNome, setUserNome } = useHomeProvider();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const getToken = () => {
     let token = localStorage.getItem("token");
     return token;
@@ -33,6 +35,10 @@ const Register = () => {
 
   useEffect(() => {
     getToken();
+    let timer1 = setTimeout(() => setIsLoading(false), 500);
+    return () => {
+      clearTimeout(timer1);
+    };
   }, []);
 
   const formik = useFormik({
@@ -78,7 +84,7 @@ const Register = () => {
           className="login-container"
           style={{
             minHeight: "865px",
-            width: "100vw",
+            width: isLoading ? "900px" : "100vw",
             height: "100%",
           }}
         >
