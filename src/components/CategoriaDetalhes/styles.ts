@@ -84,6 +84,7 @@ export const MainContainer = styled.div`
   .img-box-header {
     display: flex;
     height: 174px;
+    justify-content: flex-end;
     width: 100%;
     background-image: url(${BgDepoimentos});
     margin-bottom: 20px;
@@ -129,7 +130,8 @@ export const MainContainer = styled.div`
   } */
 
   .pesquisa-input {
-    width: 354px;
+    max-width: 354px;
+    width: 95%;
     height: 50px;
     margin: 35px auto;
     border: none;
