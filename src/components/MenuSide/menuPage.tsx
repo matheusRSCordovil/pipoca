@@ -65,7 +65,7 @@ const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
         }}
         onClick={() => handleSelect("config")}
       >
-        <ListItemText primary="Configurações" />
+        <ListItemText primary="Minha Conta" />
       </ListItem>
     </List>
   );
