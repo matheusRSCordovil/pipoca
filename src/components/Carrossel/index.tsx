@@ -33,6 +33,7 @@ function Carrossel({ ...props }: { data: any; showPlus?: boolean }) {
         showSlidesBeforeInit
         onRequestChange={() => handleNext()}
         itemsToShow={0}
+        itemsToScroll={2}
         backwardBtnProps={{ show: false }}
         forwardBtnProps={{ show: false }}
         centerMode={false}

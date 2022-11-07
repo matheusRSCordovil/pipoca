@@ -29,6 +29,10 @@ export const MainContainer = styled.div`
     margin-bottom: 20px;
     justify-content: space-between;
     flex-wrap: wrap;
+
+    @media (max-width: 382px) {
+      justify-content: center;
+    }
   }
 
   h4 {
