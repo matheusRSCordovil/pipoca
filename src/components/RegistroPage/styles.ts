@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PencilIcon from "../../assets/icon/pencilIcon.svg";
 import { PRIMARY } from "../../theme/palette";
 
 export const MainContainer = styled.div`
@@ -13,8 +12,10 @@ export const MainContainer = styled.div`
   .input-meu-registro-box {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 30px;
     margin: 0px auto;
+    width: 100%;
   }
 
   .input-meu-registro-box img {
@@ -23,13 +24,10 @@ export const MainContainer = styled.div`
 
   .input-meu-registro {
     height: 15px;
-    width: 321px;
+    max-width: 321px;
+    width: 92%;
     border: none;
     border-bottom: 2px solid #7d7d7d;
-    /* margin: 0px auto; */
-    /* margin-bottom: 25px; */
-    /* background: url(${PencilIcon}) no-repeat; */
-    /* background-position-x: right; */
   }
 
   .label-input {
@@ -201,6 +199,12 @@ export const MainContainer = styled.div`
       color: ${PRIMARY.darkBlue};
       margin: 0 auto;
       width: 90%;
+    }
+  }
+
+  .hoje-word {
+    @media (max-width: 370px) {
+      display: none;
     }
   }
 

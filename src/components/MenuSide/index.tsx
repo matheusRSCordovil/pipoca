@@ -22,21 +22,22 @@ export default function FullScreenDialog({
 
   const [select, setSelect] = React.useState("");
 
+  React.useEffect(() => {
+    setSelect("");
+  }, [open]);
+
   const handleSelect = (e: string) => {
     setSelect(e);
   };
 
-  const handleModalClose = () => {
-    handleClose();
-    setSelect("");
-  };
+  // handleClose();
 
   return (
     <div>
       <Dialog
         fullScreen
         open={open}
-        onClose={handleModalClose}
+        onClose={handleClose}
         // @ts-ignore
         TransitionComponent={Transition}
         PaperProps={{

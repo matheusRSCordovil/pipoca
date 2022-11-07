@@ -22,7 +22,7 @@ type HomeProviderProps = {
 const DEFAULT_VALUE = {
   filtrosAtivos: "",
   setFiltrosAtivos: () => {},
-  ativo: "",
+  ativo: "hoje",
   setAtivo: () => {},
   idAtivo: "",
   setIdAtivo: () => {},

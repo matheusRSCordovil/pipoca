@@ -77,6 +77,7 @@ const RegistroPage = () => {
     "",
     "",
     "",
+    "",
   ]);
 
   const handleComentario = (e: any, index?: number, ativo?: string) => {
@@ -359,7 +360,10 @@ const RegistroPage = () => {
 
       {/* 17,18,19,20 */}
 
-      <TitleDiv>Como você está se sentindo hoje? </TitleDiv>
+      <TitleDiv>
+        Como você está se sentindo <span className="hoje-word">&nbsp;hoje</span>
+        ?{" "}
+      </TitleDiv>
       <IconesDiv>
         <span style={{ color: "#FB991C" }}>
           <img
@@ -723,7 +727,23 @@ const RegistroPage = () => {
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais algum comentário sobre seus cuidados de hoje?
       </label>
-      <input className="input-meu-registro" type="text" />
+      {/* <input className="input-meu-registro" type="text" /> */}
+      <span className="input-meu-registro-box" style={{ marginBottom: 40 }}>
+        <input
+          className="input-meu-registro"
+          onChange={(e) => handleComentario(e.target.value, 5, "plus")}
+          type="text"
+        />
+        {comentarioAtivo === "plus" ? (
+          <img
+            alt="chek-icon"
+            src={CheckIcon}
+            onClick={() => handleComentarioChange()}
+          />
+        ) : (
+          <img src={PencilIcon} alt="edit" />
+        )}
+      </span>
     </MainContainer>
   ) : (
     // <ProgressoDonePage />
