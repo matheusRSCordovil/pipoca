@@ -101,6 +101,16 @@ export const MainContainer = styled.div`
   .remedio-container-tr > p {
     width: 17.5%;
     margin: 0;
+
+    /* @media (max-width: 365px) {
+      width: 15%;
+    } */
+  }
+
+  .remedio-container-tr > div {
+    display: flex;
+    width: 6%;
+    visibility: hidden;
   }
 
   .remedio-container-tr > p:nth-child(2) > input {
@@ -148,6 +158,10 @@ export const MainContainer = styled.div`
     width: 17.5%;
     margin: 0;
     white-space: nowrap;
+
+    /* @media (max-width: 365px) {
+      width: 15%;
+    } */
   }
 
   .remedio-container > div:first-child > p:first-child {
@@ -156,18 +170,23 @@ export const MainContainer = styled.div`
     line-height: 34px;
     letter-spacing: 0em;
     text-align: left;
-    width: 30%;
+    width: 20%;
   }
 
   .remedio-container > div:first-child > p:nth-child(2) {
+    width: 15%;
     color: #1391ed;
   }
 
   .remedio-container > div:first-child > p:nth-child(3) {
-    color: #ffd550;
+    color: #1391ed;
   }
 
   .remedio-container > div:first-child > p:nth-child(4) {
+    color: #ffd550;
+  }
+
+  .remedio-container > div:first-child > p:nth-child(5) {
     color: #fb991c;
   }
 
@@ -319,6 +338,10 @@ export const IconesDiv = styled.div`
   height: 68px;
   width: 86%;
   margin: 35px auto;
+
+  @media (max-width: 360px) {
+    width: 94%;
+  }
 
   p {
     font-size: 12px;

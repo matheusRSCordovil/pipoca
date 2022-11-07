@@ -7,10 +7,20 @@ import { useEffect, useState } from "react";
 import API from "../../services";
 
 const AprendizagemPage = () => {
-  const { openFilterMenu, setOpenFilterMenu, filtrosAtivos } =
-    useHomeProvider();
+  const {
+    openFilterMenu,
+    setOpenFilterMenu,
+    filtrosAtivos,
+    setIdAtivo,
+    setAtivo,
+  } = useHomeProvider();
 
   const [conteudos, setConteudos] = useState<any>([]);
+
+  const handleClick = (index: number) => {
+    setIdAtivo(index + "");
+    setAtivo("detalhes");
+  };
 
   useEffect(() => {
     API.get("Conteudo?CategoriaId=1").then((response) => {
@@ -59,7 +69,12 @@ const AprendizagemPage = () => {
       <div className="aprendizagem-card">
         <h4>{conteudos && conteudos.titulo}</h4>
         <p>{conteudos && conteudos.resumo}</p>
-        <img src={PlusIcon} alt="plusIcon" className="plus-icone" />
+        <img
+          src={PlusIcon}
+          alt="plusIcon"
+          className="plus-icone"
+          onClick={() => handleClick(conteudos.id)}
+        />
       </div>
 
       <input type="text" className="pesquisa-input" />

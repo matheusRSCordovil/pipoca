@@ -361,8 +361,7 @@ const RegistroPage = () => {
       {/* 17,18,19,20 */}
 
       <TitleDiv>
-        Como você está se sentindo <span className="hoje-word">&nbsp;hoje</span>
-        ?{" "}
+        Como você está se sentindo<span className="hoje-word">&nbsp;hoje</span>?{" "}
       </TitleDiv>
       <IconesDiv>
         <span style={{ color: "#FB991C" }}>
@@ -597,8 +596,8 @@ const RegistroPage = () => {
 
       <div className="remedio-container">
         <div>
+          <p>Remédios </p>
           <p>
-            Remédios
             <img
               onClick={() => handleEditAtivo("remedio")}
               src={editAtivo === "remedio" ? EditAtivoIcon : PencilIcon}
@@ -606,6 +605,7 @@ const RegistroPage = () => {
               style={{ marginLeft: "10px" }}
             />
           </p>
+
           <p>Tomei</p>
           <p>Atrasei</p>
           <p>Esqueci</p>
@@ -623,6 +623,9 @@ const RegistroPage = () => {
               />
             )}
           </p>
+
+          <div></div>
+
           <p>
             <input type="radio" name="remedio-radio" />
           </p>
@@ -640,8 +643,8 @@ const RegistroPage = () => {
 
       <div className="remedio-container">
         <div>
+          <p>Pomadas</p>
           <p>
-            Pomadas
             <img
               onClick={() => handleEditAtivo("pomada")}
               src={editAtivo === "pomada" ? EditAtivoIcon : PencilIcon}
@@ -665,6 +668,8 @@ const RegistroPage = () => {
               />
             )}
           </p>
+
+          <div></div>
           <p>
             <input type="radio" name="pomada-radio" />
           </p>
@@ -682,8 +687,9 @@ const RegistroPage = () => {
 
       <div className="remedio-container">
         <div>
+          <p>Hidratante</p>
           <p>
-            Hidratante
+            {" "}
             <img
               onClick={() => handleEditAtivo("hidratante")}
               src={editAtivo === "hidratante" ? EditAtivoIcon : PencilIcon}
@@ -707,6 +713,7 @@ const RegistroPage = () => {
               />
             )}
           </p>
+          <div></div>
           <p>
             <input type="radio" name="radio" />
           </p>

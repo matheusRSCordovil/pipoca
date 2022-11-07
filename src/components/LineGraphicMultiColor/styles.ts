@@ -52,7 +52,7 @@ export const MainContainer = styled.div`
     align-items: center;
     min-height: 37px;
     height: 37px;
-    width: 307px;
+    width: 300px;
     border-radius: 0 5px 5px 0;
     color: #ffffff;
     font-size: 22px;
