@@ -4,7 +4,7 @@ import AppIcon from "../../assets/icon/Icone_app.png";
 
 const MyComponent = () => {
   return (
-    <PwaInstallPopupIOS force={true} delay={3} lang="pt" appIcon={AppIcon}>
+    <PwaInstallPopupIOS delay={3} lang="pt" appIcon={AppIcon}>
       <div
         style={{
           padding: "15px 30px",
