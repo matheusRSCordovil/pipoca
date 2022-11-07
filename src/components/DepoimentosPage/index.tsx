@@ -53,7 +53,7 @@ const DepoimentosPage = () => {
               className="box-depoimento"
               key={i}
             >
-              <h5>{item.titulo}</h5>
+              <h5>{item.titulo.slice(0, 25) + "..."}</h5>
               <p>Nome do usuário</p>
             </div>
           ))}
