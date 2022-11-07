@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MainContainer } from "./styles";
 import PuppetHandsUp from "../../assets/img/pipoca-puppet-v3.png";
 import HumorIcon from "../../assets/icon/hojeIcons/humor.png";
@@ -15,9 +15,19 @@ import BanhoIcon from "../../assets/icon/hojeIcons/banho.png";
 import BanhoIconOn from "../../assets/icon/hojeIcons/banhoOn.png";
 import PlusIcon from "../../assets/icon/hojeIcons/plus.png";
 import { useHomeProvider } from "../../providers/HomeProvider";
+import API from "../../services";
 
 const HojePage = () => {
   const { setAtivo } = useHomeProvider();
+
+  const [conteudos, setConteudos] = useState<any>([]);
+
+  useEffect(() => {
+    API.get("Conteudo?CategoriaId=1").then((response) => {
+      let index = Math.floor(Math.random() * response.data.length - 1);
+      setConteudos(response.data[index]);
+    });
+  }, []);
 
   const dias = [
     1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -145,11 +155,8 @@ const HojePage = () => {
       <p className="aprendizagem-do-dia-text">Aprendizagem do dia</p>
 
       <div className="aprendizagem-card">
-        <h4>Um banho morno para começar bem o dia!</h4>
-        <p>
-          Você sabia que o banho morno e rápido pode te ajudar a controlar as
-          irritações da pele? Clique aqui pra ler mais sobre.
-        </p>
+        <h4>{conteudos && conteudos?.titulo}</h4>
+        <p>{conteudos && conteudos?.resumo}</p>
         <img src={PlusIcon} alt="plusIcon" className="plus-icone" />
       </div>
     </MainContainer>

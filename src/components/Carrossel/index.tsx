@@ -28,6 +28,7 @@ function Carrossel({ ...props }: { data: any; showPlus?: boolean }) {
   return (
     <MainContainer>
       <Carousel
+        infinite={false}
         activeSlideIndex={activeSlideIndex}
         showSlidesBeforeInit
         onRequestChange={() => handleNext()}
@@ -36,12 +37,6 @@ function Carrossel({ ...props }: { data: any; showPlus?: boolean }) {
         forwardBtnProps={{ show: false }}
         centerMode={false}
       >
-        {/* {Array.from({ length: 4 }).map((_, index) => (
-          <div key={index} className="block">
-            {index}
-          </div>
-        ))} */}
-
         {data &&
           data.map((item: any, index: number) => (
             <div
@@ -49,7 +44,7 @@ function Carrossel({ ...props }: { data: any; showPlus?: boolean }) {
               className="block"
               onClick={() => handleClick(item.id)}
             >
-              <h4>{item.titulo}</h4>
+              <h4>{item.titulo.slice(0, 25) + "..."}</h4>
             </div>
           ))}
 

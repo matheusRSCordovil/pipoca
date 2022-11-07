@@ -10,6 +10,15 @@ const AprendizagemPage = () => {
   const { openFilterMenu, setOpenFilterMenu, filtrosAtivos } =
     useHomeProvider();
 
+  const [conteudos, setConteudos] = useState<any>([]);
+
+  useEffect(() => {
+    API.get("Conteudo?CategoriaId=1").then((response) => {
+      let index = Math.floor(Math.random() * response.data.length - 1);
+      setConteudos(response.data[index]);
+    });
+  }, []);
+
   const [level1, setLevel1] = useState([]);
   const [level2, setLevel2] = useState([]);
   const [level3, setLevel3] = useState([]);
@@ -48,11 +57,8 @@ const AprendizagemPage = () => {
       <p className="aprendizagem-do-dia-text">Aprendizagem do dia</p>
 
       <div className="aprendizagem-card">
-        <h4>Um banho morno para começar bem o dia!</h4>
-        <p>
-          Você sabia que o banho morno e rápido pode te ajudar a controlar as
-          irritações da pele? Clique aqui pra ler mais sobre.
-        </p>
+        <h4>{conteudos && conteudos.titulo}</h4>
+        <p>{conteudos && conteudos.resumo}</p>
         <img src={PlusIcon} alt="plusIcon" className="plus-icone" />
       </div>
 
