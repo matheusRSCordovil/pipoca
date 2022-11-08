@@ -10,7 +10,7 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
 
-import { toast } from "react-toastify";
+// import { SnackbarProvider, enqueueSnackbar } from 'notistack'
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
@@ -88,16 +88,21 @@ function registerValidSW(swUrl: string, config?: Config) {
                 "New content is available and will be used when all " +
                   "tabs for this page are closed. See https://cra.link/PWA."
               );
+              // @ts-ignore
+              enqueueSnackbar("A new version was released", {
+                persist: true,
+                variant: "success",
+              });
 
-              toast.info(
-                `Nova versão disponível! Para atualizar, feche todas as abas e abra novamente.`,
-                {
-                  toastId: "appUpdateAvailable", // Prevent duplicate toasts
-                  onClick: () => window.close(), // Closes windows on click
-                  autoClose: false, // Prevents toast from auto closing
-                  position: toast.POSITION.BOTTOM_CENTER,
-                }
-              );
+              // toast.info(
+              //   `Nova versão disponível! Para atualizar, feche todas as abas e abra novamente.`,
+              //   {
+              //     toastId: "appUpdateAvailable", // Prevent duplicate toasts
+              //     onClick: () => window.close(), // Closes windows on click
+              //     autoClose: false, // Prevents toast from auto closing
+              //     position: toast.POSITION.BOTTOM_CENTER,
+              //   }
+              // );
 
               // Execute callback
               if (config && config.onUpdate) {
