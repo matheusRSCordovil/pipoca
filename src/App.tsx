@@ -55,7 +55,7 @@ function App() {
         persist: true,
         variant: "success",
         // @ts-ignore
-        action: refreshAction(),
+        // action: refreshAction(),
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,7 +64,6 @@ function App() {
   return (
     <GlobalContext>
       <div className="App">
-        <>{serviceWorkerRegistration.register()}</>
         <PwaPopup />
         <TopMenu />
         <header className="App-header">
