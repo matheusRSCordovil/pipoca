@@ -10,10 +10,10 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 function App() {
   return (
     <GlobalContext>
+      <ToastContainer />
       <div className="App">
         <>{serviceWorkerRegistration.register()}</>
         <PwaPopup />
-        <ToastContainer />
         <TopMenu />
         <header className="App-header">
           <Routing />
