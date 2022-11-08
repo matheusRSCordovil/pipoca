@@ -86,6 +86,8 @@ function registerValidSW(swUrl: string, config?: Config) {
                 "New content is available and will be used when all " +
                   "tabs for this page are closed. See https://cra.link/PWA."
               );
+              window.location.reload();
+              window.location.reload();
               // @ts-ignore
               // enqueueSnackbar("A new version was released", {
               //   persist: true,
