@@ -25,7 +25,7 @@ const RelatorioPage = () => {
   return (
     <MainContainer>
       <div className="registro-diario-box">
-        <p>Registros diários</p>
+        <p>Registros diáriois</p>
         <img alt="" src={ShareIcon} />
       </div>
 
