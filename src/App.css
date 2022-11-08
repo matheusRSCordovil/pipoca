@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  --toastify-toast-max-height: 300px;
 }
 
 .App-logo {

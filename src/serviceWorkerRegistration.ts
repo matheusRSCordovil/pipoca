@@ -83,21 +83,21 @@ function registerValidSW(swUrl: string, config?: Config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
-              window.location.reload();
 
               console.log(
                 "New content is available and will be used when all " +
                   "tabs for this page are closed. See https://cra.link/PWA."
               );
 
-              // toast.info(
-              //   `Nova versão disponível! Para atualizar, feche todas as abas e abra novamente.`,
-              //   {
-              //     toastId: "appUpdateAvailable", // Prevent duplicate toasts
-              //     onClick: () => window.close(), // Closes windows on click
-              //     autoClose: false, // Prevents toast from auto closing
-              //   }
-              // );
+              toast.info(
+                `Nova versão disponível! Para atualizar, feche todas as abas e abra novamente.`,
+                {
+                  toastId: "appUpdateAvailable", // Prevent duplicate toasts
+                  onClick: () => window.close(), // Closes windows on click
+                  autoClose: false, // Prevents toast from auto closing
+                  position: toast.POSITION.BOTTOM_CENTER,
+                }
+              );
 
               // Execute callback
               if (config && config.onUpdate) {

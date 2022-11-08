@@ -12,7 +12,6 @@ function App() {
     <GlobalContext>
       <div className="App">
         <>{serviceWorkerRegistration.register()}</>
-
         <PwaPopup />
         <ToastContainer />
         <TopMenu />
