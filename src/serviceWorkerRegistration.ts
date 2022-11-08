@@ -87,10 +87,10 @@ function registerValidSW(swUrl: string, config?: Config) {
                   "tabs for this page are closed. See https://cra.link/PWA."
               );
               // @ts-ignore
-              enqueueSnackbar("A new version was released", {
-                persist: true,
-                variant: "success",
-              });
+              // enqueueSnackbar("A new version was released", {
+              //   persist: true,
+              //   variant: "success",
+              // });
 
               // toast.info(
               //   `Nova versão disponível! Para atualizar, feche todas as abas e abra novamente.`,
