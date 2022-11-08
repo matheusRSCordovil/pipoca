@@ -61,7 +61,9 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {}, [newVersionAvailable]);
+  useEffect(() => {
+    console.log("newVersionAvailable", newVersionAvailable);
+  }, [newVersionAvailable]);
 
   return (
     <GlobalContext>
