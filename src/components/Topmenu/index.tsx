@@ -29,7 +29,7 @@ const TopMenu = () => {
   return location.pathname === "/" ? (
     <MainContainer>
       {ativo === "relatorio" && !openMenu ? (
-        <p>Relatório</p>
+        <p>Ré</p>
       ) : !openMenu ? (
         <p>Bom dia, {userNome}!</p>
       ) : null}

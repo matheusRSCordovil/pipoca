@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import NextIcon from "../../../assets/icon/play.fill.svg";
 
 function Dot(props) {
   return (
@@ -9,9 +9,8 @@ function Dot(props) {
         height: "8px",
         width: "8px",
         borderRadius: "4px",
-        backgroundColor: "white",
+        backgroundColor: props.selected ? "#FB991C" : "#1391ED",
         margin: "7px 5px",
-        opacity: props.selected ? "1" : "0.3",
         transitionDuration: "300ms",
       }}
     />
@@ -27,6 +26,24 @@ export default function IndicatorDots(props) {
     textAlign: "center",
   };
 
+  const buttonStyle = {
+    backgroundColor: "transparent",
+    border: "none",
+    display: "flex",
+    alignItems: "center",
+    width: "87px",
+    margin: 0,
+    position: "absolute",
+    bottom: "0px",
+    right: "5px",
+    fontSize: "13px",
+    fontWeight: 400,
+    lineHeight: "35px",
+    letterSpacing: "0em",
+    textAlign: "left",
+    color: "#1391ED",
+  };
+
   if (props.total < 2) {
     // Hide dots when there is only one dot.
     return <div style={wrapperStyle} />;
@@ -37,14 +54,15 @@ export default function IndicatorDots(props) {
           return (
             <>
               <Dot key={i} selected={props.index === i} />
-
-              <button className="arrow-next" type="submit" form="form1">
-                <p>Entrar!</p>
-                <img alt="next-icon" />
-              </button>
             </>
           );
         })}
+        {props.index === 6 && (
+          <button type="submit" form="form1" style={buttonStyle}>
+            <p style={{ margin: 0 }}>Entrar!</p>
+            <img alt="next-icon" src={NextIcon} style={{ paddingLeft: 3 }} />
+          </button>
+        )}
       </div>
     );
   }

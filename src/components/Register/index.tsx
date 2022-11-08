@@ -1,8 +1,6 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import { Carousel } from "react-responsive-carousel";
 import Carousel from "../re-carousel-master/src/carousel";
 import { MainContainer } from "./styles";
-import NextIcon from "../../assets/icon/play.fill.svg";
 import PipocaPuppet from "../../assets/img/pipoca-puppet.png";
 import PipocaPuppetV22 from "../../assets/img/pipoca-puppet-v22.png";
 import PipocaPuppetV4 from "../../assets/img/pipoca-puppet-v4.png";
@@ -19,7 +17,7 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import axios from "axios";
 import { useHomeProvider } from "../../providers/HomeProvider";
-import IndicatorDots from "./indicator-dots";
+import IndicatorDots from "../re-carousel-master/src/indicator-dots";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -428,10 +426,6 @@ const Register = () => {
               seus registros!
             </p>
           </div>
-          {/* <button className="arrow-next" type="submit" form="form1">
-            <p>Entrar!</p>
-            <img src={NextIcon} alt="next-icon" />
-          </button> */}
         </div>
       </Carousel>
     </MainContainer>

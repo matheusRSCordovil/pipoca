@@ -193,12 +193,22 @@ export const MainContainer = styled.div`
   .info-dias-container {
     display: flex;
     flex-direction: column;
-    height: 171px;
+    height: fit-content;
+    padding-bottom: 5px;
     width: 270px;
     border-radius: 34px;
     background: #99cef4;
     margin-right: 20px;
     justify-content: center;
+    position: relative;
+
+    img {
+      width: 192px;
+      height: 163px;
+      position: absolute;
+      bottom: -110px;
+      left: -125px;
+    }
 
     h4 {
       font-size: 26px;
