@@ -773,7 +773,7 @@ const RegistroPage = () => {
             Você já completou 7 dias da sua jornada. Não se esqueça:
             <br />
             quantos mais dias você registrar, mais conteúdos você irá
-            desbloquear! Assim você conhecerá mais sobre a dermatite atípica e
+            desbloquear! Assim você conhecerá mais sobre a dermatite atópica e
             sobre você mesmo!
           </p>
           <img src={PipocaV2} alt="logo" />
