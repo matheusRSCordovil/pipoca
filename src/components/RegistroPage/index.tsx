@@ -6,7 +6,7 @@ import {
   TitleDiv,
 } from "./styles";
 import { PRIMARY } from "../../theme/palette";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PipocaV2 from "../../assets/img/pipoca-puppet-v2.png";
 import Calendar from "../Calendar";
 import Pele1 from "../../assets/icon/meuRegistroIcons/pele1.svg";
@@ -80,6 +80,30 @@ const RegistroPage = () => {
     "",
   ]);
 
+  useEffect(() => {
+    API.get("Jornada/Atual").then((response) => {
+      response.data.registro.forEach((jornada: any) => {
+        if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
+          setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
+        }
+        if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
+          setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
+        }
+        if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
+          setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
+        }
+        if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
+          setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
+        }
+        if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
+          setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
+        }
+      });
+    });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleComentario = (e: any, index?: number, ativo?: string) => {
     if (ativo) {
       setComentarioAtivo(ativo);
@@ -93,6 +117,7 @@ const RegistroPage = () => {
 
   const handleComentarioChange = () => {
     handleClick("", "");
+    setComentarioAtivo("");
   };
 
   // const handleDeletarModal = () => {
@@ -100,42 +125,42 @@ const RegistroPage = () => {
   // };
 
   const handleJornadaId = (categoria: string) => {
-    if (categoria === "pele4") {
+    if (categoria === "pele12") {
       activeJornadaIds[0] = 12;
     }
-    if (categoria === "pele3") {
+    if (categoria === "pele11") {
       activeJornadaIds[0] = 11;
     }
-    if (categoria === "pele2") {
+    if (categoria === "pele10") {
       activeJornadaIds[0] = 10;
     }
-    if (categoria === "pele1") {
+    if (categoria === "pele9") {
       activeJornadaIds[0] = 9;
     }
 
-    if (categoria === "sentindo4") {
+    if (categoria === "sentindo20") {
       activeJornadaIds[1] = 20;
     }
-    if (categoria === "sentindo3") {
+    if (categoria === "sentindo19") {
       activeJornadaIds[1] = 19;
     }
-    if (categoria === "sentindo2") {
+    if (categoria === "sentindo18") {
       activeJornadaIds[1] = 18;
     }
-    if (categoria === "sentindo1") {
+    if (categoria === "sentindo17") {
       activeJornadaIds[1] = 17;
     }
 
-    if (categoria === "dormir4") {
+    if (categoria === "dormir16") {
       activeJornadaIds[2] = 16;
     }
-    if (categoria === "dormir3") {
+    if (categoria === "dormir15") {
       activeJornadaIds[2] = 15;
     }
-    if (categoria === "dormir2") {
+    if (categoria === "dormir14") {
       activeJornadaIds[2] = 14;
     }
-    if (categoria === "dormir1") {
+    if (categoria === "dormir13") {
       activeJornadaIds[2] = 13;
     }
 
@@ -152,16 +177,16 @@ const RegistroPage = () => {
       activeJornadaIds[3] = 1;
     }
 
-    if (categoria === "dia4") {
+    if (categoria === "dia8") {
       activeJornadaIds[4] = 8;
     }
-    if (categoria === "dia3") {
+    if (categoria === "dia7") {
       activeJornadaIds[4] = 7;
     }
-    if (categoria === "dia2") {
+    if (categoria === "dia6") {
       activeJornadaIds[4] = 6;
     }
-    if (categoria === "dia1") {
+    if (categoria === "dia5") {
       activeJornadaIds[4] = 5;
     }
   };
@@ -175,13 +200,11 @@ const RegistroPage = () => {
   };
 
   const handleClick = (e: string, categoria: string) => {
-    let today = new Date().toISOString();
+    // let decoded: any = jwt_decode(localStorage.getItem("token") || "");
 
-    let decoded: any = jwt_decode(localStorage.getItem("token") || "");
+    // let userId = decoded.userId;
 
-    let userId = decoded.userId;
-
-    console.log(userId);
+    // console.log(userId);
 
     handleJornadaId(e);
 
@@ -225,56 +248,27 @@ const RegistroPage = () => {
       }
     }
 
-    API.put("Jornada/1", {
-      usuarioId: 1,
-      dia: 1,
-      data: today,
-      ciclo: 1,
+    API.post("Jornada/Cadastro", {
       registro: [
         {
-          jornadaId: 1,
           observacao: comentariosList[0],
           jornadaCategoriaOpcaoId: activeJornadaIds[0],
-          opcao: "string",
-          jornadaCategoriaId: 3,
-          categoria: "Sintomas",
-          data: today,
         },
         {
-          jornadaId: 1,
           observacao: comentariosList[1],
           jornadaCategoriaOpcaoId: activeJornadaIds[1],
-          opcao: "string",
-          jornadaCategoriaId: 1,
-          categoria: "Humor",
-          data: today,
         },
         {
-          jornadaId: 1,
           observacao: comentariosList[2],
           jornadaCategoriaOpcaoId: activeJornadaIds[2],
-          opcao: "string",
-          jornadaCategoriaId: 2,
-          categoria: "Sono",
-          data: today,
         },
         {
-          jornadaId: 1,
           observacao: comentariosList[3],
           jornadaCategoriaOpcaoId: activeJornadaIds[3],
-          opcao: "string",
-          jornadaCategoriaId: 6,
-          categoria: "Banho",
-          data: today,
         },
         {
-          jornadaId: 1,
           observacao: comentariosList[4],
           jornadaCategoriaOpcaoId: activeJornadaIds[4],
-          opcao: "string",
-          jornadaCategoriaId: 5,
-          categoria: "Rotina",
-          data: today,
         },
       ],
     });
@@ -309,30 +303,39 @@ const RegistroPage = () => {
       <IconesDiv>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele1", "pele")}
+          onClick={() => handleClick("pele9", "pele")}
         >
-          <img src={activePele === "pele1" ? Pele1active : Pele1} alt="icone" />
+          <img src={activePele === "pele9" ? Pele1active : Pele1} alt="icone" />
           <p>Boa</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele2", "pele")}
+          onClick={() => handleClick("pele10", "pele")}
         >
-          <img src={activePele === "pele2" ? Pele2active : Pele2} alt="icone" />
+          <img
+            src={activePele === "pele10" ? Pele2active : Pele2}
+            alt="icone"
+          />
           <p>Ressecada</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele3", "pele")}
+          onClick={() => handleClick("pele11", "pele")}
         >
-          <img src={activePele === "pele3" ? Pele3active : Pele3} alt="icone" />
+          <img
+            src={activePele === "pele11" ? Pele3active : Pele3}
+            alt="icone"
+          />
           <p>Com coceira</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele4", "pele")}
+          onClick={() => handleClick("pele12", "pele")}
         >
-          <img src={activePele === "pele4" ? Pele4active : Pele4} alt="icone" />
+          <img
+            src={activePele === "pele12" ? Pele4active : Pele4}
+            alt="icone"
+          />
           <p>Com dor</p>
         </span>
       </IconesDiv>
@@ -366,32 +369,32 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo1", "sentindo")}
-            src={activeSentindo === "sentindo1" ? Sentindo1active : Sentindo1}
+            onClick={() => handleClick("sentindo17", "sentindo")}
+            src={activeSentindo === "sentindo17" ? Sentindo1active : Sentindo1}
             alt="icone"
           />
           <p>Feliz</p>
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo2", "sentindo")}
-            src={activeSentindo === "sentindo2" ? Sentindo2active : Sentindo2}
+            onClick={() => handleClick("sentindo18", "sentindo")}
+            src={activeSentindo === "sentindo18" ? Sentindo2active : Sentindo2}
             alt="icone"
           />
           <p>Normal</p>
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo3", "sentindo")}
-            src={activeSentindo === "sentindo3" ? Sentindo3active : Sentindo3}
+            onClick={() => handleClick("sentindo19", "sentindo")}
+            src={activeSentindo === "sentindo19" ? Sentindo3active : Sentindo3}
             alt="icone"
           />
           <p>Triste</p>
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo4", "sentindo")}
-            src={activeSentindo === "sentindo4" ? Sentindo4active : Sentindo4}
+            onClick={() => handleClick("sentindo20", "sentindo")}
+            src={activeSentindo === "sentindo20" ? Sentindo4active : Sentindo4}
             alt="icone"
           />
           <p>Com estresse</p>
@@ -424,32 +427,32 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir1", "dormir")}
-            src={activeDormir === "dormir1" ? dormir1active : dormir1}
+            onClick={() => handleClick("dormir13", "dormir")}
+            src={activeDormir === "dormir13" ? dormir1active : dormir1}
             alt="icone"
           />
           <p>Bem</p>
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir2", "dormir")}
-            src={activeDormir === "dormir2" ? dormir2active : dormir2}
+            onClick={() => handleClick("dormir14", "dormir")}
+            src={activeDormir === "dormir14" ? dormir2active : dormir2}
             alt="icone"
           />
           <p>Mais ou menos</p>
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir3", "dormir")}
-            src={activeDormir === "dormir3" ? dormir3active : dormir3}
+            onClick={() => handleClick("dormir15", "dormir")}
+            src={activeDormir === "dormir15" ? dormir3active : dormir3}
             alt="icone"
           />
           <p>Mal</p>
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir4", "dormir")}
-            src={activeDormir === "dormir4" ? dormir4active : dormir4}
+            onClick={() => handleClick("dormir16", "dormir")}
+            src={activeDormir === "dormir16" ? dormir4active : dormir4}
             alt="icone"
           />
           <p>Insônia</p>
@@ -540,32 +543,32 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia1", "dia")}
-            src={activeDia === "dia1" ? Dia1active : Dia1}
+            onClick={() => handleClick("dia5", "dia")}
+            src={activeDia === "dia5" ? Dia1active : Dia1}
             alt="icone"
           />
           <p>Fiz exercícios</p>
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia2", "dia")}
-            src={activeDia === "dia2" ? Dia2active : Dia2}
+            onClick={() => handleClick("dia6", "dia")}
+            src={activeDia === "dia6" ? Dia2active : Dia2}
             alt="icone"
           />
           <p>Pratiquei um hobbie</p>
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia3", "dia")}
-            src={activeDia === "dia3" ? Dia3active : Dia3}
+            onClick={() => handleClick("dia7", "dia")}
+            src={activeDia === "dia7" ? Dia3active : Dia3}
             alt="icone"
           />
           <p>Encontrei amigos</p>
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia4", "dia")}
-            src={activeDia === "dia4" ? Dia4active : Dia4}
+            onClick={() => handleClick("dia8", "dia")}
+            src={activeDia === "dia8" ? Dia4active : Dia4}
             alt="icone"
           />
           <p>Relaxei</p>

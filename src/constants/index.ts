@@ -21,7 +21,7 @@ export const dataR = [
       },
       {
         x: "04rt",
-        y: 2,
+        y: null,
       },
       {
         x: "05rf",
