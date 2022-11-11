@@ -82,23 +82,36 @@ const RegistroPage = () => {
 
   useEffect(() => {
     API.get("Jornada/Atual").then((response) => {
+      let data: string[] = [];
       response.data.registro.forEach((jornada: any) => {
+        data.push(jornada.observacao);
         if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
+          activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
+          setActiveJornadaIds(activeJornadaIds);
           setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
         }
         if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
+          activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
+          setActiveJornadaIds(activeJornadaIds);
           setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
         }
         if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
+          activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
+          setActiveJornadaIds(activeJornadaIds);
           setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
         }
         if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
+          activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
+          setActiveJornadaIds(activeJornadaIds);
           setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
         }
         if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
           setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
+          activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
+          setActiveJornadaIds(activeJornadaIds);
         }
       });
+      setComentariosList(data);
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -200,12 +213,6 @@ const RegistroPage = () => {
   };
 
   const handleClick = (e: string, categoria: string) => {
-    // let decoded: any = jwt_decode(localStorage.getItem("token") || "");
-
-    // let userId = decoded.userId;
-
-    // console.log(userId);
-
     handleJornadaId(e);
 
     if (categoria === "dia") {
