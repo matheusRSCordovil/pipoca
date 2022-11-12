@@ -23,7 +23,7 @@ const HojePage = () => {
   const [conteudos, setConteudos] = useState<any>([]);
   const [dias, setDias] = useState<any[]>([]);
   const [diaAtual, setDiaAtual] = useState<any[]>([]);
-  const [categoriaPreenchida, setCategoriaPreenchida] = useState<any[]>([]);
+  const [categoriaPreenchida, setCategoriaPreenchida] = useState<any>([]);
 
   const handleClick = (index: number) => {
     setIdAtivo(index + "");
@@ -122,36 +122,58 @@ const HojePage = () => {
         <div>
           <img
             src={
-              categoriaPreenchida.filter((item) => item.categoria === "Humor")
-                .length
+              categoriaPreenchida.filter(
+                (item: { categoria: string }) => item.categoria === "Humor"
+              ).length
                 ? HumorIconOn
                 : HumorIcon
             }
             alt="humorIcon"
           />
           <p>Humor</p>
-          {mesCompleto && <p>Feliz</p>}
-        </div>
-
-        <div>
-          <img
-            src={
-              categoriaPreenchida.filter((item) => item.categoria === "Sono")
-                .length
-                ? SonoIconOn
-                : SonoIcon
-            }
-            alt="sonoIcon"
-          />
-          <p>Sono</p>
-          {mesCompleto && <p>Feliz</p>}
+          {categoriaPreenchida.filter(
+            (item: { categoria: string }) => item.categoria === "Humor"
+          ).length && (
+            <p>
+              {
+                categoriaPreenchida.filter(
+                  (item: { categoria: string }) => item.categoria === "Humor"
+                )[0].opcao
+              }
+            </p>
+          )}
         </div>
 
         <div>
           <img
             src={
               categoriaPreenchida.filter(
-                (item) => item.categoria === "Sintomas"
+                (item: { categoria: string }) => item.categoria === "Sono"
+              ).length
+                ? SonoIconOn
+                : SonoIcon
+            }
+            alt="sonoIcon"
+          />
+          <p>Sono</p>
+          {categoriaPreenchida.filter(
+            (item: { categoria: string }) => item.categoria === "Sono"
+          ).length && (
+            <p>
+              {
+                categoriaPreenchida.filter(
+                  (item: { categoria: string }) => item.categoria === "Sono"
+                )[0].opcao
+              }
+            </p>
+          )}
+        </div>
+
+        <div>
+          <img
+            src={
+              categoriaPreenchida.filter(
+                (item: { categoria: string }) => item.categoria === "Sintomas"
               ).length
                 ? SintomasIconOn
                 : SintomasIcon
@@ -166,7 +188,8 @@ const HojePage = () => {
           <img
             src={
               categoriaPreenchida.filter(
-                (item) => item.categoria === "ProdutosCuidados"
+                (item: { categoria: string }) =>
+                  item.categoria === "ProdutosCuidados"
               ).length
                 ? CuidadosIconOn
                 : CuidadosIcon
@@ -174,35 +197,67 @@ const HojePage = () => {
             alt="cuidadosIcon"
           />
           <p>Produtos de Cuidado</p>
-          {mesCompleto && <p>Feliz</p>}
+          {categoriaPreenchida.filter(
+            (item: { categoria: string }) => item.categoria === "Produtos"
+          ).length && (
+            <p>
+              {
+                categoriaPreenchida.filter(
+                  (item: { categoria: string }) => item.categoria === "Produtos"
+                )[0].opcao
+              }
+            </p>
+          )}
         </div>
 
         <div>
           <img
             src={
-              categoriaPreenchida.filter((item) => item.categoria === "Rotina")
-                .length
+              categoriaPreenchida.filter(
+                (item: { categoria: string }) => item.categoria === "Rotina"
+              ).length
                 ? RotinaIconOn
                 : RotinaIcon
             }
             alt="rotinaIcon"
           />
           <p>Rotina</p>
-          {mesCompleto && <p>Feliz</p>}
+          {categoriaPreenchida.filter(
+            (item: { categoria: string }) => item.categoria === "Rotina"
+          ).length && (
+            <p>
+              {
+                categoriaPreenchida.filter(
+                  (item: { categoria: string }) => item.categoria === "Rotina"
+                )[0].opcao
+              }
+            </p>
+          )}
         </div>
 
         <div>
           <img
             src={
-              categoriaPreenchida.filter((item) => item.categoria === "Banho")
-                .length
+              categoriaPreenchida.filter(
+                (item: { categoria: string }) => item.categoria === "Banho"
+              ).length
                 ? BanhoIconOn
                 : BanhoIcon
             }
             alt="banhoIcon"
           />
           <p>Banho</p>
-          {mesCompleto && <p>Feliz</p>}
+          {categoriaPreenchida.filter(
+            (item: { categoria: string }) => item.categoria === "Banho"
+          ).length && (
+            <p>
+              {
+                categoriaPreenchida.filter(
+                  (item: { categoria: string }) => item.categoria === "Banho"
+                )[0].opcao
+              }
+            </p>
+          )}
         </div>
       </div>
 
