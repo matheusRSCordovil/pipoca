@@ -147,7 +147,6 @@ const RegistroPage = () => {
     if (index !== undefined) {
       comentariosList[index] = e;
     }
-    console.log(comentariosList, e);
   };
 
   const handleComentarioChange = () => {
@@ -160,69 +159,24 @@ const RegistroPage = () => {
   // };
 
   const handleJornadaId = (categoria: string) => {
-    if (categoria === "pele12") {
-      activeJornadaIds[0] = 12;
-    }
-    if (categoria === "pele11") {
-      activeJornadaIds[0] = 11;
-    }
-    if (categoria === "pele10") {
-      activeJornadaIds[0] = 10;
-    }
-    if (categoria === "pele9") {
-      activeJornadaIds[0] = 9;
+    if (categoria.includes("pele")) {
+      activeJornadaIds[0] = parseInt(categoria.replace("pele", ""));
     }
 
-    if (categoria === "sentindo20") {
-      activeJornadaIds[1] = 20;
-    }
-    if (categoria === "sentindo19") {
-      activeJornadaIds[1] = 19;
-    }
-    if (categoria === "sentindo18") {
-      activeJornadaIds[1] = 18;
-    }
-    if (categoria === "sentindo17") {
-      activeJornadaIds[1] = 17;
+    if (categoria.includes("sentindo")) {
+      activeJornadaIds[1] = parseInt(categoria.replace("sentindo", ""));
     }
 
-    if (categoria === "dormir16") {
-      activeJornadaIds[2] = 16;
-    }
-    if (categoria === "dormir15") {
-      activeJornadaIds[2] = 15;
-    }
-    if (categoria === "dormir14") {
-      activeJornadaIds[2] = 14;
-    }
-    if (categoria === "dormir13") {
-      activeJornadaIds[2] = 13;
+    if (categoria.includes("dormir")) {
+      activeJornadaIds[2] = parseInt(categoria.replace("dormir", ""));
     }
 
-    if (categoria === "banho4") {
-      activeJornadaIds[3] = 4;
-    }
-    if (categoria === "banho3") {
-      activeJornadaIds[3] = 3;
-    }
-    if (categoria === "banho2") {
-      activeJornadaIds[3] = 2;
-    }
-    if (categoria === "banho1") {
-      activeJornadaIds[3] = 1;
+    if (categoria.includes("banho")) {
+      activeJornadaIds[3] = parseInt(categoria.replace("banho", ""));
     }
 
-    if (categoria === "dia8") {
-      activeJornadaIds[4] = 8;
-    }
-    if (categoria === "dia7") {
-      activeJornadaIds[4] = 7;
-    }
-    if (categoria === "dia6") {
-      activeJornadaIds[4] = 6;
-    }
-    if (categoria === "dia5") {
-      activeJornadaIds[4] = 5;
+    if (categoria.includes("dia")) {
+      activeJornadaIds[4] = parseInt(categoria.replace("dia", ""));
     }
   };
 

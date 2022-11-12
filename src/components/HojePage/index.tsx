@@ -21,9 +21,9 @@ const HojePage = () => {
   const { setAtivo, setIdAtivo } = useHomeProvider();
 
   const [conteudos, setConteudos] = useState<any>([]);
-
   const [dias, setDias] = useState<any[]>([]);
   const [diaAtual, setDiaAtual] = useState<any[]>([]);
+  const [categoriaPreenchida, setCategoriaPreenchida] = useState<any[]>([]);
 
   const handleClick = (index: number) => {
     setIdAtivo(index + "");
@@ -33,6 +33,7 @@ const HojePage = () => {
   useEffect(() => {
     API.get("Jornada/Atual").then((response) => {
       setDiaAtual(response.data.dia);
+      setCategoriaPreenchida(response.data.registro);
 
       for (let i = 1; i < 31; i++) {
         if (i > response.data.dia) {
@@ -119,20 +120,42 @@ const HojePage = () => {
 
       <div className="status-container">
         <div>
-          <img src={mesCompleto ? HumorIconOn : HumorIcon} alt="humorIcon" />
+          <img
+            src={
+              categoriaPreenchida.filter((item) => item.categoria === "Humor")
+                .length
+                ? HumorIconOn
+                : HumorIcon
+            }
+            alt="humorIcon"
+          />
           <p>Humor</p>
           {mesCompleto && <p>Feliz</p>}
         </div>
 
         <div>
-          <img src={mesCompleto ? SonoIconOn : SonoIcon} alt="sonoIcon" />
+          <img
+            src={
+              categoriaPreenchida.filter((item) => item.categoria === "Sono")
+                .length
+                ? SonoIconOn
+                : SonoIcon
+            }
+            alt="sonoIcon"
+          />
           <p>Sono</p>
           {mesCompleto && <p>Feliz</p>}
         </div>
 
         <div>
           <img
-            src={mesCompleto ? SintomasIconOn : SintomasIcon}
+            src={
+              categoriaPreenchida.filter(
+                (item) => item.categoria === "Sintomas"
+              ).length
+                ? SintomasIconOn
+                : SintomasIcon
+            }
             alt="sintomasIcon"
           />
           <p>Sintomas</p>
@@ -141,7 +164,13 @@ const HojePage = () => {
 
         <div>
           <img
-            src={mesCompleto ? CuidadosIconOn : CuidadosIcon}
+            src={
+              categoriaPreenchida.filter(
+                (item) => item.categoria === "ProdutosCuidados"
+              ).length
+                ? CuidadosIconOn
+                : CuidadosIcon
+            }
             alt="cuidadosIcon"
           />
           <p>Produtos de Cuidado</p>
@@ -149,13 +178,29 @@ const HojePage = () => {
         </div>
 
         <div>
-          <img src={mesCompleto ? RotinaIconOn : RotinaIcon} alt="rotinaIcon" />
+          <img
+            src={
+              categoriaPreenchida.filter((item) => item.categoria === "Rotina")
+                .length
+                ? RotinaIconOn
+                : RotinaIcon
+            }
+            alt="rotinaIcon"
+          />
           <p>Rotina</p>
           {mesCompleto && <p>Feliz</p>}
         </div>
 
         <div>
-          <img src={mesCompleto ? BanhoIconOn : BanhoIcon} alt="banhoIcon" />
+          <img
+            src={
+              categoriaPreenchida.filter((item) => item.categoria === "Banho")
+                .length
+                ? BanhoIconOn
+                : BanhoIcon
+            }
+            alt="banhoIcon"
+          />
           <p>Banho</p>
           {mesCompleto && <p>Feliz</p>}
         </div>
