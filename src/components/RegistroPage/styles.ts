@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { PRIMARY } from "../../theme/palette";
+import DoneCheckCalendar from "../../assets/icon/doneCheckCalendar.svg";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -319,6 +320,30 @@ export const DayDivActive = styled.div`
   font-weight: bold;
   justify-content: right;
   align-items: end;
+
+  p {
+    margin: 3px;
+    height: 8px;
+  }
+`;
+
+export const DayDivPast = styled.div`
+  display: flex;
+  height: 52px;
+  width: 52px;
+  min-width: 52px;
+  min-height: 52px;
+  border-radius: 1.6595743894577026px;
+  background-color: #bebebe;
+  color: #7d7d7d;
+  margin: 4px;
+  font-size: 0.5rem;
+  font-weight: bold;
+  justify-content: right;
+  align-items: end;
+  background-image: url(${DoneCheckCalendar});
+  background-position: center;
+  background-repeat: no-repeat;
 
   p {
     margin: 3px;

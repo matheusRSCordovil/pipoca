@@ -1,6 +1,7 @@
 import {
   DayDiv,
   DayDivActive,
+  DayDivPast,
   IconesDiv,
   MainContainer,
   TitleDiv,
@@ -79,9 +80,28 @@ const RegistroPage = () => {
     "",
     "",
   ]);
+  const [dias, setDias] = useState<any[]>([]);
+  const [diaAtual, setDiaAtual] = useState<number[]>([]);
 
   useEffect(() => {
     API.get("Jornada/Atual").then((response) => {
+      setDiaAtual(response.data.dia);
+
+      for (let i = 1; i < 31; i++) {
+        if (i === response.data.dia) {
+          dias.push(2);
+          continue;
+        }
+
+        if (i > response.data.dia) {
+          dias.push(0);
+        } else {
+          dias.push(1);
+        }
+      }
+
+      setDias(dias.slice(0, 30));
+
       let data: string[] = [];
       response.data.registro.forEach((jornada: any) => {
         data.push(jornada.observacao);
@@ -291,17 +311,20 @@ const RegistroPage = () => {
         <div className="calendar-list" onClick={() => setShowCalendar(true)}>
           <div className="calendar-white-end"></div>
           <div className="calendar-scroll-div">
-            {Array.from(Array(10), (_, i) => i + 1).map((day, i) =>
-              i === 0 ? (
-                <DayDivActive>
-                  <p>1</p>
-                </DayDivActive>
-              ) : (
-                <DayDiv key={i}>
-                  <p>{day}</p>
-                </DayDiv>
-              )
-            )}
+            {dias.length &&
+              dias.map((dia: number, index: number) =>
+                dia === 2 ? (
+                  <DayDivActive key={index}>
+                    {("0" + (index + 1)).slice(-2)}
+                  </DayDivActive>
+                ) : dia === 1 ? (
+                  <DayDivPast key={index}>
+                    {("0" + (index + 1)).slice(-2)}
+                  </DayDivPast>
+                ) : (
+                  <DayDiv key={index}>{("0" + (index + 1)).slice(-2)}</DayDiv>
+                )
+              )}
           </div>
         </div>
       </div>
