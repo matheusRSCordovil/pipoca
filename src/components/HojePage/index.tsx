@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 import { MainContainer } from "./styles";
 import PuppetHandsUp from "../../assets/img/pipoca-puppet-v3.png";
 import HumorIcon from "../../assets/icon/hojeIcons/humor.png";
@@ -22,22 +22,36 @@ const HojePage = () => {
 
   const [conteudos, setConteudos] = useState<any>([]);
 
+  const [dias, setDias] = useState<any[]>([]);
+  const [diaAtual, setDiaAtual] = useState<any[]>([]);
+
   const handleClick = (index: number) => {
     setIdAtivo(index + "");
     setAtivo("detalhes");
   };
 
   useEffect(() => {
+    API.get("Jornada/Atual").then((response) => {
+      setDiaAtual(response.data.dia);
+
+      for (let i = 1; i < 31; i++) {
+        if (i > response.data.dia) {
+          dias.push(0);
+        } else {
+          dias.push(1);
+        }
+      }
+
+      setDias(dias.slice(0, 30));
+    });
+
     API.get("Conteudo?CategoriaId=1").then((response) => {
       let index = Math.floor(Math.random() * response.data.length - 1);
       setConteudos(response.data[index]);
     });
-  }, []);
 
-  const dias = [
-    1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0,
-  ];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const [mesCompleto, setMesCompleto] = useState<boolean>(false);
 
@@ -48,7 +62,7 @@ const HojePage = () => {
           <p className="mensagem-do-dia-text">
             {mesCompleto ? "Você chegou no dia" : "Você está no dia"}
           </p>
-          <p className="dias-texto">{mesCompleto ? "30" : "01"}</p>
+          <p className="dias-texto">{("0" + diaAtual).slice(-2)}</p>
           <p className="mensagem-do-dia-text">
             da sua jornada{mesCompleto && "!"}
           </p>
@@ -61,13 +75,14 @@ const HojePage = () => {
             onClick={() => setMesCompleto(!mesCompleto)}
             style={{ display: "flex", width: "85%", justifyContent: "center" }}
           >
-            {dias.map((dia, index) =>
-              dia === 1 ? (
-                <div className="box-dia on" key={index}></div>
-              ) : (
-                <div className="box-dia" key={index}></div>
-              )
-            )}
+            {dias.length &&
+              dias.map((dia: number, index: Key | null | undefined) =>
+                dia === 1 ? (
+                  <div className="box-dia on" key={index}></div>
+                ) : (
+                  <div className="box-dia" key={index}></div>
+                )
+              )}
           </span>
           <p>30</p>
         </span>

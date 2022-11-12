@@ -1,5 +1,5 @@
 import { MainContainer } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShareIcon from "../../assets/img/shareIcon.png";
 import LineGraphicRelatorio from "../LineGraphicRelatorio";
 import BarRed from "../../assets/img/barRed.png";
@@ -12,6 +12,16 @@ import LineGraphicIcons from "../LinegraphicIcons";
 import LineDotGreen from "../LineDotGreen";
 import LineGraphicMultiColor from "../LineGraphicMultiColor";
 import ComentarioModal from "../ComentarioModal";
+import API from "../../services";
+
+// {
+//   "id": 1,
+//   "color": "João",
+//   data : [
+//     { x: 1, y: 1 },
+//   ]
+
+// }
 
 const RelatorioPage = () => {
   const [open, setOpen] = useState(false);
@@ -21,6 +31,12 @@ const RelatorioPage = () => {
     setOpen(true);
     setBorderColor(color);
   };
+
+  useEffect(() => {
+    API.get("Jornada/Periodo").then((response) => {
+      console.log(response.data.periodo);
+    });
+  }, []);
 
   return (
     <MainContainer>

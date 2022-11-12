@@ -22,7 +22,7 @@ const TopMenu = () => {
       if (token) {
         decoded = jwt_decode(localStorage.getItem("token") || "");
       }
-      setUserNome(decoded.name);
+      setUserNome(decoded.unique_name);
     }
   }, []);
 

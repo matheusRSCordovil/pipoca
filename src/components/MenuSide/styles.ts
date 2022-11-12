@@ -8,6 +8,10 @@ export const FormContainer = styled.div`
   max-width: 390px;
   color: #7d7d7d;
 
+  label {
+    margin-left: 2px;
+  }
+
   h4 {
     font-size: 22px;
     font-weight: 400;
@@ -64,5 +68,25 @@ export const FormContainer = styled.div`
     border-radius: 5px;
     text-align: left;
     color: #7d7d7d;
+  }
+
+  .label-save {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-left: 6px;
+  }
+
+  .save-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .error-msg {
+    color: #ff0000;
+    height: 20px;
   }
 `;

@@ -111,7 +111,9 @@ const RegistroPage = () => {
           setActiveJornadaIds(activeJornadaIds);
         }
       });
-      setComentariosList(data);
+      if (data.length) {
+        setComentariosList(data);
+      }
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

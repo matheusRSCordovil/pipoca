@@ -1,6 +1,6 @@
 export const dataR = [
   {
-    id: "japan",
+    id: "sintomas",
     color: "#F84A24",
     data: [
       {
@@ -12,39 +12,39 @@ export const dataR = [
         y: 1,
       },
       {
-        x: "02rf",
+        x: "02",
         y: 2,
       },
       {
-        x: "03rf",
+        x: "03",
         y: 2,
       },
       {
-        x: "04rt",
+        x: "04",
         y: null,
       },
       {
-        x: "05rf",
+        x: "05",
         y: 2,
       },
       {
-        x: "06rt",
+        x: "06",
         y: 2,
       },
       {
-        x: "07rf",
+        x: "07",
         y: 1,
       },
       {
-        x: "08rt",
+        x: "08",
         y: 3,
       },
       {
-        x: "09ss",
+        x: "09",
         y: 4,
       },
       {
-        x: "10ss",
+        x: "10",
         y: 2,
       },
       {

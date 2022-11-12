@@ -54,7 +54,7 @@ const Login = () => {
         .then((response: { data: { token: string } }) => {
           localStorage.setItem("token", response.data.token);
           let decoded: any = jwt_decode(response.data.token);
-          setUserNome(decoded.name);
+          setUserNome(decoded.unique_name);
           setAtivo("hoje");
           navigate("/");
         })
