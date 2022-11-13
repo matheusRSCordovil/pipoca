@@ -335,6 +335,7 @@ const RegistroPage = () => {
           className="input-meu-registro"
           onChange={(e) => handleComentario(e.target.value, 0, "pele")}
           type="text"
+          placeholder={comentariosList[0]}
         />
         {comentarioAtivo === "pele" ? (
           <img
@@ -395,6 +396,7 @@ const RegistroPage = () => {
           className="input-meu-registro"
           onChange={(e) => handleComentario(e.target.value, 1, "sentindo")}
           type="text"
+          placeholder={comentariosList[1]}
         />
         {comentarioAtivo === "sentindo" ? (
           <img
@@ -453,6 +455,7 @@ const RegistroPage = () => {
           className="input-meu-registro"
           onChange={(e) => handleComentario(e.target.value, 2, "dormir")}
           type="text"
+          placeholder={comentariosList[2]}
         />
         {comentarioAtivo === "dormir" ? (
           <img
@@ -511,6 +514,7 @@ const RegistroPage = () => {
           className="input-meu-registro"
           onChange={(e) => handleComentario(e.target.value, 3, "banho")}
           type="text"
+          placeholder={comentariosList[3]}
         />
         {comentarioAtivo === "banho" ? (
           <img
@@ -569,6 +573,7 @@ const RegistroPage = () => {
           className="input-meu-registro"
           onChange={(e) => handleComentario(e.target.value, 4, "dia")}
           type="text"
+          placeholder={comentariosList[4]}
         />
         {comentarioAtivo === "dia" ? (
           <img

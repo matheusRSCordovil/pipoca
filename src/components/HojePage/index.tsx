@@ -181,7 +181,17 @@ const HojePage = () => {
             alt="sintomasIcon"
           />
           <p>Sintomas</p>
-          {mesCompleto && <p>Feliz</p>}
+          {categoriaPreenchida.filter(
+            (item: { categoria: string }) => item.categoria === "Sintomas"
+          ).length && (
+            <p>
+              {
+                categoriaPreenchida.filter(
+                  (item: { categoria: string }) => item.categoria === "Sintomas"
+                )[0].opcao
+              }
+            </p>
+          )}
         </div>
 
         <div>

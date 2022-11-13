@@ -13,19 +13,15 @@ import LineDotGreen from "../LineDotGreen";
 import LineGraphicMultiColor from "../LineGraphicMultiColor";
 import ComentarioModal from "../ComentarioModal";
 import API from "../../services";
-
-// {
-//   "id": 1,
-//   "color": "João",
-//   data : [
-//     { x: 1, y: 1 },
-//   ]
-
-// }
+import { convertLineGraphic } from "../../helpers/dataConvertLineGraphic";
 
 const RelatorioPage = () => {
   const [open, setOpen] = useState(false);
   const [borderColor, setBorderColor] = useState("#104F92");
+  const [sintomasData, setSintomasData] = useState<any>([]);
+  const [humorData, setHumorData] = useState<any>([]);
+  const [sonoData, setSonoData] = useState<any>([]);
+  const [banhoData, setBanhoData] = useState<any>([]);
 
   const handleOpen = (color: string) => {
     setOpen(true);
@@ -34,7 +30,10 @@ const RelatorioPage = () => {
 
   useEffect(() => {
     API.get("Jornada/Periodo").then((response) => {
-      console.log(response.data.periodo);
+      setSintomasData([convertLineGraphic(response, 3)]);
+      setHumorData([convertLineGraphic(response, 1)]);
+      setSonoData([convertLineGraphic(response, 2)]);
+      setBanhoData([convertLineGraphic(response, 6)]);
     });
   }, []);
 
@@ -71,6 +70,7 @@ const RelatorioPage = () => {
           color={"#F84A24"}
           open={open}
           setOpen={handleOpen}
+          data={sintomasData}
         />
 
         <div
@@ -84,6 +84,7 @@ const RelatorioPage = () => {
           color={"#FB991C"}
           open={open}
           setOpen={handleOpen}
+          data={humorData}
         />
 
         <div
@@ -97,6 +98,7 @@ const RelatorioPage = () => {
           color={"#104F92"}
           open={open}
           setOpen={handleOpen}
+          data={sonoData}
         />
 
         <div
@@ -110,6 +112,7 @@ const RelatorioPage = () => {
           color={"#1391ED"}
           open={open}
           setOpen={handleOpen}
+          data={banhoData}
         />
 
         <div

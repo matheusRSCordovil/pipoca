@@ -1,18 +1,20 @@
 import { ResponsiveLine } from "@nivo/line";
-import { dataR } from "../../constants";
 import TickIcon from "../../assets/icon/tickIcon.png";
 import { MainContainer } from "./styles";
+import { useHomeProvider } from "../../providers/HomeProvider";
 
 const LineGraphicRelatorio = ({
   bar,
   color,
   open,
   setOpen,
+  data,
 }: {
   bar: any;
   color: string;
   open: boolean;
   setOpen: any;
+  data: any;
 }) => {
   const dataTheme = {
     background: "#ffffff",
@@ -35,6 +37,8 @@ const LineGraphicRelatorio = ({
     },
   };
 
+  const { setInfoDialogText } = useHomeProvider();
+
   const CustomTopAxisTick = (tick: any) => {
     return (
       <foreignObject
@@ -54,19 +58,37 @@ const LineGraphicRelatorio = ({
     );
   };
 
+  const handleMinMax = () => {
+    if (color === "#F84A24") {
+      return [13, 8];
+    }
+    if (color === "#FB991C") {
+      return [21, 16];
+    }
+    if (color === "#104F92") {
+      return [17, 12];
+    }
+    return [5, 0];
+  };
+
+  const handleClickModal = (text: string) => {
+    setOpen(color);
+    setInfoDialogText(text);
+  };
+
   const CustomBottomAxisTick = (tick: any) => {
     return (
       <foreignObject
         width={29}
         height={80}
         transform={`translate(${tick.x - 15},${tick.y + 0})`}
-        onClick={() => setOpen(color)}
+        onClick={() => handleClickModal(data[0].data[tick.tickIndex].textX)}
       >
         <MainContainer>
           <div
             className="tick-legend"
             style={
-              tick.value.slice(-1) === "t"
+              data[0].data[tick.tickIndex].textX
                 ? { backgroundColor: color }
                 : { display: "none" }
             }
@@ -87,14 +109,14 @@ const LineGraphicRelatorio = ({
       <div className="grafico-container">
         <ResponsiveLine
           theme={dataTheme}
-          data={dataR}
+          data={data}
           colors={[color]}
           margin={{ top: 50, right: 60, bottom: 50, left: -15 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
-            min: 0,
-            max: 5,
+            min: handleMinMax()[0],
+            max: handleMinMax()[1],
             stacked: true,
             reverse: false,
           }}

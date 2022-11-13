@@ -5,6 +5,8 @@ interface Props {
 }
 
 type HomeProviderProps = {
+  infoDialogText: string;
+  setInfoDialogText: (text: string) => void;
   filtrosAtivos: string;
   setFiltrosAtivos: (value: string) => void;
   ativo: string;
@@ -20,6 +22,8 @@ type HomeProviderProps = {
 };
 
 const DEFAULT_VALUE = {
+  infoDialogText: "",
+  setInfoDialogText: () => {},
   filtrosAtivos: "",
   setFiltrosAtivos: () => {},
   ativo: "hoje",
@@ -47,10 +51,15 @@ export const HomeProvider: React.FC<Props> = ({ children }) => {
   const [filtrosAtivos, setFiltrosAtivos] = useState<string>(
     DEFAULT_VALUE.filtrosAtivos
   );
+  const [infoDialogText, setInfoDialogText] = useState<string>(
+    DEFAULT_VALUE.infoDialogText
+  );
 
   return (
     <HomeContext.Provider
       value={{
+        infoDialogText,
+        setInfoDialogText,
         filtrosAtivos,
         setFiltrosAtivos,
         ativo,

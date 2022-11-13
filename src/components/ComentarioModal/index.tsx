@@ -1,6 +1,7 @@
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import { CSSProperties } from "react";
+import { useHomeProvider } from "../../providers/HomeProvider";
 import "./styles.css";
 
 const ComentarioModal = ({
@@ -11,6 +12,8 @@ const ComentarioModal = ({
   borderColor: string;
 }) => {
   const { open, setOpen, borderColor } = props;
+
+  const { infoDialogText } = useHomeProvider();
 
   const textoPrimarioStyles: CSSProperties = {
     fontSize: "18.5px",
@@ -54,11 +57,7 @@ const ComentarioModal = ({
           <p style={{ ...textoSecundarioStyles }}>
             Comentário realizado no dia 04 da jornada (28/09/2022)
           </p>
-          <p style={{ ...textoPrimarioStyles }}>
-            “Este dia eu tive uma insônia. Dormir apenas 3 horas durante a
-            noite, mas acredito que não foi por conta somente da DA, mas sim
-            porque tive uma experiência familiar horrível.”
-          </p>
+          <p style={{ ...textoPrimarioStyles }}>“{infoDialogText}”</p>
         </DialogContent>
       </Dialog>
     </div>
