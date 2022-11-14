@@ -6,6 +6,8 @@ import jwt_decode from "jwt-decode";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useHomeProvider } from "../../providers/HomeProvider";
+import PencilIcon from "../../assets/icon/pencilIcon.svg";
+import CheckIcon from "../../assets/icon/doneIcon.svg";
 import API from "../../services";
 
 const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
@@ -13,6 +15,7 @@ const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userId, setUserId] = useState<number | null>(null);
+  const [editActive, setEditActive] = useState(false);
 
   const { setUserNome, userNome } = useHomeProvider();
 
@@ -20,7 +23,9 @@ const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
     let token = localStorage.getItem("token");
     if (token) {
       let decoded: any = jwt_decode(token);
+      console.log(decoded);
       setUserName(decoded.unique_name);
+      setUserEmail(decoded.email);
       setUserId(decoded.UserId);
     }
   }, []);
@@ -57,6 +62,7 @@ const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
       API.put(`Usuario/${userId}`, values)
         .then((response: { data: { token: string } }) => {
           setUserNome(userName);
+          setEditActive(true);
         })
         .catch((error: any) => {
           console.log(error);
@@ -112,9 +118,16 @@ const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
               value={userPassword}
               onChange={(e) => setUserPassword(e.target.value)}
             />
+
             <span className="save-box">
-              <input type="checkbox" onChange={() => handleCheck()} />
-              <label className="label-save">Salvar alterações</label>
+              {!editActive ? (
+                <>
+                  <img src={PencilIcon} alt="edit" onClick={handleCheck} />
+                  <label className="label-save">Salvar alterações</label>
+                </>
+              ) : (
+                <img alt="chek-icon" src={CheckIcon} />
+              )}
             </span>
             <button
               ref={buttonRef}
