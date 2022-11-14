@@ -26,6 +26,7 @@ const RelatorioPage = () => {
   const [sonoData, setSonoData] = useState<any>([]);
   const [banhoData, setBanhoData] = useState<any>([]);
   const [iconGraphicData, setIconGraphicData] = useState<any>([]);
+  const [rotinaData, setRotinaData] = useState<any>([]);
 
   const handleOpen = (color: string) => {
     setOpen(true);
@@ -38,6 +39,7 @@ const RelatorioPage = () => {
       setHumorData([convertLineGraphic(response, 1, false)]);
       setSonoData([convertLineGraphic(response, 2, false)]);
       setBanhoData([convertLineGraphic(response, 6, false)]);
+      setRotinaData([convertLineGraphic(response, 5, false)]);
       setIconGraphicData([convertIconGraphic(response)]);
     });
   }, []);
@@ -126,7 +128,7 @@ const RelatorioPage = () => {
         >
           Nestes dias, você realizou:
         </div>
-        <LineDotGreen bar={BarGreen} color={"#58CC63"} />
+        <LineDotGreen data={rotinaData} bar={BarGreen} color={"#58CC63"} />
 
         <div
           className="grafico-titulo-container-label"

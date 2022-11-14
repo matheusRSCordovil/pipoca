@@ -258,7 +258,6 @@ export const MainContainer = styled.div<IProps>`
   .aprendizagem-card {
     min-height: 156px;
     height: fit-content;
-    /* width: 350px; */
     width: 87%;
     border-radius: 22px;
     background-color: ${PRIMARY.darkBlue};

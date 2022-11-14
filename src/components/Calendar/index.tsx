@@ -40,8 +40,8 @@ const Calendar = () => {
     <div>
       <select onChange={(e) => handleCurrentMonth(e.target.value)}>
         <option value="1">1° Ciclo</option>
-        <option value="2">2° Ciclo</option>
-        <option value="3">3° Ciclo</option>
+        {/* <option value="2">2° Ciclo</option>
+        <option value="3">3° Ciclo</option> */}
       </select>
 
       <div

@@ -1,5 +1,4 @@
 import { ResponsiveLine } from "@nivo/line";
-import { dataY } from "../../constants";
 import { MainContainer } from "./styles";
 import TickIcon from "../../assets/icon/tickIcon.png";
 
@@ -25,7 +24,15 @@ const CustomSymbol = ({
   );
 };
 
-const LineDotGreen = ({ bar, color }: { bar: any; color: string }) => {
+const LineDotGreen = ({
+  bar,
+  color,
+  data,
+}: {
+  bar: any;
+  color: string;
+  data: any;
+}) => {
   const dataTheme = {
     background: "#ffffff",
     textColor: "#333333",
@@ -99,19 +106,19 @@ const LineDotGreen = ({ bar, color }: { bar: any; color: string }) => {
       <div className="grafico-container">
         <ResponsiveLine
           theme={dataTheme}
-          data={dataY}
+          data={data}
           colors={[color]}
           margin={{ top: 50, right: 60, bottom: 50, left: -15 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
-            min: 0,
-            max: 5,
+            min: 9,
+            max: 4,
             stacked: false,
             reverse: false,
           }}
           yFormat=" >-.2f"
-          gridYValues={[1, 2, 3, 4, 5, 6]}
+          gridYValues={[1, 2, 3, 4, 5]}
           axisTop={{
             tickSize: 0,
             tickPadding: 5,

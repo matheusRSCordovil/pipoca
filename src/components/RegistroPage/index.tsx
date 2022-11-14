@@ -765,7 +765,7 @@ const RegistroPage = () => {
         <div className="info-dias-container">
           <h4>Continue assim!</h4>
           <p>
-            Você já completou 7 dias da sua jornada. Não se esqueça:
+            Você já completou {diaAtual} dias da sua jornada. Não se esqueça:
             <br />
             quantos mais dias você registrar, mais conteúdos você irá
             desbloquear! Assim você conhecerá mais sobre a dermatite atópica e

@@ -1,8 +1,4 @@
 import { MainContainer } from "./styles";
-// import Carousel, {
-//   slidesToShowPlugin,
-//   slidesToScrollPlugin,
-// } from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import Carousel from "react-simply-carousel";
 import { useState } from "react";
