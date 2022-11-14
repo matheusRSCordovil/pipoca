@@ -13,7 +13,10 @@ import LineDotGreen from "../LineDotGreen";
 import LineGraphicMultiColor from "../LineGraphicMultiColor";
 import ComentarioModal from "../ComentarioModal";
 import API from "../../services";
-import { convertLineGraphic } from "../../helpers/dataConvertLineGraphic";
+import {
+  convertIconGraphic,
+  convertLineGraphic,
+} from "../../helpers/dataConvertLineGraphic";
 
 const RelatorioPage = () => {
   const [open, setOpen] = useState(false);
@@ -22,6 +25,7 @@ const RelatorioPage = () => {
   const [humorData, setHumorData] = useState<any>([]);
   const [sonoData, setSonoData] = useState<any>([]);
   const [banhoData, setBanhoData] = useState<any>([]);
+  const [iconGraphicData, setIconGraphicData] = useState<any>([]);
 
   const handleOpen = (color: string) => {
     setOpen(true);
@@ -30,10 +34,11 @@ const RelatorioPage = () => {
 
   useEffect(() => {
     API.get("Jornada/Periodo").then((response) => {
-      setSintomasData([convertLineGraphic(response, 3)]);
-      setHumorData([convertLineGraphic(response, 1)]);
-      setSonoData([convertLineGraphic(response, 2)]);
-      setBanhoData([convertLineGraphic(response, 6)]);
+      setSintomasData([convertLineGraphic(response, 3, false)]);
+      setHumorData([convertLineGraphic(response, 1, false)]);
+      setSonoData([convertLineGraphic(response, 2, false)]);
+      setBanhoData([convertLineGraphic(response, 6, false)]);
+      setIconGraphicData([convertIconGraphic(response)]);
     });
   }, []);
 
@@ -129,7 +134,11 @@ const RelatorioPage = () => {
         >
           Então, seu histórico é:
         </div>
-        <LineGraphicIcons bar={BarIcons} color={"#C4C4C4"} />
+        <LineGraphicIcons
+          data={iconGraphicData}
+          bar={BarIcons}
+          color={"#C4C4C4"}
+        />
 
         <div
           className="grafico-titulo-container-label"

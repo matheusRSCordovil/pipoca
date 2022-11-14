@@ -57,7 +57,6 @@ import LixeiraIcon from "../../assets/icon/lixeiraIcon.svg";
 import ProgressoDonePage from "../ProgressDonePage";
 import DeletarModal from "../DeletarModal";
 import API from "../../services";
-import jwt_decode from "jwt-decode";
 
 const RegistroPage = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -102,38 +101,40 @@ const RegistroPage = () => {
 
       setDias(dias.slice(0, 30));
 
-      let data: string[] = [];
       response.data.registro.forEach((jornada: any) => {
-        data.push(jornada.observacao);
         if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
           activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
           setActiveJornadaIds(activeJornadaIds);
           setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
+          comentariosList[0] = jornada.observacao || "";
         }
         if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
           activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
           setActiveJornadaIds(activeJornadaIds);
           setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
+          comentariosList[1] = jornada.observacao || "";
         }
         if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
           activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
           setActiveJornadaIds(activeJornadaIds);
           setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
+          comentariosList[2] = jornada.observacao || "";
         }
         if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
           activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
           setActiveJornadaIds(activeJornadaIds);
           setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
+          comentariosList[3] = jornada.observacao || "";
         }
         if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
           setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
           activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
           setActiveJornadaIds(activeJornadaIds);
+          comentariosList[4] = jornada.observacao || "";
         }
       });
-      if (data.length) {
-        setComentariosList(data);
-      }
+
+      setComentariosList(comentariosList);
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

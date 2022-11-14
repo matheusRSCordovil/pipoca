@@ -22,6 +22,7 @@ export const MainContainer = styled.div`
     line-height: 25px;
     letter-spacing: 0em;
     text-align: center;
+    padding: 0 3px;
   }
 
   .plus-block {

@@ -1,16 +1,24 @@
 import { ResponsiveLine } from "@nivo/line";
-import { dataX } from "../../constants";
 import { MainContainer } from "./styles";
 import Pele1 from "../../assets/icon/graficoHistorico/pele1.svg";
 import Pele2 from "../../assets/icon/graficoHistorico/pele2.svg";
 import Pele3 from "../../assets/icon/graficoHistorico/pele3.svg";
 import Pele4 from "../../assets/icon/graficoHistorico/pele4.svg";
-import Sono1 from "../../assets/icon/graficoHistorico/sono1.svg";
 import Sono2 from "../../assets/icon/graficoHistorico/sono2.svg";
-import Banho2 from "../../assets/icon/graficoHistorico/banho2.svg";
-import Banho3 from "../../assets/icon/graficoHistorico/banho3.svg";
-import Sentindo1 from "../../assets/icon/graficoHistorico/sentindo1.svg";
-import Rotina1 from "../../assets/icon/graficoHistorico/rotina1.svg";
+import Sono4 from "../../assets/icon/graficoHistorico/sono4.svg";
+import Banho2 from "../../assets/icon/graficoHistorico/banho1.svg";
+import Banho3 from "../../assets/icon/graficoHistorico/banho2.svg";
+import Banho3active from "../../assets/icon/meuRegistroIcons/banho3active.svg";
+import Banho4active from "../../assets/icon/meuRegistroIcons/banho4active.svg";
+import Sentindo1active from "../../assets/icon/meuRegistroIcons/sentindo1active.svg";
+import Sentindo2active from "../../assets/icon/meuRegistroIcons/sentindo2active.svg";
+import Sentindo3active from "../../assets/icon/meuRegistroIcons/sentindo3active.svg";
+import Sentindo4active from "../../assets/icon/meuRegistroIcons/sentindo4active.svg";
+import Dormir1active from "../../assets/icon/meuRegistroIcons/dormir1active.svg";
+import Dormir3active from "../../assets/icon/meuRegistroIcons/dormir3active.svg";
+import Dia1active from "../../assets/icon/meuRegistroIcons/dia1active.svg";
+import Dia4active from "../../assets/icon/meuRegistroIcons/dia4active.svg";
+import Rotina3 from "../../assets/icon/graficoHistorico/rotina3.svg";
 import Rotina2 from "../../assets/icon/graficoHistorico/rotina2.svg";
 import EmptyIcon from "../../assets/icon/graficoHistorico/empty.svg";
 
@@ -25,7 +33,7 @@ const CustomSymbol = ({
 }) => {
   const { size, datum } = props;
 
-  if (datum.textX === "a") {
+  if (datum.textX === "9") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -48,7 +56,7 @@ const CustomSymbol = ({
         />
       </svg>
     );
-  } else if (datum.textX === "b") {
+  } else if (datum.textX === "10") {
     return (
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
@@ -59,7 +67,7 @@ const CustomSymbol = ({
         <image width={size} height={size} href={Pele2} clipPath="url(.pele2)" />
       </svg>
     );
-  } else if (datum.textX === "c") {
+  } else if (datum.textX === "11") {
     return (
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
@@ -70,7 +78,7 @@ const CustomSymbol = ({
         <image width={size} height={size} href={Pele3} clipPath="url(.pele3)" />
       </svg>
     );
-  } else if (datum.textX === "d") {
+  } else if (datum.textX === "12") {
     return (
       <svg width={size} height={size} x="-20" y="-20">
         <defs>
@@ -81,7 +89,7 @@ const CustomSymbol = ({
         <image width={size} height={size} href={Pele4} clipPath="url(.pele4)" />
       </svg>
     );
-  } else if (datum.textX === "e") {
+  } else if (datum.textX === "17") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -99,12 +107,81 @@ const CustomSymbol = ({
           style={{ width: size, height: size }}
           width={size}
           height={size}
-          href={Sentindo1}
+          href={Sentindo1active}
           clipPath="url(.sentindo1)"
         />
       </svg>
     );
-  } else if (datum.textX === "f") {
+  } else if (datum.textX === "18") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sentindo2">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Sentindo2active}
+          clipPath="url(.sentindo2)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "19") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sentindo3">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Sentindo3active}
+          clipPath="url(.sentindo3)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "20") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sentindo4">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Sentindo4active}
+          clipPath="url(.sentindo4)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "13") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -122,12 +199,12 @@ const CustomSymbol = ({
           style={{ width: size, height: size }}
           width={size}
           height={size}
-          href={Sono1}
+          href={Dormir1active}
           clipPath="url(.sono1)"
         />
       </svg>
     );
-  } else if (datum.textX === "g") {
+  } else if (datum.textX === "14") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -150,7 +227,76 @@ const CustomSymbol = ({
         />
       </svg>
     );
-  } else if (datum.textX === "h") {
+  } else if (datum.textX === "15") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sono3">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Dormir3active}
+          clipPath="url(.sono3)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "16") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="sono4">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Sono4}
+          clipPath="url(.sono4)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "1") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="banho1">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Banho2}
+          clipPath="url(.banho1)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "2") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -168,12 +314,12 @@ const CustomSymbol = ({
           style={{ width: size, height: size }}
           width={size}
           height={size}
-          href={Banho2}
+          href={Banho3}
           clipPath="url(.banho2)"
         />
       </svg>
     );
-  } else if (datum.textX === "i") {
+  } else if (datum.textX === "3") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -191,12 +337,12 @@ const CustomSymbol = ({
           style={{ width: size, height: size }}
           width={size}
           height={size}
-          href={Banho3}
+          href={Banho3active}
           clipPath="url(.banho3)"
         />
       </svg>
     );
-  } else if (datum.textX === "j") {
+  } else if (datum.textX === "4") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -206,7 +352,7 @@ const CustomSymbol = ({
         y="-20"
       >
         <defs>
-          <clipPath className="rotina1">
+          <clipPath className="banho4">
             <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
           </clipPath>
         </defs>
@@ -214,12 +360,35 @@ const CustomSymbol = ({
           style={{ width: size, height: size }}
           width={size}
           height={size}
-          href={Rotina1}
-          clipPath="url(.rotina1)"
+          href={Banho4active}
+          clipPath="url(.banho4)"
         />
       </svg>
     );
-  } else if (datum.textX === "k") {
+  } else if (datum.textX === "7") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="rotina3">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Rotina3}
+          clipPath="url(.rotina3)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "6") {
     return (
       <svg
         style={{ width: size, height: size }}
@@ -239,6 +408,52 @@ const CustomSymbol = ({
           height={size}
           href={Rotina2}
           clipPath="url(.rotina2)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "5") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="rotina1">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Dia1active}
+          clipPath="url(.rotina1)"
+        />
+      </svg>
+    );
+  } else if (datum.textX === "8") {
+    return (
+      <svg
+        style={{ width: size, height: size }}
+        width={size}
+        height={size}
+        x="-20"
+        y="-20"
+      >
+        <defs>
+          <clipPath className="rotina4">
+            <circle cx="250" cy="145" r="125" fill="#FFFFFF" />
+          </clipPath>
+        </defs>
+        <image
+          style={{ width: size, height: size }}
+          width={size}
+          height={size}
+          href={Dia4active}
+          clipPath="url(.rotina4)"
         />
       </svg>
     );
@@ -268,7 +483,15 @@ const CustomSymbol = ({
   }
 };
 
-const LineGraphicIcons = ({ bar, color }: { bar: any; color: string }) => {
+const LineGraphicIcons = ({
+  bar,
+  color,
+  data,
+}: {
+  bar: any;
+  color: string;
+  data: any;
+}) => {
   const dataTheme = {
     background: "#ffffff",
     textColor: "#333333",
@@ -318,7 +541,7 @@ const LineGraphicIcons = ({ bar, color }: { bar: any; color: string }) => {
       <div className="grafico-container">
         <ResponsiveLine
           theme={dataTheme}
-          data={dataX}
+          data={data}
           colors={[color]}
           margin={{ top: 50, right: 60, bottom: 50, left: -15 }}
           xScale={{ type: "point" }}
