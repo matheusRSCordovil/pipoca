@@ -57,6 +57,10 @@ import LixeiraIcon from "../../assets/icon/lixeiraIcon.svg";
 import ProgressoDonePage from "../ProgressDonePage";
 import DeletarModal from "../DeletarModal";
 import API from "../../services";
+import {
+  filterProductList,
+  handleProdutoPost,
+} from "../../helpers/dataProtudosFormat";
 
 const RegistroPage = () => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -66,6 +70,7 @@ const RegistroPage = () => {
   const [activeBanho, setActiveBanho] = useState("");
   const [activeDia, setActiveDia] = useState("");
   const [editAtivo, setEditAtivo] = useState("");
+  const [activeInput, setActiveInput] = useState<boolean>(false);
   const [open, setOpen] = useState(false);
   const [activeJornadaIds, setActiveJornadaIds] = useState<number[]>([
     12, 20, 16, 4, 8,
@@ -81,10 +86,18 @@ const RegistroPage = () => {
   ]);
   const [dias, setDias] = useState<any[]>([]);
   const [diaAtual, setDiaAtual] = useState<number[]>([]);
+  const [remediosList, setRemediosList] = useState<any[]>([]);
+  const [hidratantesList, setHidratantesList] = useState<any[]>([]);
+  const [pomadasList, setPomadasList] = useState<any[]>([]);
+  const [inputValue, setInputValue] = useState<string>("");
+  const [selectedDeletId, setSelectedDeletId] = useState<number | null>(null);
 
   useEffect(() => {
     API.get("Jornada/Atual").then((response) => {
       setDiaAtual(response.data.dia);
+      setRemediosList(filterProductList(response, 7));
+      setPomadasList(filterProductList(response, 8));
+      setHidratantesList(filterProductList(response, 9));
 
       for (let i = 1; i < 31; i++) {
         if (i === response.data.dia) {
@@ -138,7 +151,7 @@ const RegistroPage = () => {
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [activeInput, editAtivo, open]);
 
   const handleComentario = (e: any, index?: number, ativo?: string) => {
     if (ativo) {
@@ -155,9 +168,34 @@ const RegistroPage = () => {
     setComentarioAtivo("");
   };
 
-  // const handleDeletarModal = () => {
-  //   setOpen(!open);
-  // };
+  const handlePostProtudo = (
+    categoriaId: number,
+    produto: string,
+    opcao?: number
+  ) => {
+    handleProdutoPost(categoriaId, produto, opcao);
+    setActiveInput(false);
+    setInputValue("");
+    setTimeout(() => {
+      setEditAtivo("");
+    }, 400);
+  };
+
+  const handleChekbox = (
+    e: any,
+    categoriaId: number,
+    index: number,
+    name: string
+  ) => {
+    if (e.target.checked) {
+      handleProdutoPost(categoriaId, name, index);
+    }
+  };
+
+  const handleDeletarModal = (id: number) => {
+    setOpen(true);
+    setSelectedDeletId(id);
+  };
 
   const handleJornadaId = (categoria: string) => {
     if (categoria.includes("pele")) {
@@ -182,6 +220,7 @@ const RegistroPage = () => {
   };
 
   const handleEditAtivo = (e: string) => {
+    setActiveInput(false);
     if (editAtivo === e) {
       setEditAtivo("");
     } else {
@@ -607,33 +646,83 @@ const RegistroPage = () => {
           <p>Não precisei</p>
         </div>
 
-        <div className="remedio-container-tr">
-          <p>
-            Remédios Nome{" "}
-            {editAtivo === "remedio" && (
-              <img
-                alt="deletar-icone"
-                src={LixeiraIcon}
-                onClick={() => setOpen(true)}
-              />
-            )}
-          </p>
+        {remediosList &&
+          remediosList.map((item: any, index: number) => (
+            <div className="remedio-container-tr">
+              <p>
+                {item.produto}
+                {editAtivo === "remedio" && (
+                  <img
+                    alt="deletar-icone"
+                    src={LixeiraIcon}
+                    onClick={() => handleDeletarModal(item.id)}
+                  />
+                )}
+              </p>
 
-          <div></div>
+              <div></div>
+              <p>
+                <input
+                  type="radio"
+                  name="radio"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 29, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 30, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 31, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 32, item.produto)
+                  }
+                />
+              </p>
+            </div>
+          ))}
 
-          <p>
-            <input type="radio" name="remedio-radio" />
+        {editAtivo === "remedio" && !activeInput && (
+          <p className="add-remedio" onClick={() => setActiveInput(true)}>
+            + Novo item
           </p>
-          <p>
-            <input type="radio" name="remedio-radio" />
-          </p>
-          <p>
-            <input type="radio" name="remedio-radio" />
-          </p>
-          <p>
-            <input type="radio" name="remedio-radio" />
-          </p>
-        </div>
+        )}
+
+        {editAtivo === "remedio" && activeInput && (
+          <span
+            className="input-meu-registro-box"
+            style={{ marginBottom: 10, marginTop: 10 }}
+          >
+            <input
+              className="input-meu-registro"
+              type="text"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <img
+              alt="chek-icon"
+              src={CheckIcon}
+              onClick={() => handlePostProtudo(7, inputValue, 29)}
+            />
+          </span>
+        )}
       </div>
 
       <div className="remedio-container">
@@ -652,32 +741,84 @@ const RegistroPage = () => {
           <p>Esqueci</p>
           <p>Não precisei</p>
         </div>
-        <div className="remedio-container-tr">
-          <p>
-            Remédios Nome{" "}
-            {editAtivo === "pomada" && (
-              <img
-                alt="deletar-icone"
-                src={LixeiraIcon}
-                onClick={() => setOpen(true)}
-              />
-            )}
-          </p>
 
-          <div></div>
-          <p>
-            <input type="radio" name="pomada-radio" />
+        {pomadasList &&
+          pomadasList.map((item: any, index: number) => (
+            <div className="remedio-container-tr">
+              <p>
+                {item.produto}
+                {editAtivo === "pomada" && (
+                  <img
+                    alt="deletar-icone"
+                    src={LixeiraIcon}
+                    onClick={() => handleDeletarModal(item.id)}
+                  />
+                )}
+              </p>
+
+              <div></div>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-pomada"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 25, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-pomada"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 26, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-pomada"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 27, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-pomada"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 28, item.produto)
+                  }
+                />
+              </p>
+            </div>
+          ))}
+
+        {editAtivo === "pomada" && !activeInput && (
+          <p className="add-remedio" onClick={() => setActiveInput(true)}>
+            + Novo item
           </p>
-          <p>
-            <input type="radio" name="pomada-radio" />
-          </p>
-          <p>
-            <input type="radio" name="pomada-radio" />
-          </p>
-          <p>
-            <input type="radio" name="pomada-radio" />
-          </p>
-        </div>
+        )}
+
+        {editAtivo === "pomada" && activeInput && (
+          <span
+            className="input-meu-registro-box"
+            style={{ marginBottom: 10, marginTop: 10 }}
+          >
+            <input
+              className="input-meu-registro"
+              type="text"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <img
+              alt="chek-icon"
+              src={CheckIcon}
+              onClick={() => handlePostProtudo(8, inputValue, 25)}
+            />
+          </span>
+        )}
       </div>
 
       <div className="remedio-container">
@@ -697,39 +838,92 @@ const RegistroPage = () => {
           <p>Esqueci</p>
           <p>Não precisei</p>
         </div>
-        <div className="remedio-container-tr">
-          <p>
-            Remédios Nome{" "}
-            {editAtivo === "hidratante" && (
-              <img
-                alt="deletar-icone"
-                src={LixeiraIcon}
-                onClick={() => setOpen(true)}
-              />
-            )}
+
+        {hidratantesList &&
+          hidratantesList.map((item: any, index: number) => (
+            <div className="remedio-container-tr">
+              <p>
+                {item.produto}
+                {editAtivo === "hidratante" && (
+                  <img
+                    alt="deletar-icone"
+                    src={LixeiraIcon}
+                    onClick={() => handleDeletarModal(item.id)}
+                  />
+                )}
+              </p>
+
+              <div></div>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-hidratante"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 21, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-hidratante"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 22, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-hidratante"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 23, item.produto)
+                  }
+                />
+              </p>
+              <p>
+                <input
+                  type="radio"
+                  name="radio-hidratante"
+                  onChange={(e) =>
+                    handleChekbox(e, item.jornadaCategoriaId, 24, item.produto)
+                  }
+                />
+              </p>
+            </div>
+          ))}
+
+        {editAtivo === "hidratante" && !activeInput && (
+          <p className="add-remedio" onClick={() => setActiveInput(true)}>
+            + Novo item
           </p>
-          <div></div>
-          <p>
-            <input type="radio" name="radio" />
-          </p>
-          <p>
-            <input type="radio" name="radio" />
-          </p>
-          <p>
-            <input type="radio" name="radio" />
-          </p>
-          <p>
-            <input type="radio" name="radio" />
-          </p>
-        </div>
-        {editAtivo === "hidratante" && <p>+ </p>}
+        )}
+
+        {editAtivo === "hidratante" && activeInput && (
+          <span
+            className="input-meu-registro-box"
+            style={{ marginBottom: 10, marginTop: 10 }}
+          >
+            <input
+              className="input-meu-registro"
+              type="text"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <img
+              alt="chek-icon"
+              src={CheckIcon}
+              onClick={() => handlePostProtudo(9, inputValue, 21)}
+            />
+          </span>
+        )}
       </div>
-      <DeletarModal open={open} setOpen={setOpen} />
+
+      <DeletarModal open={open} setOpen={setOpen} id={selectedDeletId} />
 
       <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais algum comentário sobre seus cuidados de hoje?
       </label>
-      {/* <input className="input-meu-registro" type="text" /> */}
+
       <span className="input-meu-registro-box" style={{ marginBottom: 40 }}>
         <input
           className="input-meu-registro"

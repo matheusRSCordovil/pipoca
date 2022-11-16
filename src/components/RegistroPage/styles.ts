@@ -19,6 +19,17 @@ export const MainContainer = styled.div`
     width: 100%;
   }
 
+  .add-remedio {
+    text-align: left;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #a4a4a4;
+  }
+
   .input-meu-registro-box img {
     margin-left: -15px;
   }
@@ -102,10 +113,6 @@ export const MainContainer = styled.div`
   .remedio-container-tr > p {
     width: 17.5%;
     margin: 0;
-
-    /* @media (max-width: 365px) {
-      width: 15%;
-    } */
   }
 
   .remedio-container-tr > div {
@@ -159,10 +166,6 @@ export const MainContainer = styled.div`
     width: 17.5%;
     margin: 0;
     white-space: nowrap;
-
-    /* @media (max-width: 365px) {
-      width: 15%;
-    } */
   }
 
   .remedio-container > div:first-child > p:first-child {
@@ -282,6 +285,12 @@ export const MainContainer = styled.div`
     line-height: 35px;
     letter-spacing: 0em;
     color: #7d7d7d;
+  }
+
+  .active-input {
+    color: #7d7d7d;
+    border: none;
+    border-bottom: 1px solid #7d7d7d;
   }
 `;
 

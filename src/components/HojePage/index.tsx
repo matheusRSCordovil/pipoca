@@ -73,7 +73,7 @@ const HojePage = () => {
           <p>00</p>
 
           <span
-            onClick={() => setMesCompleto(!mesCompleto)}
+            // onClick={() => setMesCompleto(!mesCompleto)}
             style={{ display: "flex", width: "85%", justifyContent: "center" }}
           >
             {dias.length &&

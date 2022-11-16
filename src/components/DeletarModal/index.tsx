@@ -2,10 +2,25 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { CSSProperties } from "react";
+import API from "../../services";
 import "./styles.css";
 
-const DeletarModal = ({ ...props }: { open: boolean; setOpen: any }) => {
-  const { open, setOpen } = props;
+const DeletarModal = ({
+  ...props
+}: {
+  open: boolean;
+  setOpen: any;
+  id: number | null;
+}) => {
+  const { open, setOpen, id } = props;
+
+  const handleDelete = () => {
+    API.delete(`JornadaRegistro/${id}`).then((res) => {
+      setTimeout(() => {
+        setOpen(false);
+      }, 400);
+    });
+  };
 
   const buttonStyles: CSSProperties = {
     height: "31px",
@@ -84,7 +99,7 @@ const DeletarModal = ({ ...props }: { open: boolean; setOpen: any }) => {
         <DialogActions
           style={{ justifyContent: "space-evenly", marginBottom: 17 }}
         >
-          <button style={{ ...buttonStyles }} onClick={handleClose}>
+          <button style={{ ...buttonStyles }} onClick={handleDelete}>
             EXCLUIR
           </button>
           <button style={{ ...buttonStyles }} onClick={handleClose}>

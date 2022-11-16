@@ -193,7 +193,7 @@ export const dataColor = [
     ],
   },
   {
-    id: "Aassa",
+    id: "Aassa111",
     color: "#F84A24",
     data: [
       {
@@ -226,7 +226,7 @@ export const dataColor = [
     ],
   },
   {
-    id: "Aassa",
+    id: "Aassa123",
     color: "#F84A24",
     data: [
       {

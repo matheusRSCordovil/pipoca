@@ -23,7 +23,6 @@ const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
     let token = localStorage.getItem("token");
     if (token) {
       let decoded: any = jwt_decode(token);
-      console.log(decoded);
       setUserName(decoded.unique_name);
       setUserEmail(decoded.email);
       setUserId(decoded.UserId);
@@ -56,7 +55,7 @@ const MenuPageConfig = ({ ...props }: { handleSelect: any }) => {
         // @ts-ignore
         delete values.senha;
       }
-
+      values.nome = userName;
       values.id = userId && parseInt(userId + "", 10);
       values.email = userEmail;
       API.put(`Usuario/${userId}`, values)
