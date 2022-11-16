@@ -121,19 +121,19 @@ export const MainContainer = styled.div`
     visibility: hidden;
   }
 
-  .remedio-container-tr > p:nth-child(2) > input {
+  .remedio-container-tr > p:nth-child(3) > input {
     color: #1391ed;
   }
 
-  .remedio-container-tr > p:nth-child(3) > input {
+  .remedio-container-tr > p:nth-child(4) > input {
     color: #ffd550;
   }
 
-  .remedio-container-tr > p:nth-child(4) > input {
+  .remedio-container-tr > p:nth-child(5) > input {
     color: #fb991c;
   }
 
-  .remedio-container-tr > p:nth-child(5) > input {
+  .remedio-container-tr > p:nth-child(6) > input {
     color: #7d7d7d;
   }
 

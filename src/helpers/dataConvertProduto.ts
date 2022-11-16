@@ -1,5 +1,4 @@
 const handleCategoriaId = (id: number) => {
-  // banho
   if ([32, 28, 24].includes(id)) {
     return "g";
   }
@@ -82,8 +81,6 @@ export const convertDataProdutos = (response: {
     };
     sintomasObj.push(sintomasObjTemp);
   }
-
-  console.log(sintomasObj);
 
   sintomasObj.forEach((item: any) => {
     item.data.unshift({ x: "", y: null });
