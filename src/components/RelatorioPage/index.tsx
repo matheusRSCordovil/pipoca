@@ -17,6 +17,7 @@ import {
   convertIconGraphic,
   convertLineGraphic,
 } from "../../helpers/dataConvertLineGraphic";
+import { convertDataProdutos } from "../../helpers/dataConvertProduto";
 
 const RelatorioPage = () => {
   const [open, setOpen] = useState(false);
@@ -27,6 +28,7 @@ const RelatorioPage = () => {
   const [banhoData, setBanhoData] = useState<any>([]);
   const [iconGraphicData, setIconGraphicData] = useState<any>([]);
   const [rotinaData, setRotinaData] = useState<any>([]);
+  const [produtosData, setProdutosData] = useState<any>([]);
 
   const handleOpen = (color: string) => {
     setOpen(true);
@@ -41,6 +43,7 @@ const RelatorioPage = () => {
       setBanhoData([convertLineGraphic(response, 6, false)]);
       setRotinaData([convertLineGraphic(response, 5, false)]);
       setIconGraphicData([convertIconGraphic(response)]);
+      setProdutosData(() => convertDataProdutos(response));
     });
   }, []);
 
@@ -148,7 +151,7 @@ const RelatorioPage = () => {
         >
           Sua rotina de medicações foi:
         </div>
-        <LineGraphicMultiColor color={"#7D7D7D"} />
+        <LineGraphicMultiColor color={"#7D7D7D"} data={produtosData} />
       </div>
       <ComentarioModal
         open={open}

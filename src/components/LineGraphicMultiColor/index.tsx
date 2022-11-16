@@ -1,5 +1,11 @@
 import { ResponsiveLine } from "@nivo/line";
-import { dataColor } from "../../constants";
+import {
+  ReactElement,
+  JSXElementConstructor,
+  ReactFragment,
+  ReactPortal,
+  Key,
+} from "react";
 import { MainContainer } from "./styles";
 
 // @ts-ignore
@@ -58,7 +64,13 @@ const CustomSymbol = ({
   }
 };
 
-const LineGraphicMultiColor = ({ color }: { color: string }) => {
+const LineGraphicMultiColor = ({
+  color,
+  data,
+}: {
+  color: string;
+  data: any;
+}) => {
   const dataTheme = {
     background: "#ffffff",
     textColor: "#333333",
@@ -102,7 +114,7 @@ const LineGraphicMultiColor = ({ color }: { color: string }) => {
   const handleGridYValues = () => {
     const values = [];
 
-    for (let i = 0; i <= dataColor.length + 2; i++) {
+    for (let i = 0; i <= data.length + 2; i++) {
       values.push(i);
     }
 
@@ -114,11 +126,26 @@ const LineGraphicMultiColor = ({ color }: { color: string }) => {
       <span>
         <div>
           <p></p>
-          {dataColor.map((item, index) => (
-            <p key={index} style={{ width: "68px" }}>
-              {item.id}
-            </p>
-          ))}
+          {data.map(
+            (
+              item: {
+                id:
+                  | string
+                  | number
+                  | boolean
+                  | ReactElement<any, string | JSXElementConstructor<any>>
+                  | ReactFragment
+                  | ReactPortal
+                  | null
+                  | undefined;
+              },
+              index: Key | null | undefined
+            ) => (
+              <p key={index} style={{ width: "68px" }}>
+                {item.id}
+              </p>
+            )
+          )}
           <p></p>
         </div>
 
@@ -151,14 +178,14 @@ const LineGraphicMultiColor = ({ color }: { color: string }) => {
       <div className="grafico-container">
         <ResponsiveLine
           theme={dataTheme}
-          data={dataColor}
+          data={data}
           colors={[color]}
           margin={{ top: 50, right: 60, bottom: 50, left: -15 }}
           xScale={{ type: "point" }}
           yScale={{
             type: "linear",
-            min: 0,
-            max: dataColor.length + 1,
+            min: data.length + 1,
+            max: 0,
             stacked: false,
             reverse: false,
           }}
