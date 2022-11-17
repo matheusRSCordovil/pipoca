@@ -131,7 +131,13 @@ const RelatorioPage = () => {
         >
           Nestes dias, você realizou:
         </div>
-        <LineDotGreen data={rotinaData} bar={BarGreen} color={"#58CC63"} />
+
+        <LineDotGreen
+          setOpen={handleOpen}
+          data={rotinaData}
+          bar={BarGreen}
+          color={"#58CC63"}
+        />
 
         <div
           className="grafico-titulo-container-label"

@@ -1,6 +1,7 @@
 import { ResponsiveLine } from "@nivo/line";
 import { MainContainer } from "./styles";
 import TickIcon from "../../assets/icon/tickIcon.png";
+import { useHomeProvider } from "../../providers/HomeProvider";
 
 // @ts-ignore
 const CustomSymbol = ({
@@ -28,10 +29,12 @@ const LineDotGreen = ({
   bar,
   color,
   data,
+  setOpen,
 }: {
   bar: any;
   color: string;
   data: any;
+  setOpen: any;
 }) => {
   const dataTheme = {
     background: "#ffffff",
@@ -54,6 +57,8 @@ const LineDotGreen = ({
     },
   };
 
+  const { setInfoDialogText } = useHomeProvider();
+
   const CustomTopAxisTick = (tick: any) => {
     return (
       <foreignObject
@@ -73,19 +78,32 @@ const LineDotGreen = ({
     );
   };
 
+  const handleClickModal = (text: string, index: number) => {
+    setOpen(color);
+    setInfoDialogText({
+      texto: text,
+      dia: index + "",
+    });
+  };
+
   const CustomBottomAxisTick = (tick: any) => {
     return (
       <foreignObject
         width={29}
         height={80}
         transform={`translate(${tick.x - 15},${tick.y + 0})`}
-        onClick={() => console.log(tick.value)}
+        onClick={() =>
+          handleClickModal(
+            data[0].data[tick.tickIndex].textX,
+            data[0].data[tick.tickIndex].x
+          )
+        }
       >
         <MainContainer>
           <div
             className="tick-legend"
             style={
-              tick.value.slice(-1) === "t"
+              data[0].data[tick.tickIndex].textX
                 ? { backgroundColor: color }
                 : { display: "none" }
             }
