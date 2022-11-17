@@ -26,7 +26,7 @@ export const convertDataProdutos = (response: {
             .filter((x: { jornadaCategoriaId: number; produto: string }) =>
               [7, 8, 9].includes(x.jornadaCategoriaId)
             )
-            .map((x: { produto: string }) => x.produto);
+            .map((x: { produto: string }) => (x.produto ? x.produto : null));
         } else {
           return null;
         }
@@ -64,7 +64,7 @@ export const convertDataProdutos = (response: {
           item: { produto: string; jornadaCategoriaOpcaoId: number },
           index: number
         ) => {
-          if (item.produto === produtosUnicos[i]) {
+          if (item && item.produto === produtosUnicos[i]) {
             return {
               x: ("0" + (index + 1)).slice(-2),
               y: i + 1,
