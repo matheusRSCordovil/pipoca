@@ -16,6 +16,7 @@ const AprendizagemPage = () => {
   } = useHomeProvider();
 
   const [conteudos, setConteudos] = useState<any>([]);
+  const [titulos, setTitulos] = useState<string>("");
 
   const handleClick = (index: number) => {
     setIdAtivo(index + "");
@@ -47,6 +48,31 @@ const AprendizagemPage = () => {
     });
   }, [filtrosAtivos]);
 
+  useEffect(() => {
+    const getData = setTimeout(() => {
+      API.get(`Conteudo?NivelId=1${filtrosAtivos}&Titulos=${titulos}`).then(
+        (response) => {
+          setLevel1(response.data.slice(0, 4));
+        }
+      );
+
+      API.get(`Conteudo?NivelId=2${filtrosAtivos}&Titulos=${titulos}`).then(
+        (response) => {
+          setLevel2(response.data.slice(0, 4));
+        }
+      );
+
+      API.get(`Conteudo?NivelId=3${filtrosAtivos}&Titulos=${titulos}`).then(
+        (response) => {
+          setLevel3(response.data.slice(0, 4));
+        }
+      );
+    }, 2000);
+
+    return () => clearTimeout(getData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [titulos]);
+
   return (
     <MainContainer>
       <div
@@ -77,7 +103,11 @@ const AprendizagemPage = () => {
         />
       </div>
 
-      <input type="text" className="pesquisa-input" />
+      <input
+        type="text"
+        className="pesquisa-input"
+        onChange={(e) => setTitulos(e.target.value)}
+      />
 
       {level1.length && (
         <>
