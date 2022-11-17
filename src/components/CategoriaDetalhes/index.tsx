@@ -46,14 +46,14 @@ const CategoriaDetalhes = () => {
       </div>
 
       <hr />
-
+      {/* 
       <input type="text" className="pesquisa-input" />
 
       <p className="recommend-text">
         Se gostou desse conteúdo, poderá gostar de:
       </p>
 
-      {carrosselData.lenght && <Carrossel data={carrosselData} />}
+      {carrosselData.lenght && <Carrossel data={carrosselData} />} */}
     </MainContainer>
   );
 };

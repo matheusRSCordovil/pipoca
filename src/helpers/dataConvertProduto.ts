@@ -46,7 +46,7 @@ export const convertDataProdutos = (response: {
     return response.data.periodo.map((item: { registros: any }) => {
       if (item.registros) {
         return item.registros.filter(
-          (x: { produto: string }) => x.produto === nomeProduto
+          (x: { produto: string }) => x.produto && x.produto === nomeProduto
         )[0];
       } else {
         return {};
