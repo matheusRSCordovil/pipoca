@@ -198,8 +198,7 @@ const HojePage = () => {
           <img
             src={
               categoriaPreenchida.filter(
-                (item: { categoria: string }) =>
-                  item.categoria === "ProdutosCuidados"
+                (item: { produto: string }) => item.produto !== undefined
               ).length
                 ? CuidadosIconOn
                 : CuidadosIcon
@@ -208,16 +207,8 @@ const HojePage = () => {
           />
           <p>Produtos de Cuidado</p>
           {categoriaPreenchida.filter(
-            (item: { categoria: string }) => item.categoria === "Produtos"
-          ).length && (
-            <p>
-              {
-                categoriaPreenchida.filter(
-                  (item: { categoria: string }) => item.categoria === "Produtos"
-                )[0].opcao
-              }
-            </p>
-          )}
+            (item: { produto: string }) => item.produto !== undefined
+          ).length && <p>Medicamentos em dia</p>}
         </div>
 
         <div>

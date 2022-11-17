@@ -163,8 +163,8 @@ const RegistroPage = () => {
     }
   };
 
-  const handleComentarioChange = () => {
-    handleClick("", "");
+  const handleComentarioChange = (index: number) => {
+    handleClick("", "", index);
     setComentarioAtivo("");
   };
 
@@ -228,7 +228,7 @@ const RegistroPage = () => {
     }
   };
 
-  const handleClick = (e: string, categoria: string) => {
+  const handleClick = (e: string, categoria: string, index?: number) => {
     handleJornadaId(e);
 
     if (categoria === "dia") {
@@ -271,30 +271,15 @@ const RegistroPage = () => {
       }
     }
 
-    API.post("Jornada/Cadastro", {
-      registro: [
-        {
-          observacao: comentariosList[0],
-          jornadaCategoriaOpcaoId: activeJornadaIds[0],
-        },
-        {
-          observacao: comentariosList[1],
-          jornadaCategoriaOpcaoId: activeJornadaIds[1],
-        },
-        {
-          observacao: comentariosList[2],
-          jornadaCategoriaOpcaoId: activeJornadaIds[2],
-        },
-        {
-          observacao: comentariosList[3],
-          jornadaCategoriaOpcaoId: activeJornadaIds[3],
-        },
-        {
-          observacao: comentariosList[4],
-          jornadaCategoriaOpcaoId: activeJornadaIds[4],
-        },
-      ],
-    });
+    index !== undefined &&
+      API.post("Jornada/Cadastro", {
+        registro: [
+          {
+            observacao: comentariosList[index],
+            jornadaCategoriaOpcaoId: activeJornadaIds[index],
+          },
+        ],
+      });
   };
 
   return !showCalendar ? (
@@ -329,14 +314,14 @@ const RegistroPage = () => {
       <IconesDiv>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele9", "pele")}
+          onClick={() => handleClick("pele9", "pele", 0)}
         >
           <img src={activePele === "pele9" ? Pele1active : Pele1} alt="icone" />
           <p>Boa</p>
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele10", "pele")}
+          onClick={() => handleClick("pele10", "pele", 0)}
         >
           <img
             src={activePele === "pele10" ? Pele2active : Pele2}
@@ -346,7 +331,7 @@ const RegistroPage = () => {
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele11", "pele")}
+          onClick={() => handleClick("pele11", "pele", 0)}
         >
           <img
             src={activePele === "pele11" ? Pele3active : Pele3}
@@ -356,7 +341,7 @@ const RegistroPage = () => {
         </span>
         <span
           style={{ color: PRIMARY.red }}
-          onClick={() => handleClick("pele12", "pele")}
+          onClick={() => handleClick("pele12", "pele", 0)}
         >
           <img
             src={activePele === "pele12" ? Pele4active : Pele4}
@@ -381,7 +366,7 @@ const RegistroPage = () => {
           <img
             alt="chek-icon"
             src={CheckIcon}
-            onClick={() => handleComentarioChange()}
+            onClick={() => handleComentarioChange(0)}
           />
         ) : (
           <img src={PencilIcon} alt="edit" />
@@ -396,7 +381,7 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo17", "sentindo")}
+            onClick={() => handleClick("sentindo17", "sentindo", 1)}
             src={activeSentindo === "sentindo17" ? Sentindo1active : Sentindo1}
             alt="icone"
           />
@@ -404,7 +389,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo18", "sentindo")}
+            onClick={() => handleClick("sentindo18", "sentindo", 1)}
             src={activeSentindo === "sentindo18" ? Sentindo2active : Sentindo2}
             alt="icone"
           />
@@ -412,7 +397,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo19", "sentindo")}
+            onClick={() => handleClick("sentindo19", "sentindo", 1)}
             src={activeSentindo === "sentindo19" ? Sentindo3active : Sentindo3}
             alt="icone"
           />
@@ -420,7 +405,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#FB991C" }}>
           <img
-            onClick={() => handleClick("sentindo20", "sentindo")}
+            onClick={() => handleClick("sentindo20", "sentindo", 1)}
             src={activeSentindo === "sentindo20" ? Sentindo4active : Sentindo4}
             alt="icone"
           />
@@ -442,7 +427,7 @@ const RegistroPage = () => {
           <img
             alt="chek-icon"
             src={CheckIcon}
-            onClick={() => handleComentarioChange()}
+            onClick={() => handleComentarioChange(1)}
           />
         ) : (
           <img src={PencilIcon} alt="edit" />
@@ -455,7 +440,7 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir13", "dormir")}
+            onClick={() => handleClick("dormir13", "dormir", 2)}
             src={activeDormir === "dormir13" ? dormir1active : dormir1}
             alt="icone"
           />
@@ -463,7 +448,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir14", "dormir")}
+            onClick={() => handleClick("dormir14", "dormir", 2)}
             src={activeDormir === "dormir14" ? dormir2active : dormir2}
             alt="icone"
           />
@@ -471,7 +456,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir15", "dormir")}
+            onClick={() => handleClick("dormir15", "dormir", 2)}
             src={activeDormir === "dormir15" ? dormir3active : dormir3}
             alt="icone"
           />
@@ -479,7 +464,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#104F92" }}>
           <img
-            onClick={() => handleClick("dormir16", "dormir")}
+            onClick={() => handleClick("dormir16", "dormir", 2)}
             src={activeDormir === "dormir16" ? dormir4active : dormir4}
             alt="icone"
           />
@@ -501,7 +486,7 @@ const RegistroPage = () => {
           <img
             alt="chek-icon"
             src={CheckIcon}
-            onClick={() => handleComentarioChange()}
+            onClick={() => handleComentarioChange(2)}
           />
         ) : (
           <img src={PencilIcon} alt="edit" />
@@ -514,7 +499,7 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => handleClick("banho1", "banho")}
+            onClick={() => handleClick("banho1", "banho", 3)}
             src={activeBanho === "banho1" ? Banho1active : Banho1}
             alt="icone"
           />
@@ -522,7 +507,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => handleClick("banho2", "banho")}
+            onClick={() => handleClick("banho2", "banho", 3)}
             src={activeBanho === "banho2" ? Banho2active : Banho2}
             alt="icone"
           />
@@ -530,7 +515,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => handleClick("banho3", "banho")}
+            onClick={() => handleClick("banho3", "banho", 3)}
             src={activeBanho === "banho3" ? Banho3active : Banho3}
             alt="icone"
           />
@@ -538,7 +523,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#1391ED" }}>
           <img
-            onClick={() => handleClick("banho4", "banho")}
+            onClick={() => handleClick("banho4", "banho", 3)}
             src={activeBanho === "banho4" ? Banho4active : Banho4}
             alt="icone"
           />
@@ -560,7 +545,7 @@ const RegistroPage = () => {
           <img
             alt="chek-icon"
             src={CheckIcon}
-            onClick={() => handleComentarioChange()}
+            onClick={() => handleComentarioChange(3)}
           />
         ) : (
           <img src={PencilIcon} alt="edit" />
@@ -573,7 +558,7 @@ const RegistroPage = () => {
       <IconesDiv>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia5", "dia")}
+            onClick={() => handleClick("dia5", "dia", 4)}
             src={activeDia === "dia5" ? Dia1active : Dia1}
             alt="icone"
           />
@@ -581,7 +566,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia6", "dia")}
+            onClick={() => handleClick("dia6", "dia", 4)}
             src={activeDia === "dia6" ? Dia2active : Dia2}
             alt="icone"
           />
@@ -589,7 +574,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia7", "dia")}
+            onClick={() => handleClick("dia7", "dia", 4)}
             src={activeDia === "dia7" ? Dia3active : Dia3}
             alt="icone"
           />
@@ -597,7 +582,7 @@ const RegistroPage = () => {
         </span>
         <span style={{ color: "#58CC63" }}>
           <img
-            onClick={() => handleClick("dia8", "dia")}
+            onClick={() => handleClick("dia8", "dia", 4)}
             src={activeDia === "dia8" ? Dia4active : Dia4}
             alt="icone"
           />
@@ -619,7 +604,7 @@ const RegistroPage = () => {
           <img
             alt="chek-icon"
             src={CheckIcon}
-            onClick={() => handleComentarioChange()}
+            onClick={() => handleComentarioChange(4)}
           />
         ) : (
           <img src={PencilIcon} alt="edit" />
@@ -858,6 +843,8 @@ const RegistroPage = () => {
                 <input
                   type="radio"
                   name="radio-hidratante"
+                  // value={21}
+                  // checked={item.jornadaCategoriaId === 21}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 21, item.produto)
                   }
@@ -867,6 +854,7 @@ const RegistroPage = () => {
                 <input
                   type="radio"
                   name="radio-hidratante"
+                  // checked={item.jornadaCategoriaId === 22}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 22, item.produto)
                   }
@@ -876,6 +864,8 @@ const RegistroPage = () => {
                 <input
                   type="radio"
                   name="radio-hidratante"
+                  // value={23}
+                  // checked={item.jornadaCategoriaId === 23}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 23, item.produto)
                   }
@@ -885,6 +875,8 @@ const RegistroPage = () => {
                 <input
                   type="radio"
                   name="radio-hidratante"
+                  // value={24}
+                  // checked={item.jornadaCategoriaId === 24}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 24, item.produto)
                   }
@@ -934,7 +926,7 @@ const RegistroPage = () => {
           <img
             alt="chek-icon"
             src={CheckIcon}
-            onClick={() => handleComentarioChange()}
+            // onClick={() => handleComentarioChange()}
           />
         ) : (
           <img src={PencilIcon} alt="edit" />

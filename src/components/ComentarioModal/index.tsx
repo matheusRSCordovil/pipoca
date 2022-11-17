@@ -55,9 +55,9 @@ const ComentarioModal = ({
       >
         <DialogContent style={{ padding: "3px 24px" }}>
           <p style={{ ...textoSecundarioStyles }}>
-            Comentário realizado no dia 04 da jornada (28/09/2022)
+            Comentário realizado no dia {infoDialogText.dia} da jornada
           </p>
-          <p style={{ ...textoPrimarioStyles }}>“{infoDialogText}”</p>
+          <p style={{ ...textoPrimarioStyles }}>“{infoDialogText.texto}”</p>
         </DialogContent>
       </Dialog>
     </div>

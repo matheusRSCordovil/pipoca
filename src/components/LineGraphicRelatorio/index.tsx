@@ -71,9 +71,12 @@ const LineGraphicRelatorio = ({
     return [5, 0];
   };
 
-  const handleClickModal = (text: string) => {
+  const handleClickModal = (text: string, index: number) => {
     setOpen(color);
-    setInfoDialogText(text);
+    setInfoDialogText({
+      texto: text,
+      dia: index + "",
+    });
   };
 
   const CustomBottomAxisTick = (tick: any) => {
@@ -82,7 +85,12 @@ const LineGraphicRelatorio = ({
         width={29}
         height={80}
         transform={`translate(${tick.x - 15},${tick.y + 0})`}
-        onClick={() => handleClickModal(data[0].data[tick.tickIndex].textX)}
+        onClick={() =>
+          handleClickModal(
+            data[0].data[tick.tickIndex].textX,
+            data[0].data[tick.tickIndex].x
+          )
+        }
       >
         <MainContainer>
           <div
