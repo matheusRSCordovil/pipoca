@@ -649,7 +649,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio"
+                  name={`radio${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 29}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 29, item.produto)
@@ -659,7 +659,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio"
+                  name={`radio${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 30}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 30, item.produto)
@@ -669,7 +669,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio"
+                  name={`radio${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 31}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 31, item.produto)
@@ -679,7 +679,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio"
+                  name={`radio${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 32}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 32, item.produto)
@@ -749,7 +749,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-pomada"
+                  name={`radio-pomada${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 25}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 25, item.produto)
@@ -759,7 +759,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-pomada"
+                  name={`radio-pomada${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 26}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 26, item.produto)
@@ -769,7 +769,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-pomada"
+                  name={`radio-pomada${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 27}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 27, item.produto)
@@ -779,7 +779,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-pomada"
+                  name={`radio-pomada${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 28}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 28, item.produto)
@@ -850,7 +850,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-hidratante"
+                  name={`radio-hidratante${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 21}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 21, item.produto)
@@ -860,7 +860,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-hidratante"
+                  name={`radio-hidratante${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 22}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 22, item.produto)
@@ -870,7 +870,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-hidratante"
+                  name={`radio-hidratante${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 23}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 23, item.produto)
@@ -880,7 +880,7 @@ const RegistroPage = () => {
               <p>
                 <input
                   type="radio"
-                  name="radio-hidratante"
+                  name={`radio-hidratante${index}`}
                   defaultChecked={item.jornadaCategoriaOpcaoId === 24}
                   onChange={(e) =>
                     handleChekbox(e, item.jornadaCategoriaId, 24, item.produto)

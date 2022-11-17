@@ -50,19 +50,19 @@ const AprendizagemPage = () => {
 
   useEffect(() => {
     const getData = setTimeout(() => {
-      API.get(`Conteudo?NivelId=1${filtrosAtivos}&Titulos=${titulos}`).then(
+      API.get(`Conteudo?NivelId=1${filtrosAtivos}&Titulo=${titulos}`).then(
         (response) => {
           setLevel1(response.data.slice(0, 4));
         }
       );
 
-      API.get(`Conteudo?NivelId=2${filtrosAtivos}&Titulos=${titulos}`).then(
+      API.get(`Conteudo?NivelId=2${filtrosAtivos}&Titulo=${titulos}`).then(
         (response) => {
           setLevel2(response.data.slice(0, 4));
         }
       );
 
-      API.get(`Conteudo?NivelId=3${filtrosAtivos}&Titulos=${titulos}`).then(
+      API.get(`Conteudo?NivelId=3${filtrosAtivos}&Titulo=${titulos}`).then(
         (response) => {
           setLevel3(response.data.slice(0, 4));
         }
