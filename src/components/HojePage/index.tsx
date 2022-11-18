@@ -36,6 +36,10 @@ const HojePage = () => {
       setCategoriaPreenchida(response.data.registro);
 
       for (let i = 1; i < 31; i++) {
+        if (!response.data.dia) {
+          dias.push(0);
+          continue;
+        }
         if (i > response.data.dia) {
           dias.push(0);
         } else {
@@ -45,6 +49,8 @@ const HojePage = () => {
 
       setDias(dias.slice(0, 30));
     });
+
+    console.log(dias);
 
     API.get("Conteudo?CategoriaId=1").then((response) => {
       let index = Math.floor(Math.random() * response.data.length - 1);
@@ -63,7 +69,9 @@ const HojePage = () => {
           <p className="mensagem-do-dia-text">
             {mesCompleto ? "Você chegou no dia" : "Você está no dia"}
           </p>
-          <p className="dias-texto">{("0" + diaAtual).slice(-2)}</p>
+          <p className="dias-texto">
+            {diaAtual ? ("0" + diaAtual).slice(-2) : "00"}
+          </p>
           <p className="mensagem-do-dia-text">
             da sua jornada{mesCompleto && "!"}
           </p>
