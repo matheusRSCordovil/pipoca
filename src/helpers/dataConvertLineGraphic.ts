@@ -51,18 +51,22 @@ export const convertLineGraphic = (
     sintomasObj.data = filterSintomas().map((item: any, index: number) => {
       return {
         x: ("0" + (index + 1)).slice(-2),
-        y: item.jornadaCategoriaOpcaoId ? item.jornadaCategoriaOpcaoId : null,
-        textX: item.observacao,
+        y:
+          item && item.jornadaCategoriaOpcaoId
+            ? item.jornadaCategoriaOpcaoId
+            : null,
+        textX: item && item.observacao,
       };
     });
   } else {
     sintomasObj.data = filterSintomas().map((item: any, index: number) => {
       return {
         x: ("0" + (index + 1)).slice(-2),
-        y: item.jornadaCategoriaOpcaoId
-          ? handleCategoriaId(item.jornadaCategoriaOpcaoId)
-          : null,
-        textX: item.jornadaCategoriaOpcaoId + "",
+        y:
+          item && item.jornadaCategoriaOpcaoId
+            ? handleCategoriaId(item.jornadaCategoriaOpcaoId)
+            : null,
+        textX: item && item.jornadaCategoriaOpcaoId + "",
       };
     });
   }
