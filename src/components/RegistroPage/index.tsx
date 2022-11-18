@@ -917,7 +917,7 @@ const RegistroPage = () => {
 
       <DeletarModal open={open} setOpen={setOpen} id={selectedDeletId} />
 
-      <label htmlFor="file-upload" className="label-input">
+      {/* <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais algum comentário sobre seus cuidados de hoje?
       </label>
 
@@ -936,7 +936,7 @@ const RegistroPage = () => {
         ) : (
           <img src={PencilIcon} alt="edit" />
         )}
-      </span>
+      </span> */}
     </MainContainer>
   ) : (
     // <ProgressoDonePage />

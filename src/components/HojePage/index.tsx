@@ -40,6 +40,7 @@ const HojePage = () => {
           dias.push(0);
           continue;
         }
+
         if (i > response.data.dia) {
           dias.push(0);
         } else {
