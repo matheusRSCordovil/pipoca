@@ -417,14 +417,14 @@ const Register = () => {
               <div className="error-msg">{formik.errors.repeatSenha}</div>
             )}
 
-            <p style={{ marginTop: 30 }}>
+            {/* <p style={{ marginTop: 30 }}>
               Você receberá um e-mail para confirmar seu cadastro, ok?
             </p>
             <p>
               {" "}
               Assim, mesmo que troque de celular, você sempre terá acesso aos
               seus registros!
-            </p>
+            </p> */}
           </div>
         </div>
       </Carousel>

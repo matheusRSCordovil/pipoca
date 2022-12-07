@@ -77,7 +77,7 @@ const Login = () => {
         />
 
         <span
-          style={{ display: "flex", flexDirection: "column", marginTop: 190 }}
+          style={{ display: "flex", flexDirection: "column", marginTop: 60 }}
         >
           <p className="text-login-8">Que bom te ver por aqui de novo!</p>
 

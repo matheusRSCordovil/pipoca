@@ -8,6 +8,7 @@ export const MainContainer = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  min-height: 670px;
   background-color: ${PRIMARY.blue};
   font-family: Roboto-Condensed;
 
@@ -27,7 +28,7 @@ export const MainContainer = styled.div`
   .login-container-7 {
     background-color: rgb(19, 145, 237);
     height: 100vh;
-    min-height: 896px;
+    min-height: 650px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -71,6 +72,10 @@ export const MainContainer = styled.div`
     letter-spacing: 0em;
     text-align: left;
     padding-left: 30px;
+
+    @media (max-height: 643px) {
+      display: none;
+    }
   }
 
   .text-login-7 span {
@@ -88,6 +93,10 @@ export const MainContainer = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 50%;
+
+    @media (max-height: 643px) {
+      height: 500px;
+    }
   }
 
   .bottom-div-7 > form {

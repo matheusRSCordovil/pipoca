@@ -18,6 +18,8 @@ function Dot(props) {
 }
 
 export default function IndicatorDots(props) {
+  const { nextHandler } = props;
+
   const wrapperStyle = {
     position: "absolute",
     width: "100%",
@@ -57,6 +59,12 @@ export default function IndicatorDots(props) {
             </>
           );
         })}
+        {props.index !== 6 && (
+          <button style={buttonStyle} onClick={nextHandler}>
+            <p style={{ margin: 0 }}>Próximo</p>
+            <img alt="next-icon" src={NextIcon} style={{ paddingLeft: 3 }} />
+          </button>
+        )}
         {props.index === 6 && (
           <button type="submit" form="form1" style={buttonStyle}>
             <p style={{ margin: 0 }}>Entrar!</p>
