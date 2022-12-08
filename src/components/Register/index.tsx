@@ -297,10 +297,11 @@ const Register = () => {
             src={CellImg5}
             style={{
               width: "192px",
-              height: "330px",
+              height: "502px",
               position: "absolute",
-              bottom: "235px",
+              bottom: "83px",
               right: "0",
+              zIndex: "10",
             }}
           />
           <div className="bottom-div-5">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import API from "../../services";
-import Carrossel from "../Carrossel";
+// import Carrossel from "../Carrossel";
 import { MainContainer } from "./styles";
 import BackArrow from "../../assets/img/backArrow.png";
 
@@ -44,6 +44,10 @@ const CategoriaDetalhes = () => {
           <span dangerouslySetInnerHTML={{ __html: data?.texto }}></span>
         </p>
       </div>
+
+      <p className="recommend-text" onClick={() => setAtivo("aprendizagem")}>
+        Voltar
+      </p>
 
       <hr />
       {/* 
