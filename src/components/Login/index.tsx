@@ -8,6 +8,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import jwt_decode from "jwt-decode";
+import { inicializarFirebase } from "../../helpers/push-notification";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ const Login = () => {
           setUserNome(decoded.unique_name);
           setAtivo("hoje");
           navigate("/");
+          inicializarFirebase();
         })
         .catch((error: any) => {
           if (error.response.status === 401) {

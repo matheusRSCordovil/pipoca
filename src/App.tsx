@@ -8,6 +8,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { useEffect, useState, Fragment } from "react";
 import { withSnackbar, useSnackbar } from "notistack";
 import { Button } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   // const { enqueueSnackbar } = useSnackbar();
@@ -68,6 +69,7 @@ function App() {
   return (
     <GlobalContext>
       <div className="App">
+        <ToastContainer />
         <PwaPopup />
         <TopMenu />
         <header className="App-header">
