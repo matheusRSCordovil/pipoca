@@ -5,6 +5,8 @@ interface Props {
 }
 
 type HomeProviderProps = {
+  diaEscolhido: number | null;
+  setDiaEscolhido: (value: number | null) => void;
   infoDialogText: {
     texto: string;
     dia: string;
@@ -25,6 +27,8 @@ type HomeProviderProps = {
 };
 
 const DEFAULT_VALUE = {
+  diaEscolhido: null,
+  setDiaEscolhido: () => {},
   infoDialogText: {
     dia: "",
     texto: "",
@@ -60,10 +64,15 @@ export const HomeProvider: React.FC<Props> = ({ children }) => {
   const [infoDialogText, setInfoDialogText] = useState<any>(
     DEFAULT_VALUE.infoDialogText
   );
+  const [diaEscolhido, setDiaEscolhido] = useState<number | null>(
+    DEFAULT_VALUE.diaEscolhido
+  );
 
   return (
     <HomeContext.Provider
       value={{
+        diaEscolhido,
+        setDiaEscolhido,
         infoDialogText,
         setInfoDialogText,
         filtrosAtivos,

@@ -54,15 +54,18 @@ import PencilIcon from "../../assets/icon/pencilIcon.svg";
 import CheckIcon from "../../assets/icon/doneIcon.svg";
 import EditAtivoIcon from "../../assets/icon/editIcon.svg";
 import LixeiraIcon from "../../assets/icon/lixeiraIcon.svg";
-import ProgressoDonePage from "../ProgressDonePage";
+// import ProgressoDonePage from "../ProgressDonePage";
 import DeletarModal from "../DeletarModal";
 import API from "../../services";
 import {
   filterProductList,
   handleProdutoPost,
 } from "../../helpers/dataProtudosFormat";
+import { useHomeProvider } from "../../providers/HomeProvider";
 
 const RegistroPage = () => {
+  const { diaEscolhido } = useHomeProvider();
+
   const [showCalendar, setShowCalendar] = useState(false);
   const [activePele, setActivePele] = useState("");
   const [activeSentindo, setActiveSentindo] = useState("");
@@ -91,67 +94,131 @@ const RegistroPage = () => {
   const [pomadasList, setPomadasList] = useState<any[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [selectedDeletId, setSelectedDeletId] = useState<number | null>(null);
+  const [selectedproduto, setSelectedProdutoId] = useState<string | null>(null);
 
   useEffect(() => {
-    API.get("Jornada/Atual").then((response) => {
-      setDiaAtual(response.data.dia);
-      setRemediosList(filterProductList(response, 7));
-      setPomadasList(filterProductList(response, 8));
-      setHidratantesList(filterProductList(response, 9));
+    if (diaEscolhido) {
+      API.get("Jornada/Atual").then((response) => {
+        setDiaAtual(response.data.dia);
+        setRemediosList(filterProductList(response, 7));
+        setPomadasList(filterProductList(response, 8));
+        setHidratantesList(filterProductList(response, 9));
 
-      for (let i = 1; i < 31; i++) {
-        if (i === response.data.dia) {
-          dias.push(2);
-          continue;
+        for (let i = 1; i < 31; i++) {
+          if (i === response.data.dia) {
+            dias.push(2);
+            continue;
+          }
+
+          if (i > response.data.dia) {
+            dias.push(0);
+          } else {
+            dias.push(1);
+          }
         }
 
-        if (i > response.data.dia) {
-          dias.push(0);
-        } else {
-          dias.push(1);
-        }
-      }
-
-      setDias(dias.slice(0, 30));
-
-      response.data.registro.forEach((jornada: any) => {
-        if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
-          activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
-          setActiveJornadaIds(activeJornadaIds);
-          setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
-          comentariosList[0] = jornada.observacao || "";
-        }
-        if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
-          activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
-          setActiveJornadaIds(activeJornadaIds);
-          setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
-          comentariosList[1] = jornada.observacao || "";
-        }
-        if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
-          activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
-          setActiveJornadaIds(activeJornadaIds);
-          setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
-          comentariosList[2] = jornada.observacao || "";
-        }
-        if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
-          activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
-          setActiveJornadaIds(activeJornadaIds);
-          setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
-          comentariosList[3] = jornada.observacao || "";
-        }
-        if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
-          setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
-          activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
-          setActiveJornadaIds(activeJornadaIds);
-          comentariosList[4] = jornada.observacao || "";
-        }
+        setDias(dias.slice(0, 30));
       });
 
-      setComentariosList(comentariosList);
-    });
+      API.get(`Jornada/Periodo`).then((response) => {
+        response.data.periodo
+          .filter((x: { dia: number }) => x.dia === diaEscolhido)[0]
+          .registros.forEach((jornada: any) => {
+            if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
+              activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
+              setActiveJornadaIds(activeJornadaIds);
+              setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
+              comentariosList[0] = jornada.observacao || "";
+            }
+            if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
+              activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
+              setActiveJornadaIds(activeJornadaIds);
+              setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
+              comentariosList[1] = jornada.observacao || "";
+            }
+            if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
+              activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
+              setActiveJornadaIds(activeJornadaIds);
+              setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
+              comentariosList[2] = jornada.observacao || "";
+            }
+            if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
+              activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
+              setActiveJornadaIds(activeJornadaIds);
+              setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
+              comentariosList[3] = jornada.observacao || "";
+            }
+            if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
+              setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
+              activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
+              setActiveJornadaIds(activeJornadaIds);
+              comentariosList[4] = jornada.observacao || "";
+            }
+          });
+
+        setComentariosList(comentariosList);
+      });
+    } else {
+      API.get("Jornada/Atual").then((response) => {
+        setDiaAtual(response.data.dia);
+        setRemediosList(filterProductList(response, 7));
+        setPomadasList(filterProductList(response, 8));
+        setHidratantesList(filterProductList(response, 9));
+
+        for (let i = 1; i < 31; i++) {
+          if (i === response.data.dia) {
+            dias.push(2);
+            continue;
+          }
+
+          if (i > response.data.dia) {
+            dias.push(0);
+          } else {
+            dias.push(1);
+          }
+        }
+
+        setDias(dias.slice(0, 30));
+
+        response.data.registro.forEach((jornada: any) => {
+          if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
+            activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
+            setActiveJornadaIds(activeJornadaIds);
+            setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
+            comentariosList[0] = jornada.observacao || "";
+          }
+          if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
+            activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
+            setActiveJornadaIds(activeJornadaIds);
+            setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
+            comentariosList[1] = jornada.observacao || "";
+          }
+          if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
+            activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
+            setActiveJornadaIds(activeJornadaIds);
+            setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
+            comentariosList[2] = jornada.observacao || "";
+          }
+          if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
+            activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
+            setActiveJornadaIds(activeJornadaIds);
+            setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
+            comentariosList[3] = jornada.observacao || "";
+          }
+          if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
+            setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
+            activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
+            setActiveJornadaIds(activeJornadaIds);
+            comentariosList[4] = jornada.observacao || "";
+          }
+        });
+
+        setComentariosList(comentariosList);
+      });
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeInput, editAtivo, open]);
+  }, [activeInput, editAtivo, open, diaEscolhido]);
 
   const handleComentario = (e: any, index?: number, ativo?: string) => {
     if (ativo) {
@@ -192,9 +259,10 @@ const RegistroPage = () => {
     }
   };
 
-  const handleDeletarModal = (id: number) => {
+  const handleDeletarModal = (id: number, name: string) => {
     setOpen(true);
     setSelectedDeletId(id);
+    setSelectedProdutoId(name);
   };
 
   const handleJornadaId = (categoria: string) => {
@@ -272,7 +340,20 @@ const RegistroPage = () => {
     }
 
     index !== undefined &&
+      !diaEscolhido &&
       API.post("Jornada/Cadastro", {
+        registro: [
+          {
+            observacao: comentariosList[index],
+            jornadaCategoriaOpcaoId: activeJornadaIds[index],
+          },
+        ],
+      });
+
+    index !== undefined &&
+      diaEscolhido &&
+      API.post("Jornada/Cadastro", {
+        dia: diaEscolhido,
         registro: [
           {
             observacao: comentariosList[index],
@@ -640,7 +721,7 @@ const RegistroPage = () => {
                   <img
                     alt="deletar-icone"
                     src={LixeiraIcon}
-                    onClick={() => handleDeletarModal(item.id)}
+                    onClick={() => handleDeletarModal(item.id, item.produto)}
                   />
                 )}
               </p>
@@ -740,7 +821,7 @@ const RegistroPage = () => {
                   <img
                     alt="deletar-icone"
                     src={LixeiraIcon}
-                    onClick={() => handleDeletarModal(item.id)}
+                    onClick={() => handleDeletarModal(item.id, item.produto)}
                   />
                 )}
               </p>
@@ -841,7 +922,7 @@ const RegistroPage = () => {
                   <img
                     alt="deletar-icone"
                     src={LixeiraIcon}
-                    onClick={() => handleDeletarModal(item.id)}
+                    onClick={() => handleDeletarModal(item.id, item.produto)}
                   />
                 )}
               </p>
@@ -915,7 +996,12 @@ const RegistroPage = () => {
         )}
       </div>
 
-      <DeletarModal open={open} setOpen={setOpen} id={selectedDeletId} />
+      <DeletarModal
+        open={open}
+        setOpen={setOpen}
+        id={selectedDeletId}
+        name={selectedproduto}
+      />
 
       {/* <label htmlFor="file-upload" className="label-input">
         Quer adicionar mais algum comentário sobre seus cuidados de hoje?
@@ -941,7 +1027,7 @@ const RegistroPage = () => {
   ) : (
     // <ProgressoDonePage />
     <MainContainer>
-      <Calendar />
+      <Calendar setShowCalendar={setShowCalendar} />
       <div
         style={{
           display: "flex",

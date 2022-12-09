@@ -1,14 +1,23 @@
 import React, { useEffect } from "react";
+import { useHomeProvider } from "../../providers/HomeProvider";
 import API from "../../services";
 import { DayDiv, DayDivPast, DayDivActive } from "./styles";
 
-const Calendar = () => {
+const Calendar = ({ ...props }: { setShowCalendar: any }) => {
+  const { setShowCalendar } = props;
+  const { setDiaEscolhido } = useHomeProvider();
+
   const [currentMonth, setCurrentMonth] = React.useState<number>(
     new Date().getMonth() + 1
   );
 
   const handleCurrentMonth = (month: string) => {
     setCurrentMonth(Number(month));
+  };
+
+  const handleClickDay = (day: number | null) => {
+    setDiaEscolhido(day);
+    setShowCalendar(false);
   };
 
   const [dias, setDias] = React.useState<any[]>([]);
@@ -54,11 +63,11 @@ const Calendar = () => {
         {dias.length &&
           dias.map((dia: number, index: number) =>
             dia === 2 ? (
-              <DayDivActive key={index}>
+              <DayDivActive key={index} onClick={() => handleClickDay(null)}>
                 {("0" + (index + 1)).slice(-2)}
               </DayDivActive>
             ) : dia === 1 ? (
-              <DayDivPast key={index}>
+              <DayDivPast key={index} onClick={() => handleClickDay(index + 1)}>
                 {("0" + (index + 1)).slice(-2)}
               </DayDivPast>
             ) : (

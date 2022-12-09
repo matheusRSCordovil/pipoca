@@ -11,8 +11,9 @@ const DeletarModal = ({
   open: boolean;
   setOpen: any;
   id: number | null;
+  name: string | null;
 }) => {
-  const { open, setOpen, id } = props;
+  const { open, setOpen, id, name } = props;
 
   const handleDelete = () => {
     API.delete(`JornadaRegistro/${id}`).then((res) => {
@@ -86,8 +87,8 @@ const DeletarModal = ({
         <DialogContent style={{ padding: "3px 24px" }}>
           <p style={{ ...textoPrimarioStyles }}>
             Tem certeza que deseja excluir o item{" "}
-            <span style={{ ...textoPrimarioRemedioStyles }}>“Betnovate N”</span>{" "}
-            da sua lista de produtos e cuidados?
+            <span style={{ ...textoPrimarioRemedioStyles }}>“{name}”</span> da
+            sua lista de produtos e cuidados?
           </p>
           <hr />
           <p style={{ ...textoSecundarioStyles }}>
