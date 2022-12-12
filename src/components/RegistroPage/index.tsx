@@ -105,6 +105,11 @@ const RegistroPage = () => {
         setHidratantesList(filterProductList(response, 9));
 
         for (let i = 1; i < 31; i++) {
+          if (i === diaEscolhido) {
+            dias.push(2);
+            continue;
+          }
+
           if (i === response.data.dia) {
             dias.push(2);
             continue;
@@ -117,7 +122,7 @@ const RegistroPage = () => {
           }
         }
 
-        setDias(dias.slice(0, 30));
+        setDias(dias.slice(-30));
       });
 
       API.get(`Jornada/Periodo`).then((response) => {
@@ -178,7 +183,7 @@ const RegistroPage = () => {
           }
         }
 
-        setDias(dias.slice(0, 30));
+        setDias(dias.slice(-30));
 
         response.data.registro.forEach((jornada: any) => {
           if ([9, 10, 11, 12].includes(jornada.jornadaCategoriaOpcaoId)) {
@@ -353,6 +358,7 @@ const RegistroPage = () => {
     index !== undefined &&
       diaEscolhido &&
       API.post("Jornada/Cadastro", {
+        ciclo: 1,
         dia: diaEscolhido,
         registro: [
           {
