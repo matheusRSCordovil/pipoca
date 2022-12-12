@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { MainContainer } from "./styles";
 import MenuIcon from "../../assets/img/menuIcon.png";
-import NotificationOnIcon from "../../assets/img/notificationOnIcon.png";
+// import NotificationOnIcon from "../../assets/img/notificationOnIcon.png";
 import LogoAada from "../../assets/img/logo-aada.png";
 import { useLocation } from "react-router-dom";
 import { useHomeProvider } from "../../providers/HomeProvider";
@@ -34,11 +34,11 @@ const TopMenu = () => {
         <p>Bom dia, {userNome}!</p>
       ) : null}
 
-      <img
+      {/* <img
         src={NotificationOnIcon}
         alt="notificationOnIcon"
         className="notificationOnIcon"
-      />
+      /> */}
 
       {openMenu ? (
         <img
