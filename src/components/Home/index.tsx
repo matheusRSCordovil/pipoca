@@ -9,7 +9,7 @@ import FullScreenDialog from "../MenuSide";
 import RegistroPage from "../RegistroPage";
 import RelatorioPage from "../RelatorioPage";
 import { MainContainer } from "./styles";
-
+import { inicializarFirebase } from "../../helpers/push-notification";
 const Home = () => {
   const { ativo, setOpenMenu, openMenu, openFilterMenu, setOpenFilterMenu } =
     useHomeProvider();
@@ -21,6 +21,7 @@ const Home = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    inicializarFirebase();
   }, [ativo]);
 
   return (
