@@ -3,15 +3,23 @@ import ListItem from "@mui/material/ListItem";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import { useHomeProvider } from "../../providers/HomeProvider";
+import { useNavigate } from "react-router-dom";
 
 const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
   const { setAtivo, setOpenMenu } = useHomeProvider();
+  const navigate = useNavigate();
 
   const { handleSelect } = props;
 
   const handleClick = (e: string) => {
     setAtivo(e);
     setOpenMenu(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setOpenMenu(false);
+    navigate("/login");
   };
 
   return (
@@ -66,6 +74,19 @@ const MenuPage1 = ({ ...props }: { handleSelect: any }) => {
         onClick={() => handleSelect("config")}
       >
         <ListItemText primary="Minha Conta" />
+      </ListItem>
+      <Divider />
+      <ListItem
+        button
+        style={{
+          boxShadow: "0px 4px 4px 0px #00000026",
+          height: 44,
+          textAlign: "center",
+          backgroundColor: "#ffffff",
+        }}
+        onClick={handleLogout}
+      >
+        <ListItemText primary="Sair" />
       </ListItem>
     </List>
   );

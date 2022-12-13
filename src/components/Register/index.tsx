@@ -18,13 +18,16 @@ import * as yup from "yup";
 import axios from "axios";
 import { useHomeProvider } from "../../providers/HomeProvider";
 import IndicatorDots from "../re-carousel-master/src/indicator-dots";
+import { inicializarFirebase } from "../../helpers/push-notification";
+import jwt_decode from "jwt-decode";
 
 const Register = () => {
   const navigate = useNavigate();
 
-  const { userNome, setUserNome } = useHomeProvider();
+  const { userNome, setUserNome, setAtivo } = useHomeProvider();
 
   const [isLoading, setIsLoading] = useState(true);
+  const [mensagem, setMensagem] = useState<string>("");
 
   const getToken = () => {
     let token = localStorage.getItem("token");
@@ -67,10 +70,16 @@ const Register = () => {
           values
         )
         .then((response: { data: { token: string } }) => {
-          navigate("/login");
+          localStorage.setItem("token", response.data.token);
+          let decoded: any = jwt_decode(response.data.token);
+          setUserNome(decoded.unique_name);
+          setAtivo("hoje");
+          navigate("/");
+          inicializarFirebase();
+          // navigate("/login");
         })
         .catch((error: any) => {
-          console.log(error);
+          setMensagem(error.response.data.mensagem);
         });
     },
   });
@@ -417,6 +426,9 @@ const Register = () => {
             {formik.touched.repeatSenha && formik.errors.repeatSenha && (
               <div className="error-msg">{formik.errors.repeatSenha}</div>
             )}
+
+            {!userNome && <div className="error-msg">Nome não fornecido</div>}
+            {mensagem && <div className="error-msg">{mensagem}</div>}
 
             {/* <p style={{ marginTop: 30 }}>
               Você receberá um e-mail para confirmar seu cadastro, ok?

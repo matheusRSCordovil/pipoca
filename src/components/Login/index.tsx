@@ -61,6 +61,7 @@ const Login = () => {
           inicializarFirebase();
         })
         .catch((error: any) => {
+        
           if (error.response.status === 401) {
             setError(true);
           }
