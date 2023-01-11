@@ -34,7 +34,7 @@ export const MainContainer = styled.div`
   }
 
   span > div:first-child > p {
-    font-size: 7px;
+    font-size: 12px;
     font-weight: 700;
     line-height: 18px;
     letter-spacing: 0em;
