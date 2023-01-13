@@ -78,6 +78,9 @@ const RegistroPage = () => {
   const [activeJornadaIds, setActiveJornadaIds] = useState<number[]>([
     12, 20, 16, 4, 8,
   ]);
+  const [activeJornadaIdIndex, setActiveJornadaIdIndex] = useState<
+    number[] | []
+  >([]);
   const [comentarioAtivo, setComentarioAtivo] = useState("");
   const [comentariosList, setComentariosList] = useState<string[]>([
     "",
@@ -133,30 +136,40 @@ const RegistroPage = () => {
               activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
               setActiveJornadaIds(activeJornadaIds);
               setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
+              activeJornadaIdIndex[0] = jornada.id;
+              setActiveJornadaIdIndex(activeJornadaIdIndex);
               comentariosList[0] = jornada.observacao || "";
             }
             if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
               activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
               setActiveJornadaIds(activeJornadaIds);
               setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
+              activeJornadaIdIndex[1] = jornada.id;
+              setActiveJornadaIdIndex(activeJornadaIdIndex);
               comentariosList[1] = jornada.observacao || "";
             }
             if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
               activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
               setActiveJornadaIds(activeJornadaIds);
               setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
+              activeJornadaIdIndex[2] = jornada.id;
+              setActiveJornadaIdIndex(activeJornadaIdIndex);
               comentariosList[2] = jornada.observacao || "";
             }
             if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
               activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
               setActiveJornadaIds(activeJornadaIds);
               setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
+              activeJornadaIdIndex[3] = jornada.id;
+              setActiveJornadaIdIndex(activeJornadaIdIndex);
               comentariosList[3] = jornada.observacao || "";
             }
             if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
               setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
               activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
               setActiveJornadaIds(activeJornadaIds);
+              activeJornadaIdIndex[4] = jornada.id;
+              setActiveJornadaIdIndex(activeJornadaIdIndex);
               comentariosList[4] = jornada.observacao || "";
             }
           });
@@ -190,30 +203,40 @@ const RegistroPage = () => {
             activeJornadaIds[0] = jornada.jornadaCategoriaOpcaoId;
             setActiveJornadaIds(activeJornadaIds);
             setActivePele("pele" + jornada.jornadaCategoriaOpcaoId);
+            activeJornadaIdIndex[0] = jornada.id;
+            setActiveJornadaIdIndex(activeJornadaIdIndex);
             comentariosList[0] = jornada.observacao || "";
           }
           if ([17, 18, 19, 20].includes(jornada.jornadaCategoriaOpcaoId)) {
             activeJornadaIds[1] = jornada.jornadaCategoriaOpcaoId;
             setActiveJornadaIds(activeJornadaIds);
             setActiveSentindo("sentindo" + jornada.jornadaCategoriaOpcaoId);
+            activeJornadaIdIndex[1] = jornada.id;
+            setActiveJornadaIdIndex(activeJornadaIdIndex);
             comentariosList[1] = jornada.observacao || "";
           }
           if ([13, 14, 15, 16].includes(jornada.jornadaCategoriaOpcaoId)) {
             activeJornadaIds[2] = jornada.jornadaCategoriaOpcaoId;
             setActiveJornadaIds(activeJornadaIds);
             setActiveDormir("dormir" + jornada.jornadaCategoriaOpcaoId);
+            activeJornadaIdIndex[2] = jornada.id;
+            setActiveJornadaIdIndex(activeJornadaIdIndex);
             comentariosList[2] = jornada.observacao || "";
           }
           if ([1, 2, 3, 4].includes(jornada.jornadaCategoriaOpcaoId)) {
             activeJornadaIds[3] = jornada.jornadaCategoriaOpcaoId;
             setActiveJornadaIds(activeJornadaIds);
             setActiveBanho("banho" + jornada.jornadaCategoriaOpcaoId);
+            activeJornadaIdIndex[3] = jornada.id;
+            setActiveJornadaIdIndex(activeJornadaIdIndex);
             comentariosList[3] = jornada.observacao || "";
           }
           if ([5, 6, 7, 8].includes(jornada.jornadaCategoriaOpcaoId)) {
             setActiveDia("dia" + jornada.jornadaCategoriaOpcaoId);
             activeJornadaIds[4] = jornada.jornadaCategoriaOpcaoId;
             setActiveJornadaIds(activeJornadaIds);
+            activeJornadaIdIndex[4] = jornada.id;
+            setActiveJornadaIdIndex(activeJornadaIdIndex);
             comentariosList[4] = jornada.observacao || "";
           }
         });
@@ -349,6 +372,7 @@ const RegistroPage = () => {
       API.post("Jornada/Cadastro", {
         registro: [
           {
+            id: activeJornadaIdIndex[index],
             observacao: comentariosList[index],
             jornadaCategoriaOpcaoId: activeJornadaIds[index],
           },
@@ -362,6 +386,7 @@ const RegistroPage = () => {
         dia: diaEscolhido,
         registro: [
           {
+            id: activeJornadaIdIndex[index],
             observacao: comentariosList[index],
             jornadaCategoriaOpcaoId: activeJornadaIds[index],
           },

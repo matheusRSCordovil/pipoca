@@ -119,7 +119,7 @@ const HojePage = () => {
       </div>
 
       <p className="status-registro-text">
-        {mesCompleto
+        {categoriaPreenchida.length
           ? "Valeu por ter efetuado seu registro!"
           : "Você ainda não fez o seu registro hoje!"}
       </p>
