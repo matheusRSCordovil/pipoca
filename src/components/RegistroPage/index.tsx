@@ -268,7 +268,12 @@ const RegistroPage = () => {
     produto: string,
     opcao?: number
   ) => {
-    handleProdutoPost(categoriaId, produto, opcao);
+    if (diaEscolhido) {
+      handleProdutoPost(categoriaId, produto, opcao, diaEscolhido);
+    } else {
+      handleProdutoPost(categoriaId, produto, opcao);
+    }
+
     setActiveInput(false);
     setInputValue("");
     setTimeout(() => {

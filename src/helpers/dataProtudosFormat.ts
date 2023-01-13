@@ -22,18 +22,36 @@ export const filterProductList = (
 export const handleProdutoPost = (
   id: number,
   produto: string,
-  opcao?: number
+  opcao?: number,
+  dia?: number
 ) => {
-  let data = {
-    registro: [
-      {
-        jornadaCategoriaOpcaoId: opcao,
-        jornadaCategoriaId: id,
-        produto: produto,
-        observacao: "",
-      },
-    ],
-  };
+  let data = {};
+
+  if (dia) {
+    data = {
+      ciclo: 1,
+      dia: dia,
+      registro: [
+        {
+          jornadaCategoriaOpcaoId: opcao,
+          jornadaCategoriaId: id,
+          produto: produto,
+          observacao: "",
+        },
+      ],
+    };
+  } else {
+    data = {
+      registro: [
+        {
+          jornadaCategoriaOpcaoId: opcao,
+          jornadaCategoriaId: id,
+          produto: produto,
+          observacao: "",
+        },
+      ],
+    };
+  }
 
   API.post("Jornada/Cadastro", data);
 };
