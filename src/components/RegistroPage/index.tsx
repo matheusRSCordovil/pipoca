@@ -903,7 +903,7 @@ const RegistroPage = () => {
 
       <div className="remedio-container">
         <div>
-          <p>Hidratante</p>
+          <p>Hidratantes</p>
           <p>
             {" "}
             <img
