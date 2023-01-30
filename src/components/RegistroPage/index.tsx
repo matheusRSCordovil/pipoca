@@ -728,7 +728,7 @@ const RegistroPage = () => {
         )}
       </span>
 
-      <TitleDiv>Produtos de Cuidados</TitleDiv>
+      <TitleDiv>Tratamentos</TitleDiv>
 
       <div className="remedio-container">
         <div>
@@ -742,10 +742,15 @@ const RegistroPage = () => {
             />
           </p>
 
-          <p>Tomei</p>
-          <p>Atrasei</p>
-          <p>Esqueci</p>
-          <p>Não precisei</p>
+          {remediosList.length && (
+            <>
+              {" "}
+              <p>Tomei</p>
+              <p>Atrasei</p>
+              <p>Esqueci</p>
+              <p>Não precisei</p>
+            </>
+          )}
         </div>
 
         {remediosList &&
@@ -842,10 +847,14 @@ const RegistroPage = () => {
               style={{ marginLeft: "10px" }}
             />
           </p>
-          <p>Passei</p>
-          <p>Atrasei</p>
-          <p>Esqueci</p>
-          <p>Não precisei</p>
+          {pomadasList.length && (
+            <>
+              <p>Passei</p>
+              <p>Atrasei</p>
+              <p>Esqueci</p>
+              <p>Não precisei</p>
+            </>
+          )}
         </div>
 
         {pomadasList &&
@@ -943,10 +952,15 @@ const RegistroPage = () => {
               style={{ marginLeft: "10px" }}
             />
           </p>
-          <p>Passei</p>
-          <p>Atrasei</p>
-          <p>Esqueci</p>
-          <p>Não precisei</p>
+          {hidratantesList.length && (
+            <>
+              {" "}
+              <p>Passei</p>
+              <p>Atrasei</p>
+              <p>Esqueci</p>
+              <p>Não precisei</p>
+            </>
+          )}
         </div>
 
         {hidratantesList &&

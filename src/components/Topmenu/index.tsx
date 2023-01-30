@@ -31,7 +31,8 @@ const TopMenu = () => {
       {ativo === "relatorio" && !openMenu ? (
         <p>Relatório</p>
       ) : !openMenu ? (
-        <p>Bom dia, {userNome}!</p>
+        // <p>Bom dia, {userNome}!</p>
+        <p>Registro da jornada</p>
       ) : null}
 
       {/* <img

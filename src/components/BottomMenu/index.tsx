@@ -19,16 +19,6 @@ const BottomMenu = () => {
 
   return location.pathname === "/" ? (
     <MainContainer>
-      {ativo === "relatorio" ? (
-        <img className="img ativo" alt="" src={RelatorioAtivo} />
-      ) : (
-        <img
-          alt=""
-          src={RelatorioIcon}
-          onClick={() => handleClick("relatorio")}
-        />
-      )}
-
       {ativo === "hoje" ? (
         <img className="img ativo" alt="" src={HojeAtivo} />
       ) : (
@@ -42,6 +32,15 @@ const BottomMenu = () => {
           alt=""
           src={RegistroIcon}
           onClick={() => handleClick("registro")}
+        />
+      )}
+      {ativo === "relatorio" ? (
+        <img className="img ativo" alt="" src={RelatorioAtivo} />
+      ) : (
+        <img
+          alt=""
+          src={RelatorioIcon}
+          onClick={() => handleClick("relatorio")}
         />
       )}
     </MainContainer>

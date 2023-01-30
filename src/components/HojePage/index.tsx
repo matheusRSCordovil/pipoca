@@ -24,16 +24,40 @@ const HojePage = () => {
   const [dias, setDias] = useState<any[]>([]);
   const [diaAtual, setDiaAtual] = useState<any[]>([]);
   const [categoriaPreenchida, setCategoriaPreenchida] = useState<any>([]);
+  const [isFullRegister, setIsFullRegister] = useState<boolean>(false);
 
   const handleClick = (index: number) => {
     setIdAtivo(index + "");
     setAtivo("detalhes");
   };
 
+  const hasFullRegister = (data: any) => {
+    var hasFullRegisterList = ["Sintomas", "Humor", "Rotina", "Banho", "Sono"];
+
+    if (data.length === 0) return false;
+
+    for (let i = 0; i < data.length; i++) {
+      const index = hasFullRegisterList.indexOf(data[i].categoria);
+      if (index > -1) {
+        hasFullRegisterList.splice(index, 1);
+      }
+    }
+
+    if (hasFullRegisterList.length === 0) {
+      console.log("mes completo");
+      setIsFullRegister(true);
+    } else {
+      console.log("mes incompleto", hasFullRegisterList);
+      setIsFullRegister(false);
+    }
+  };
+
   useEffect(() => {
     API.get("Jornada/Atual").then((response) => {
       setDiaAtual(response.data.dia);
       setCategoriaPreenchida(response.data.registro);
+
+      hasFullRegister(response.data.registro);
 
       for (let i = 1; i < 31; i++) {
         if (!response.data.dia) {
@@ -50,8 +74,6 @@ const HojePage = () => {
 
       setDias(dias.slice(0, 30));
     });
-
-    console.log(dias);
 
     API.get("Conteudo?CategoriaId=1").then((response) => {
       let index = Math.floor(Math.random() * response.data.length - 1);
@@ -119,11 +141,11 @@ const HojePage = () => {
       </div>
 
       <p className="status-registro-text">
-        {categoriaPreenchida.length
+        {isFullRegister
           ? "Valeu por ter efetuado seu registro!"
-          : "Você ainda não fez o seu registro hoje!"}
+          : "Você ainda não completou o seu registro de hoje!"}
       </p>
-      {mesCompleto && (
+      {isFullRegister && (
         <p className="status-registro-text-sub">Hoje você está:</p>
       )}
 
@@ -271,8 +293,13 @@ const HojePage = () => {
         </div>
       </div>
 
-      {mesCompleto ? (
-        <p className="ajuste-registro-text">Ajustar meu registro</p>
+      {isFullRegister ? (
+        <p
+          onClick={() => setAtivo("registro")}
+          className="ajuste-registro-text"
+        >
+          Ajustar meu registro
+        </p>
       ) : (
         <button
           className="registrar-button"
@@ -282,18 +309,22 @@ const HojePage = () => {
         </button>
       )}
 
-      <p className="aprendizagem-do-dia-text">Aprendizagem do dia</p>
-
-      <div className="aprendizagem-card">
-        <h4>{conteudos && conteudos?.titulo}</h4>
-        <p>{conteudos && conteudos?.resumo}</p>
-        <img
-          src={PlusIcon}
-          alt="plusIcon"
-          className="plus-icone"
-          onClick={() => handleClick(conteudos.id)}
-        />
-      </div>
+      {isFullRegister && (
+        <>
+          {" "}
+          <p className="aprendizagem-do-dia-text">Aprendizagem do dia</p>
+          <div className="aprendizagem-card">
+            <h4>{conteudos && conteudos?.titulo}</h4>
+            <p>{conteudos && conteudos?.resumo}</p>
+            <img
+              src={PlusIcon}
+              alt="plusIcon"
+              className="plus-icone"
+              onClick={() => handleClick(conteudos.id)}
+            />
+          </div>
+        </>
+      )}
     </MainContainer>
   );
 };
